@@ -2,7 +2,8 @@
 
 struct WindowConfig
 {
-
+	int width = 1024;
+	int height = 768;
 };
 
 class Window final
@@ -11,6 +12,16 @@ class Window final
 public:
 	bool Init(const WindowConfig& config);
 	bool Broadcast();
+
+	void ToggleFullScreen();
+
+#if SE_PLATFORM_WINDOWS
+	HWND GetHWND() { return m_hwnd; }
+#endif
+
+	bool hasWindowFocus = true; // TODO:
+	bool isFullScreen = false;  // TODO:
+
 private:
 	Window() = default;
 	Window(const Window&) = delete;
@@ -22,6 +33,7 @@ private:
 	void close();
 #if SE_PLATFORM_WINDOWS
 	HWND m_hwnd = nullptr;
+	HINSTANCE m_instance = nullptr;
 #endif
 	bool m_isInit = false;
 };

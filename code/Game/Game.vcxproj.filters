@@ -12,6 +12,9 @@
     <ClCompile Include="Log.cpp">
       <Filter>engine\Subsystem</Filter>
     </ClCompile>
+    <ClCompile Include="OGLGraphics.cpp">
+      <Filter>engine\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -28,6 +31,9 @@
     </Filter>
     <Filter Include="engine\Core">
       <UniqueIdentifier>{0b3dd572-3020-4cab-ab16-102379f9f4de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Graphics">
+      <UniqueIdentifier>{6123480a-23c1-4aaa-baeb-6337d538a224}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -46,6 +52,12 @@
     </ClInclude>
     <ClInclude Include="Log.h">
       <Filter>engine\Subsystem</Filter>
+    </ClInclude>
+    <ClInclude Include="OGLGraphics.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="OGLFunc.h">
+      <Filter>engine\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

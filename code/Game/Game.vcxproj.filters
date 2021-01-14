@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="Engine.cpp">
+      <Filter>engine\Subsystem</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="engine">
+      <UniqueIdentifier>{6051ec0b-1792-413c-8e4d-8ac079a68a4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\base">
+      <UniqueIdentifier>{45eb78d9-4a1d-408a-8fb2-6b5aa6661b27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Subsystem">
+      <UniqueIdentifier>{6afc63b2-c772-4d07-af79-da9ad02a846b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Config.h">
+      <Filter>engine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Macros.h">
+      <Filter>engine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h">
+      <Filter>engine\Subsystem</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

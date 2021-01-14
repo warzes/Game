@@ -1,5 +1,7 @@
 #pragma once
 
+#include "OGLFunc.h"
+
 struct WindowConfig;
 
 struct GraphicsConfig
@@ -18,6 +20,8 @@ public:
 	void BeginFrame();
 	void EndFrame();
 
+	void SetVsync();
+
 private:
 	OGLGraphics() = default;
 	OGLGraphics(const OGLGraphics&) = delete;
@@ -26,11 +30,13 @@ private:
 	OGLGraphics& operator=(OGLGraphics&&) = delete;
 	~OGLGraphics();
 
+	void initOpenGLFunctions();
+
 	void close();
 
 #if SE_PLATFORM_WINDOWS
-	HDC m_hDC = nullptr;
-	HGLRC m_hRC = nullptr;
+	HDC m_deviceContext = nullptr;
+	HGLRC m_renderContext = nullptr;
 	HWND m_hwnd = nullptr;
 #endif
 

@@ -29,6 +29,9 @@ private:
 	Window& operator=(const Window&) = delete;
 	Window& operator=(Window&&) = delete;
 	~Window();
+#if SE_PLATFORM_WINDOWS
+	bool registerClass();
+#endif
 
 	void close();
 #if SE_PLATFORM_WINDOWS

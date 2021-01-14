@@ -176,6 +176,7 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="OGLFunc.cpp" />
     <ClCompile Include="OGLGraphics.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -192,6 +193,7 @@
     <ClInclude Include="Macros.h" />
     <ClInclude Include="OGLFunc.h" />
     <ClInclude Include="OGLGraphics.h" />
+    <ClInclude Include="OGLWindowContext.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>

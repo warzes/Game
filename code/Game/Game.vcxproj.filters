@@ -15,6 +15,9 @@
     <ClCompile Include="OGLGraphics.cpp">
       <Filter>engine\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="OGLFunc.cpp">
+      <Filter>engine\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -57,6 +60,9 @@
       <Filter>engine\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="OGLFunc.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="OGLWindowContext.h">
       <Filter>engine\Graphics</Filter>
     </ClInclude>
   </ItemGroup>

@@ -20,6 +20,8 @@ SE_PRAGMA_WARNING_LEVEL(3)
 #include <cassert>
 
 #include <sstream>
+#include <iostream>
+
 #include <exception>
 
 #include <string>

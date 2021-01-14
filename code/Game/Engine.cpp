@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Engine.h"
+#include "Input.h"
 
 Engine& GetEngine()
 {
@@ -21,6 +22,7 @@ bool Engine::Init(const EngineConfig& config)
 	if (!m_graphics.Init(m_window.GetHWND(), config.window, config.graphics))
 		return false;
 #endif
+	m_isRun = true;
 	return true;
 }
 
@@ -29,6 +31,8 @@ void Engine::Update()
 	if (m_isEnd) return;
 
 	m_isEnd = !m_window.Broadcast();
+	Mouse::Get().Update();
+	Keyboard::Get().Update();
 }
 
 void Engine::BeginFrame()

@@ -23,6 +23,11 @@ public:
 		return m_isEnd;
 	}
 
+	bool IsRun() const
+	{
+		return m_isRun;
+	}
+
 	EngineConfig& GetConfig()
 	{
 		return m_config;
@@ -42,6 +47,7 @@ private:
 	Window m_window;
 	OGLGraphics m_graphics;
 	bool m_isEnd = false;
+	bool m_isRun = false;
 };
 
 Engine& GetEngine();

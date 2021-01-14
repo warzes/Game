@@ -18,6 +18,9 @@
     <ClCompile Include="OGLFunc.cpp">
       <Filter>engine\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>engine\Platform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -64,6 +67,9 @@
     </ClInclude>
     <ClInclude Include="OGLWindowContext.h">
       <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>engine\Platform</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

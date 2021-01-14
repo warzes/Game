@@ -30,7 +30,14 @@ SE_PRAGMA_WARNING_LEVEL(3)
 #	define WIN32_LEAN_AND_MEAN      // 
 #	define WIN32_EXTRA_LEAN         // 
 #	define NOMINMAX
+#	define _WIN32_WINNT 0x0501
 #	include <windows.h>
+#	if !defined(WHEEL_DELTA)
+#		define WHEEL_DELTA 120
+#	endif
+#	if !defined(WM_MOUSEWHEEL)
+#		define WM_MOUSEWHEEL 0x020A
+#	endif
 #endif
 
 #include <GL/gl.h>

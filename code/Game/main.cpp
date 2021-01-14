@@ -1,5 +1,6 @@
 ﻿#include "stdafx.h"
 #include "Engine.h"
+#include "Input.h"
 
 #if SE_COMPILER_MSVC
 #   pragma comment(lib, "OpenGL32.lib")
@@ -160,6 +161,9 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char **argv)
 				engine.BeginFrame();
 				draw();
 				engine.EndFrame();
+
+				if (Keyboard::Get().KeyPressed(Keyboard::KEY_ESCAPE))
+					break;
 			}
 		}
 	}

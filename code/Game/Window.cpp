@@ -2,6 +2,7 @@
 #include "Window.h"
 #include "Engine.h"
 #include "Log.h"
+#include "Input.h"
 
 static Window* thisWindow = nullptr;
 
@@ -10,8 +11,11 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 {
 	Engine& engine = GetEngine();
 
-	if (thisWindow)
+	if (thisWindow && engine.IsRun())
 	{
+		Mouse::Get().HandleMsg(hwnd, msg, wparam, lparam);
+		Keyboard::Get().HandleMsg(hwnd, msg, wparam, lparam);
+
 		switch (msg)
 		{
 		case WM_ACTIVATE:
@@ -22,12 +26,14 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 
 			case WA_ACTIVE:
 			case WA_CLICKACTIVE:
+				Mouse::Get().Attach(hwnd);
 				thisWindow->hasWindowFocus = true;
 				break;
 
 			case WA_INACTIVE:
 				if (thisWindow->isFullScreen)
 					ShowWindow(hwnd, SW_MINIMIZE);
+				Mouse::Get().Detach();
 				thisWindow->hasWindowFocus = false;
 				break;
 			}
@@ -70,8 +76,6 @@ bool Window::Init(const WindowConfig& config)
 	DWORD wndExStyle = WS_EX_OVERLAPPEDWINDOW;
 	DWORD wndStyle = WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_CLIPCHILDREN | WS_CLIPSIBLINGS;
 
-	// TODO: по центру экрана
-
 	m_hwnd = ::CreateWindowEx(wndExStyle, WINDOWCLASS, L"Game", wndStyle, CW_USEDEFAULT, CW_USEDEFAULT, config.width, config.height, 0, 0, m_instance, 0);
 	if (!m_hwnd)
 	{
@@ -92,6 +96,8 @@ bool Window::Init(const WindowConfig& config)
 	
 	::ShowWindow(m_hwnd, SW_SHOW);
 	::UpdateWindow(m_hwnd);
+
+	Mouse::Get().Attach(m_hwnd);
 #endif
 	m_isInit = true;
 	thisWindow = this;

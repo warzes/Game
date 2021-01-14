@@ -34,5 +34,9 @@ SE_PRAGMA_WARNING_LEVEL(3)
 #endif
 
 #include <GL/gl.h>
+#include <GL/glext.h>
+#if SE_PLATFORM_WINDOWS
+#	include <GL/wglext.h>
+#endif
 
 SE_PRAGMA_WARNING_POP

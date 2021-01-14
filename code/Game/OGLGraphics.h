@@ -30,8 +30,6 @@ private:
 	OGLGraphics& operator=(OGLGraphics&&) = delete;
 	~OGLGraphics();
 
-	void initOpenGLFunctions();
-
 	void close();
 
 #if SE_PLATFORM_WINDOWS

@@ -1,45 +1,36 @@
 #pragma once
 
+#include "Window.h"
+
 struct EngineConfig
 {
-
+	WindowConfig window;
 };
-
-class EngineGlobals
-{
-	friend class Engine;
-public:
-	void Init(const EngineConfig& config);
-private:
-	EngineGlobals() = default;
-	EngineGlobals(const EngineGlobals&) = delete;
-	EngineGlobals(EngineGlobals&&) = delete;
-	EngineGlobals operator=(const EngineGlobals&) = delete;
-	EngineGlobals operator=(EngineGlobals&&) = delete;
-};
-
 class Engine
 {
 	friend Engine& GetEngine();
 public:
 	bool Init(const EngineConfig &config);
-	void Close();
 
-	EngineGlobals& GetGlobals()
+	void Update();
+
+	bool IsEnd() const
 	{
-		return m_globals;
+		return m_isEnd;
 	}
 
 private:
-	Engine();
+	Engine() = default;
 	Engine(const Engine&) = delete;
 	Engine(Engine&&) = delete;
 	Engine operator=(const Engine&) = delete;
 	Engine operator=(Engine&&) = delete;
 	~Engine();
 
-	EngineGlobals m_globals;
-	struct EngineImpl* m_impl = nullptr;
+	void close();
+
+	Window m_window;
+	bool m_isEnd = false;
 };
 
 Engine& GetEngine();

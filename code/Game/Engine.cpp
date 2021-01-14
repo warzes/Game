@@ -7,29 +7,26 @@ Engine& GetEngine()
 	return engine;
 }
 
-struct EngineImpl
-{
-};
-
-void EngineGlobals::Init(const EngineConfig& config)
-{
-}
-
-Engine::Engine() : m_impl(new EngineImpl())
-{
-}
-
 Engine::~Engine()
 {
-	delete m_impl;
+	close();
 }
 
 bool Engine::Init(const EngineConfig& config)
 {
-	m_globals.Init(config);
+	if (!m_window.Init(config.window))
+		return false;
 	return true;
 }
 
-void Engine::Close()
+void Engine::Update()
 {
+	if (m_isEnd) return;
+
+	m_isEnd = !m_window.Broadcast();
+}
+
+void Engine::close()
+{
+	m_window.close();
 }

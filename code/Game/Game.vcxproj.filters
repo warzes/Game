@@ -6,6 +6,12 @@
     <ClCompile Include="Engine.cpp">
       <Filter>engine\Subsystem</Filter>
     </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>engine\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>engine\Subsystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -17,6 +23,12 @@
     <Filter Include="engine\Subsystem">
       <UniqueIdentifier>{6afc63b2-c772-4d07-af79-da9ad02a846b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="engine\Platform">
+      <UniqueIdentifier>{fee40604-c525-4501-a60b-1af806f9ce3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Core">
+      <UniqueIdentifier>{0b3dd572-3020-4cab-ab16-102379f9f4de}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -27,6 +39,12 @@
       <Filter>engine\base</Filter>
     </ClInclude>
     <ClInclude Include="Engine.h">
+      <Filter>engine\Subsystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>engine\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
       <Filter>engine\Subsystem</Filter>
     </ClInclude>
   </ItemGroup>

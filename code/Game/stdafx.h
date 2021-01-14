@@ -9,6 +9,9 @@
 //=============================================================================
 // Standart header
 //=============================================================================
+SE_PRAGMA_WARNING_DISABLE_MSVC(4514)
+SE_PRAGMA_WARNING_DISABLE_MSVC(4820)
+
 SE_PRAGMA_WARNING_LEVEL(3)
 
 #define _STL_WARNING_LEVEL 3

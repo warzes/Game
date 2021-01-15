@@ -21,6 +21,9 @@
     <ClCompile Include="Input.cpp">
       <Filter>engine\Platform</Filter>
     </ClCompile>
+    <ClCompile Include="WGLFunc.cpp">
+      <Filter>engine\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -65,11 +68,11 @@
     <ClInclude Include="OGLFunc.h">
       <Filter>engine\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="OGLWindowContext.h">
-      <Filter>engine\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="Input.h">
       <Filter>engine\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="WGLFunc.h">
+      <Filter>engine\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

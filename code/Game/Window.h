@@ -31,6 +31,7 @@ private:
 	~Window();
 #if SE_PLATFORM_WINDOWS
 	bool registerClass();
+	bool createWindow(const WindowConfig& config);
 #endif
 
 	void close();

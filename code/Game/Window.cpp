@@ -65,37 +65,14 @@ Window::~Window()
 
 bool Window::Init(const WindowConfig& config)
 {
-	Engine& engine = GetEngine();
-
 #if SE_PLATFORM_WINDOWS
 	m_instance = GetModuleHandle(0);
 
 	if (!registerClass())
 		return false;	
 
-	DWORD wndExStyle = WS_EX_OVERLAPPEDWINDOW;
-	DWORD wndStyle = WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_CLIPCHILDREN | WS_CLIPSIBLINGS;
-
-	m_hwnd = ::CreateWindowEx(wndExStyle, WINDOWCLASS, L"Game", wndStyle, CW_USEDEFAULT, CW_USEDEFAULT, config.width, config.height, 0, 0, m_instance, 0);
-	if (!m_hwnd)
-	{
-		SE_ERROR("CreateWindow() failed: Can not create window.");
+	if (!createWindow(config))
 		return false;
-	}
-
-	RECT rect = { 0 };
-	GetClientRect(m_hwnd, &rect);
-	engine.GetConfig().window.width = rect.right - rect.left;
-	engine.GetConfig().window.height = rect.bottom - rect.top;
-
-	MONITORINFO mi = { sizeof(mi) };
-	GetMonitorInfo(MonitorFromWindow(m_hwnd, MONITOR_DEFAULTTONEAREST), &mi);
-	int x = (mi.rcMonitor.right - mi.rcMonitor.left - engine.GetConfig().window.width) / 2;
-	int y = (mi.rcMonitor.bottom - mi.rcMonitor.top - engine.GetConfig().window.height) / 2;
-	SetWindowPos(m_hwnd, 0, x, y, 0, 0, SWP_NOZORDER | SWP_NOSIZE | SWP_SHOWWINDOW);
-	
-	::ShowWindow(m_hwnd, SW_SHOW);
-	::UpdateWindow(m_hwnd);
 
 	Mouse::Get().Attach(m_hwnd);
 #endif
@@ -170,13 +147,13 @@ bool Window::registerClass()
 	wc.cbSize = sizeof(wc);
 	wc.cbClsExtra = 0;
 	wc.cbWndExtra = 0;
-	wc.hbrBackground = (HBRUSH)COLOR_WINDOW;
+	wc.hbrBackground = 0;
 	wc.hCursor = LoadCursor(0, IDC_ARROW);
 	wc.hIcon = LoadIcon(0, IDI_APPLICATION);
 	wc.hIconSm = LoadIcon(0, IDI_APPLICATION);
 	wc.hInstance = m_instance;
 	wc.lpszClassName = WINDOWCLASS;
-	wc.lpszMenuName = L"";
+	wc.lpszMenuName = 0;
 	wc.style = CS_OWNDC | CS_HREDRAW | CS_VREDRAW;
 	wc.lpfnWndProc = WndProc;
 
@@ -185,8 +162,39 @@ bool Window::registerClass()
 		SE_ERROR("RegisterClassExW() failed: Can not register window class.");
 		return false;
 	}
-		
+	
+	return true;
+}
+#endif
 
+#if SE_PLATFORM_WINDOWS
+bool Window::createWindow(const WindowConfig& config)
+{
+	Engine& engine = GetEngine();
+
+	DWORD wndExStyle = WS_EX_OVERLAPPEDWINDOW;
+	DWORD wndStyle = WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_CLIPCHILDREN | WS_CLIPSIBLINGS;
+
+	m_hwnd = ::CreateWindowEx(wndExStyle, WINDOWCLASS, L"Game", wndStyle, CW_USEDEFAULT, CW_USEDEFAULT, config.width, config.height, 0, 0, m_instance, 0);
+	if (!m_hwnd)
+	{
+		SE_ERROR("CreateWindow() failed: Can not create window.");
+		return false;
+	}
+
+	RECT rect = { 0 };
+	GetClientRect(m_hwnd, &rect);
+	engine.GetConfig().window.width = rect.right - rect.left;
+	engine.GetConfig().window.height = rect.bottom - rect.top;
+
+	MONITORINFO mi = { sizeof(mi) };
+	GetMonitorInfo(MonitorFromWindow(m_hwnd, MONITOR_DEFAULTTONEAREST), &mi);
+	int x = (mi.rcMonitor.right - mi.rcMonitor.left - engine.GetConfig().window.width) / 2;
+	int y = (mi.rcMonitor.bottom - mi.rcMonitor.top - engine.GetConfig().window.height) / 2;
+	SetWindowPos(m_hwnd, 0, x, y, 0, 0, SWP_NOZORDER | SWP_NOSIZE | SWP_SHOWWINDOW);
+
+	::ShowWindow(m_hwnd, SW_SHOW);
+	::UpdateWindow(m_hwnd);
 	return true;
 }
 #endif

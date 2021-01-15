@@ -1,7 +1,79 @@
 #include "stdafx.h"
 #include "OGLGraphics.h"
 #include "Window.h"
-#include "OGLWindowContext.h"
+#include "WGLFunc.h"
+
+const int OGLGraphics::ATTRIB_LIST_GL_VERSION_3_0[] =
+{
+	WGL_CONTEXT_MAJOR_VERSION_ARB, 3,
+	WGL_CONTEXT_MINOR_VERSION_ARB, 0,
+	WGL_CONTEXT_FLAGS_ARB, WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB,
+	0
+};
+
+const int OGLGraphics::ATTRIB_LIST_GL_VERSION_3_1[] =
+{
+	WGL_CONTEXT_MAJOR_VERSION_ARB, 3,
+	WGL_CONTEXT_MINOR_VERSION_ARB, 1,
+	WGL_CONTEXT_FLAGS_ARB, WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB,
+	0
+};
+
+const int OGLGraphics::ATTRIB_LIST_GL_VERSION_3_2[] =
+{
+	WGL_CONTEXT_MAJOR_VERSION_ARB, 3,
+	WGL_CONTEXT_MINOR_VERSION_ARB, 2,
+	WGL_CONTEXT_FLAGS_ARB, WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB,
+	WGL_CONTEXT_PROFILE_MASK_ARB, WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
+	0
+};
+
+const int OGLGraphics::ATTRIB_LIST_GL_VERSION_3_3[] =
+{
+	WGL_CONTEXT_MAJOR_VERSION_ARB, 3,
+	WGL_CONTEXT_MINOR_VERSION_ARB, 3,
+	WGL_CONTEXT_FLAGS_ARB, WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB,
+	WGL_CONTEXT_PROFILE_MASK_ARB, WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
+	0
+};
+
+const int OGLGraphics::ATTRIB_LIST_GL_VERSION_4_0[] =
+{
+	WGL_CONTEXT_MAJOR_VERSION_ARB, 4,
+	WGL_CONTEXT_MINOR_VERSION_ARB, 0,
+	WGL_CONTEXT_FLAGS_ARB, WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB,
+	WGL_CONTEXT_PROFILE_MASK_ARB, WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
+	0
+};
+
+const int OGLGraphics::ATTRIB_LIST_GL_VERSION_4_1[] =
+{
+	WGL_CONTEXT_MAJOR_VERSION_ARB, 4,
+	WGL_CONTEXT_MINOR_VERSION_ARB, 1,
+	WGL_CONTEXT_FLAGS_ARB, WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB,
+	WGL_CONTEXT_PROFILE_MASK_ARB, WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
+	0
+};
+
+const int OGLGraphics::ATTRIB_LIST_GL_VERSION_4_2[] =
+{
+	WGL_CONTEXT_MAJOR_VERSION_ARB, 4,
+	WGL_CONTEXT_MINOR_VERSION_ARB, 2,
+	WGL_CONTEXT_FLAGS_ARB, WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB,
+	WGL_CONTEXT_PROFILE_MASK_ARB, WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
+	0
+};
+
+const int* const OGLGraphics::ATTRIB_LISTS[] =
+{
+	OGLGraphics::ATTRIB_LIST_GL_VERSION_3_0,
+	OGLGraphics::ATTRIB_LIST_GL_VERSION_3_1,
+	OGLGraphics::ATTRIB_LIST_GL_VERSION_3_2,
+	OGLGraphics::ATTRIB_LIST_GL_VERSION_3_3,
+	OGLGraphics::ATTRIB_LIST_GL_VERSION_4_0,
+	OGLGraphics::ATTRIB_LIST_GL_VERSION_4_1,
+	OGLGraphics::ATTRIB_LIST_GL_VERSION_4_2
+};
 
 OGLGraphics::~OGLGraphics()
 {
@@ -16,90 +88,71 @@ bool OGLGraphics::Init(HWND hwnd, const WindowConfig& window, const GraphicsConf
 #if SE_PLATFORM_WINDOWS
 	m_hwnd = hwnd;
 
-	OGLWindowContext tempContext;
-
-	tempContext.Init();
-
 	if (!(m_deviceContext = GetDC(hwnd)))
 		throw std::runtime_error("GetDC() failed: Can not create context.");
 
-	PFNWGLCHOOSEPIXELFORMATARBPROC wglChoosePixelFormatARB;
-	PFNWGLCREATECONTEXTATTRIBSARBPROC wglCreateContextAttribsARB;
+	// Create and set a pixel format for the window.
 
-	wglMakeCurrent(tempContext.deviceContext, tempContext.renderContext);
+	PIXELFORMATDESCRIPTOR pfd = { 0 };
+	pfd.nSize = sizeof(pfd);
+	pfd.nVersion = 1;
+	pfd.dwFlags = PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER;
+	pfd.iPixelType = PFD_TYPE_RGBA;
+	pfd.cColorBits = 24;
+	pfd.cDepthBits = 16;
+	pfd.iLayerType = PFD_MAIN_PLANE;
 
-	wglChoosePixelFormatARB = reinterpret_cast<PFNWGLCHOOSEPIXELFORMATARBPROC>(wglGetProcAddress("wglChoosePixelFormatARB"));
-	if (!wglChoosePixelFormatARB)
-		throw std::runtime_error("wglGetProcAddress() failed: Can not find wglChoosePixelFormatARB.");
-	
-	wglCreateContextAttribsARB = reinterpret_cast<PFNWGLCREATECONTEXTATTRIBSARBPROC>(wglGetProcAddress("wglCreateContextAttribsARB"));
-	if (!wglCreateContextAttribsARB)
-		throw std::runtime_error("wglGetProcAddress() failed: Can not find wglCreateContextAttribsARB.");
-
-	const int pixelAttribs[] = 
-	{
-		WGL_DRAW_TO_WINDOW_ARB, GL_TRUE,
-		WGL_SUPPORT_OPENGL_ARB, GL_TRUE,
-		WGL_DOUBLE_BUFFER_ARB, GL_TRUE,
-		/* WGL_SWAP_EXCHANGE_ARB causes problems with window menu in fullscreen */
-		WGL_SWAP_METHOD_ARB, WGL_SWAP_COPY_ARB,
-		WGL_PIXEL_TYPE_ARB, WGL_TYPE_RGBA_ARB,
-		WGL_ACCELERATION_ARB, WGL_FULL_ACCELERATION_ARB,
-		WGL_COLOR_BITS_ARB, 32,
-		WGL_ALPHA_BITS_ARB, 8,
-		WGL_DEPTH_BITS_ARB, 24,
-		0
-	};
-
-	int contextAttributes[] = 
-	{
-		WGL_CONTEXT_MAJOR_VERSION_ARB, 4,
-		WGL_CONTEXT_MINOR_VERSION_ARB, 4,
-		WGL_CONTEXT_PROFILE_MASK_ARB, WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
-		0
-	};
-
-	int pixelFormat;
-	UINT numFormats;
-	BOOL status = wglChoosePixelFormatARB(m_deviceContext, pixelAttribs, nullptr, 1, &pixelFormat, &numFormats);
-	if (status && numFormats)
-	{
-		PIXELFORMATDESCRIPTOR pfd;
-		memset(&pfd, 0, sizeof(PIXELFORMATDESCRIPTOR));
-		DescribePixelFormat(m_deviceContext, pixelFormat, sizeof(PIXELFORMATDESCRIPTOR), &pfd);
-
-		if (SetPixelFormat(m_deviceContext, pixelFormat, &pfd))
-		{
-			m_renderContext = wglCreateContextAttribsARB(m_deviceContext, 0, contextAttributes);
-			if (!m_renderContext)
-			{
-				throw std::runtime_error("wglCreateContextAttribsARB() failed: Can not create context.");
-			}
-		}
-		else
-		{
-			throw std::runtime_error("SetPixelFormat() failed: Can not create context.");
-		}
-	}
+	int pf = 0;
+	if (m_antiAliasingSamples == 0)
+		pf = ChoosePixelFormat(m_deviceContext, &pfd);
+	else if (m_antiAliasingSamples == BEST_ANTI_ALIASING_SAMPLES)
+		gl::ChooseBestAntiAliasingPixelFormat(pf);
 	else
+		gl::ChooseAntiAliasingPixelFormat(pf, m_antiAliasingSamples);
+
+	if (!pf)
+		pf = ChoosePixelFormat(m_deviceContext, &pfd);
+
+	if (!SetPixelFormat(m_deviceContext, pf, &pfd))
+		throw std::runtime_error("SetPixelFormat() failed.");
+
+	pfd.dwFlags |= PFD_SUPPORT_COMPOSITION;
+
+	// Verify that this OpenGL implementation supports the required extensions.
+	if (!gl::ExtensionSupported("WGL_ARB_create_context"))
+		throw std::runtime_error("Required extension WGL_ARB_create_context is not supported.");
+
+	if (m_preferredGLVersion == GL_VERSION_UNKNOWN)
+		m_preferredGLVersion = static_cast<GLVersion>((sizeof(ATTRIB_LISTS) / sizeof(ATTRIB_LISTS[0])) - 1);
+
+	for (int i = m_preferredGLVersion; i >= 0; --i)
 	{
-		throw std::runtime_error("GetDC() failed: Can not create context.");
+		m_renderContext = wglCreateContextAttribsARB(m_deviceContext, 0, ATTRIB_LISTS[i]);
+		if (m_renderContext)
+		{
+			m_actualGLVersion = static_cast<GLVersion>(i);
+			break;
+		}
 	}
 
-	tempContext.Close();
+	if (!m_renderContext)
+	{
+		m_actualGLVersion = GL_VERSION_UNKNOWN;
+		throw std::runtime_error("wglCreateContextAttribsARB() failed.");
+	}
 
 	if (!wglMakeCurrent(m_deviceContext, m_renderContext))
-		throw std::runtime_error("wglMakeCurrent() failed for OpenGL 3 context.");
+		throw std::runtime_error("wglMakeCurrent() failed.");
 
-	LoadGLExtensions();
-
-	const char* pszGLVersion = reinterpret_cast<const char*>(glGetString(GL_VERSION));
-
-	std::ostringstream text;
-	text << "GL_VERSION: " << pszGLVersion;
-
-	SetWindowTextA(hwnd, text.str().c_str()); // TODO: del
 #endif
+
+	int major = 0;
+	int minor = 0;
+	gl::GetGLVersion(major, minor);
+	std::ostringstream title;
+	title << "OpenGL " << major << "." << minor;
+	SetWindowTextA(hwnd, title.str().c_str());
+
 	m_isInit = true;
 	return true;
 }

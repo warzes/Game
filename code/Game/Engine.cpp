@@ -1,20 +1,29 @@
 #include "stdafx.h"
 #include "Engine.h"
 #include "Input.h"
-
+//-----------------------------------------------------------------------------
+#if USE_GDI
+ULONG_PTR gdiplusToken = 0;
+#endif
+//-----------------------------------------------------------------------------
 Engine& GetEngine()
 {
 	static Engine engine;
 	return engine;
 }
-
+//-----------------------------------------------------------------------------
 Engine::~Engine()
 {
 	close();
 }
-
+//-----------------------------------------------------------------------------
 bool Engine::Init(const EngineConfig& config)
 {
+#if USE_GDI	
+	Gdiplus::GdiplusStartupInput gdiplusStartupInput;
+	Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, 0);
+#endif
+
 	if (!m_window.Init(config.window))
 		return false;
 
@@ -25,7 +34,7 @@ bool Engine::Init(const EngineConfig& config)
 	m_isRun = true;
 	return true;
 }
-
+//-----------------------------------------------------------------------------
 void Engine::Update()
 {
 	if (m_isEnd) return;
@@ -34,7 +43,7 @@ void Engine::Update()
 	Mouse::Get().Update();
 	Keyboard::Get().Update();
 }
-
+//-----------------------------------------------------------------------------
 void Engine::BeginFrame()
 {
 	if (m_isEnd) return;
@@ -42,7 +51,7 @@ void Engine::BeginFrame()
 	if (m_window.hasWindowFocus)
 		m_graphics.BeginFrame();
 }
-
+//-----------------------------------------------------------------------------
 void Engine::EndFrame()
 {
 	if (m_isEnd) return;
@@ -52,9 +61,11 @@ void Engine::EndFrame()
 	else
 		::WaitMessage();
 }
-
+//-----------------------------------------------------------------------------
 void Engine::close()
 {
 	m_graphics.close();
 	m_window.close();
+	Gdiplus::GdiplusShutdown(gdiplusToken);
 }
+//-----------------------------------------------------------------------------

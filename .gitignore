@@ -6,6 +6,7 @@ Thumbs.db
 /_obj/
 /*/.vs/
 /*/ipch/
+/code/3rdparty/glm/
 
 #Ignore bin file
 /bin/*/Game_*.*

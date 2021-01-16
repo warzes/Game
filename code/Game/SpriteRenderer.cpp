@@ -1,19 +1,19 @@
 #include "stdafx.h"
-#include "Sprite.h"
+#include "SpriteRenderer.h"
 #include "OGLFunc.h"
 
-Sprite::Sprite(const Shader& shader)
+SpriteRenderer::SpriteRenderer(const Shader& shader)
 {
 	m_shader = shader;
 	initRenderData();
 }
 
-Sprite::~Sprite()
+SpriteRenderer::~SpriteRenderer()
 {
 	glDeleteVertexArrays(1, &m_quadVAO);
 }
 
-void Sprite::DrawSprite(const Texture2D& texture, glm::vec2 position, glm::vec2 size, float rotate, glm::vec3 color)
+void SpriteRenderer::DrawSprite(const Texture2D& texture, glm::vec2 position, glm::vec2 size, float rotate, glm::vec3 color)
 {
 	// prepare transformations
 	m_shader.Use();
@@ -39,7 +39,7 @@ void Sprite::DrawSprite(const Texture2D& texture, glm::vec2 position, glm::vec2 
 	glBindVertexArray(0);
 }
 
-void Sprite::initRenderData()
+void SpriteRenderer::initRenderData()
 {
 	// configure VAO/VBO
 	unsigned int VBO;

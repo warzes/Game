@@ -36,8 +36,17 @@
     <ClCompile Include="ResourceManager.cpp">
       <Filter>engine\Resource</Filter>
     </ClCompile>
-    <ClCompile Include="Sprite.cpp">
+    <ClCompile Include="SpriteRenderer.cpp">
       <Filter>engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLevel.cpp">
+      <Filter>game\Breakout</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>game\Breakout</Filter>
+    </ClCompile>
+    <ClCompile Include="BallObject.cpp">
+      <Filter>game\Breakout</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +76,12 @@
     </Filter>
     <Filter Include="engine\Graphics">
       <UniqueIdentifier>{d38c068c-a6be-42fe-802f-ce43c46cd9ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\Core">
+      <UniqueIdentifier>{c47c75e3-39d9-4a26-ae62-50c0eb2d5f23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\Breakout">
+      <UniqueIdentifier>{b2c53b8f-b7a1-4db1-8039-8f97be572a9e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -113,8 +128,17 @@
     <ClInclude Include="ResourceManager.h">
       <Filter>engine\Resource</Filter>
     </ClInclude>
-    <ClInclude Include="Sprite.h">
+    <ClInclude Include="SpriteRenderer.h">
       <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLevel.h">
+      <Filter>game\Breakout</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>game\Breakout</Filter>
+    </ClInclude>
+    <ClInclude Include="BallObject.h">
+      <Filter>game\Breakout</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

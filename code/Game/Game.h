@@ -19,5 +19,7 @@ public:
     void Update(float dt);
     void Render();
 
+    void Close();
+
     GameState State = GameState::Active;
 };

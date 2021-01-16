@@ -7,7 +7,7 @@
 #   pragma comment(lib, "OpenGL32.lib")
 #endif
 
-#define SAMPLE_TRIANGLE 1
+#define SAMPLE_TRIANGLE 0
 
 #if SAMPLE_TRIANGLE
 struct 
@@ -189,6 +189,9 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char **argv)
 					break;
 			}
 		}
+#if !SAMPLE_TRIANGLE
+		game.Close();
+#endif
 	}
 	catch (const std::exception& e)
 	{

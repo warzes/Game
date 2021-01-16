@@ -6,7 +6,7 @@
 #define LOAD_ENTRYPOINT(name, var, type) \
     if (!var) \
     { \
-        var = reinterpret_cast<type>(wglGetProcAddress(name)); \
+        var = function_cast<type>(wglGetProcAddress(name)); \
         assert(var != 0); \
     }
 
@@ -311,7 +311,7 @@ namespace
             typedef const char* (WINAPI* PFNWGLGETEXTENSIONSSTRINGARBPROC)(HDC);
 
             PFNWGLGETEXTENSIONSSTRINGARBPROC wglGetExtensionsStringARB =
-                reinterpret_cast<PFNWGLGETEXTENSIONSSTRINGARBPROC>(
+                function_cast<PFNWGLGETEXTENSIONSSTRINGARBPROC>(
                     wglGetProcAddress("wglGetExtensionsStringARB"));
 
             if (wglGetExtensionsStringARB)

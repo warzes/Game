@@ -5,6 +5,7 @@
 //=============================================================================
 #include "Macros.h"
 #include "Config.h"
+#include "InlineFunc.h"
 
 //=============================================================================
 // Standart header
@@ -34,20 +35,16 @@ SE_PRAGMA_WARNING_LEVEL(3)
 #include <set>
 
 #if SE_PLATFORM_WINDOWS
-//#	define WIN32_LEAN_AND_MEAN      // 
-//#	define WIN32_EXTRA_LEAN         // 
-//#	define NOMINMAX
+#	define WIN32_LEAN_AND_MEAN      // 
+#	define WIN32_EXTRA_LEAN         // 
+#	define NOMINMAX
 #	define _WIN32_WINNT 0x0501
 #	include <windows.h>
-#	if USE_GDI
-#		include <gdiplus.h>
-#	endif
 #endif
 
 #include <GL/gl.h>
-//#include <GL/glext.h>
-#if SE_PLATFORM_WINDOWS
-//#	include <GL/wglext.h>
-#endif
+
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 SE_PRAGMA_WARNING_POP

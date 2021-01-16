@@ -4,7 +4,6 @@
 
 #if SE_COMPILER_MSVC
 #   pragma comment(lib, "OpenGL32.lib")
-#	pragma comment (lib, "gdiplus.lib")
 #endif
 
 struct 

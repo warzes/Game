@@ -24,6 +24,15 @@
     <ClCompile Include="WGLFunc.cpp">
       <Filter>engine\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture2D.cpp">
+      <Filter>engine\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -43,6 +52,9 @@
     </Filter>
     <Filter Include="engine\Graphics">
       <UniqueIdentifier>{6123480a-23c1-4aaa-baeb-6337d538a224}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game">
+      <UniqueIdentifier>{becd53a5-5082-464f-a984-56e7c5c8e147}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +85,18 @@
     </ClInclude>
     <ClInclude Include="WGLFunc.h">
       <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture2D.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="InlineFunc.h">
+      <Filter>engine\base</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

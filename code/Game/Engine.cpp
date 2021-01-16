@@ -2,10 +2,6 @@
 #include "Engine.h"
 #include "Input.h"
 //-----------------------------------------------------------------------------
-#if USE_GDI
-ULONG_PTR gdiplusToken = 0;
-#endif
-//-----------------------------------------------------------------------------
 Engine& GetEngine()
 {
 	static Engine engine;
@@ -19,11 +15,6 @@ Engine::~Engine()
 //-----------------------------------------------------------------------------
 bool Engine::Init(const EngineConfig& config)
 {
-#if USE_GDI	
-	Gdiplus::GdiplusStartupInput gdiplusStartupInput;
-	Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, 0);
-#endif
-
 	if (!m_window.Init(config.window))
 		return false;
 
@@ -66,6 +57,5 @@ void Engine::close()
 {
 	m_graphics.close();
 	m_window.close();
-	Gdiplus::GdiplusShutdown(gdiplusToken);
 }
 //-----------------------------------------------------------------------------

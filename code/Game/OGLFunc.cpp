@@ -143,7 +143,7 @@ namespace gl
 
 			typedef const char* (WINAPI* PFNWGLGETEXTENSIONSSTRINGARBPROC)(HDC);
 
-			PFNWGLGETEXTENSIONSSTRINGARBPROC wglGetExtensionsStringARB = reinterpret_cast<PFNWGLGETEXTENSIONSSTRINGARBPROC>(wglGetProcAddress("wglGetExtensionsStringARB"));
+			PFNWGLGETEXTENSIONSSTRINGARBPROC wglGetExtensionsStringARB = function_cast<PFNWGLGETEXTENSIONSSTRINGARBPROC>(wglGetProcAddress("wglGetExtensionsStringARB"));
 
 			if (wglGetExtensionsStringARB)
 			{
@@ -254,12 +254,23 @@ namespace gl
 	}
 }
 
+
+
 #define LOAD_ENTRYPOINT(name, var, type) \
     if (!var) \
     { \
-        var = reinterpret_cast<type>(wglGetProcAddress(name)); \
+        var = function_cast<type>(wglGetProcAddress(name)); \
         assert(var != 0); \
     }
+
+//#define LOAD_ENTRYPOINT(name, var, type) \
+//    if (!var) \
+//    { \
+//        var = reinterpret_cast<type>(wglGetProcAddress(name)); \
+//        assert(var != 0); \
+//    }
+
+
 
 //
 // OpenGL 1.2

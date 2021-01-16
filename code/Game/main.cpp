@@ -1,11 +1,15 @@
 ﻿#include "stdafx.h"
 #include "Engine.h"
 #include "Input.h"
+#include "Game.h"
 
 #if SE_COMPILER_MSVC
 #   pragma comment(lib, "OpenGL32.lib")
 #endif
 
+#define SAMPLE_TRIANGLE 1
+
+#if SAMPLE_TRIANGLE
 struct 
 {
 	const char* vertex, *fragment;
@@ -134,6 +138,7 @@ void draw()
 {
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 }
+#endif
 
 int main([[maybe_unused]] int argc, [[maybe_unused]] char **argv)
 {
@@ -149,17 +154,35 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char **argv)
 
 		Engine& engine = GetEngine();
 
+#if !SAMPLE_TRIANGLE
+		Game game;
+#endif
+
 		if (engine.Init(config))
 		{
+#if SAMPLE_TRIANGLE
 			initShader();
 			initProgram();
 			initVertexObjects();
+#else
+			game.Init();
+#endif
 
 			while (!engine.IsEnd())
 			{
+				float dt = 0.001f; // TODO:
+
 				engine.Update();
+#if !SAMPLE_TRIANGLE
+				game.ProcessInput(dt);
+				game.Update(dt);
+#endif
 				engine.BeginFrame();
+#if SAMPLE_TRIANGLE
 				draw();
+#else
+				game.Render();
+#endif
 				engine.EndFrame();
 
 				if (Keyboard::Get().KeyPressed(Keyboard::KEY_ESCAPE))

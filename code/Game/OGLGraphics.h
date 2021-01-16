@@ -2,11 +2,8 @@
 
 #include "OGLFunc.h"
 
-struct WindowConfig;
-
 struct GraphicsConfig
 {
-
 };
 
 class OGLGraphics
@@ -26,7 +23,7 @@ public:
 	};
 
 #if SE_PLATFORM_WINDOWS
-	bool Init(HWND hwnd, const WindowConfig &window, const GraphicsConfig& config);
+	bool Init(HWND hwnd, const GraphicsConfig& config);
 #endif
 
 	void BeginFrame();

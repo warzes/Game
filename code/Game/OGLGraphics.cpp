@@ -2,6 +2,7 @@
 #include "OGLGraphics.h"
 #include "Window.h"
 #include "WGLFunc.h"
+#include "Engine.h"
 
 const int OGLGraphics::ATTRIB_LIST_GL_VERSION_3_0[] =
 {
@@ -82,7 +83,7 @@ OGLGraphics::~OGLGraphics()
 }
 
 #if SE_PLATFORM_WINDOWS
-bool OGLGraphics::Init(HWND hwnd, const WindowConfig& window, const GraphicsConfig& config)
+bool OGLGraphics::Init(HWND hwnd, const GraphicsConfig& config)
 #endif
 {
 #if SE_PLATFORM_WINDOWS
@@ -159,7 +160,9 @@ bool OGLGraphics::Init(HWND hwnd, const WindowConfig& window, const GraphicsConf
 
 void OGLGraphics::BeginFrame()
 {
-	glViewport(0, 0, 1024, 768);
+	static Engine& engine = GetEngine();
+
+	glViewport(0, 0, engine.GetConfig().window.width, engine.GetConfig().window.height);
 	glClearColor(0.129f, 0.586f, 0.949f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 }

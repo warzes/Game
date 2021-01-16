@@ -33,6 +33,9 @@
     <ClCompile Include="Texture2D.cpp">
       <Filter>engine\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>engine\Resource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -55,6 +58,9 @@
     </Filter>
     <Filter Include="game">
       <UniqueIdentifier>{becd53a5-5082-464f-a984-56e7c5c8e147}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Resource">
+      <UniqueIdentifier>{b19dd28a-8ea4-4e27-ab4e-44c508ce5de3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -97,6 +103,9 @@
     </ClInclude>
     <ClInclude Include="InlineFunc.h">
       <Filter>engine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>engine\Resource</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -12,6 +12,7 @@
 //=============================================================================
 SE_PRAGMA_WARNING_DISABLE_MSVC(4514)
 SE_PRAGMA_WARNING_DISABLE_MSVC(4820)
+SE_PRAGMA_WARNING_DISABLE_MSVC(5045)
 
 SE_PRAGMA_WARNING_LEVEL(3)
 
@@ -24,6 +25,7 @@ SE_PRAGMA_WARNING_LEVEL(3)
 #include <cassert>
 
 #include <sstream>
+#include <fstream>
 #include <iostream>
 
 #include <exception>
@@ -33,6 +35,7 @@ SE_PRAGMA_WARNING_LEVEL(3)
 
 #include <vector>
 #include <set>
+#include <map>
 
 #if SE_PLATFORM_WINDOWS
 #	define WIN32_LEAN_AND_MEAN      // 
@@ -46,5 +49,7 @@ SE_PRAGMA_WARNING_LEVEL(3)
 
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
+
+#include <stb_image.h>
 
 SE_PRAGMA_WARNING_POP

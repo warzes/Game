@@ -19,7 +19,7 @@ bool Engine::Init(const EngineConfig& config)
 		return false;
 
 #if SE_PLATFORM_WINDOWS
-	if (!m_graphics.Init(m_window.GetHWND(), config.window, config.graphics))
+	if (!m_graphics.Init(m_window.GetHWND(), config.graphics))
 		return false;
 #endif
 	m_isRun = true;

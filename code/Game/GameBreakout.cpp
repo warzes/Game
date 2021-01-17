@@ -3,13 +3,15 @@
 #include "ResourceManager.h"
 #include "SpriteRenderer.h"
 #include "Engine.h"
-#include "Input.h"
+#include "Keyboard.h"
+#include "Mouse.h"
 #include "BallObject.h"
 #include "Particle.h"
 #include "PostProcessor.h"
 #include "TextRenderer.h"
 
 using namespace irrklang;
+using namespace Breakout;
 
 #define SIMPLE_SPRITE 0
 

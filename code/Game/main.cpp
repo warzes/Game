@@ -1,19 +1,15 @@
 ﻿#include "stdafx.h"
 #include "Engine.h"
-#include "Input.h"
-#include "Game.h"
+#include "GameBreakout.h"
 
 #if SE_COMPILER_MSVC
 #   pragma comment(lib, "OpenGL32.lib")
+#	pragma comment(lib, "irrKlang.lib")
+#	pragma comment(lib, "freetype.lib")
 #endif
 
-#pragma comment(lib, "irrKlang.lib")
 
-#pragma comment(lib, "freetype.lib")
-
-#define SAMPLE_TRIANGLE 0
-
-#if SAMPLE_TRIANGLE
+#if EXAMPLE_TRIANGLE
 struct 
 {
 	const char* vertex, *fragment;
@@ -158,13 +154,13 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char **argv)
 
 		Engine& engine = GetEngine();
 
-#if !SAMPLE_TRIANGLE
+#if !EXAMPLE_TRIANGLE
 		Game game;
 #endif
 
 		if (engine.Init(config))
 		{
-#if SAMPLE_TRIANGLE
+#if EXAMPLE_TRIANGLE
 			initShader();
 			initProgram();
 			initVertexObjects();
@@ -177,23 +173,20 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char **argv)
 				float dt = 0.002f; // TODO:
 
 				engine.Update();
-#if !SAMPLE_TRIANGLE
+#if !EXAMPLE_TRIANGLE
 				game.ProcessInput(dt);
 				game.Update(dt);
 #endif
 				engine.BeginFrame();
-#if SAMPLE_TRIANGLE
+#if EXAMPLE_TRIANGLE
 				draw();
 #else
 				game.Render();
 #endif
 				engine.EndFrame();
-
-				if (Keyboard::Get().KeyPressed(Keyboard::KEY_ESCAPE))
-					break;
 			}
 		}
-#if !SAMPLE_TRIANGLE
+#if !EXAMPLE_TRIANGLE
 		game.Close();
 #endif
 	}
@@ -206,7 +199,6 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char **argv)
 		MessageBoxA(0, msg.str().c_str(), "Error", MB_ICONERROR);
 #endif
 	}
-
 
 	return 0;
 }

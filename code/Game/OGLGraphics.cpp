@@ -4,78 +4,6 @@
 #include "WGLFunc.h"
 #include "Engine.h"
 
-const int OGLGraphics::ATTRIB_LIST_GL_VERSION_3_0[] =
-{
-	WGL_CONTEXT_MAJOR_VERSION_ARB, 3,
-	WGL_CONTEXT_MINOR_VERSION_ARB, 0,
-	WGL_CONTEXT_FLAGS_ARB, WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB,
-	0
-};
-
-const int OGLGraphics::ATTRIB_LIST_GL_VERSION_3_1[] =
-{
-	WGL_CONTEXT_MAJOR_VERSION_ARB, 3,
-	WGL_CONTEXT_MINOR_VERSION_ARB, 1,
-	WGL_CONTEXT_FLAGS_ARB, WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB,
-	0
-};
-
-const int OGLGraphics::ATTRIB_LIST_GL_VERSION_3_2[] =
-{
-	WGL_CONTEXT_MAJOR_VERSION_ARB, 3,
-	WGL_CONTEXT_MINOR_VERSION_ARB, 2,
-	WGL_CONTEXT_FLAGS_ARB, WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB,
-	WGL_CONTEXT_PROFILE_MASK_ARB, WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
-	0
-};
-
-const int OGLGraphics::ATTRIB_LIST_GL_VERSION_3_3[] =
-{
-	WGL_CONTEXT_MAJOR_VERSION_ARB, 3,
-	WGL_CONTEXT_MINOR_VERSION_ARB, 3,
-	WGL_CONTEXT_FLAGS_ARB, WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB,
-	WGL_CONTEXT_PROFILE_MASK_ARB, WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
-	0
-};
-
-const int OGLGraphics::ATTRIB_LIST_GL_VERSION_4_0[] =
-{
-	WGL_CONTEXT_MAJOR_VERSION_ARB, 4,
-	WGL_CONTEXT_MINOR_VERSION_ARB, 0,
-	WGL_CONTEXT_FLAGS_ARB, WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB,
-	WGL_CONTEXT_PROFILE_MASK_ARB, WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
-	0
-};
-
-const int OGLGraphics::ATTRIB_LIST_GL_VERSION_4_1[] =
-{
-	WGL_CONTEXT_MAJOR_VERSION_ARB, 4,
-	WGL_CONTEXT_MINOR_VERSION_ARB, 1,
-	WGL_CONTEXT_FLAGS_ARB, WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB,
-	WGL_CONTEXT_PROFILE_MASK_ARB, WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
-	0
-};
-
-const int OGLGraphics::ATTRIB_LIST_GL_VERSION_4_2[] =
-{
-	WGL_CONTEXT_MAJOR_VERSION_ARB, 4,
-	WGL_CONTEXT_MINOR_VERSION_ARB, 2,
-	WGL_CONTEXT_FLAGS_ARB, WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB,
-	WGL_CONTEXT_PROFILE_MASK_ARB, WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
-	0
-};
-
-const int* const OGLGraphics::ATTRIB_LISTS[] =
-{
-	OGLGraphics::ATTRIB_LIST_GL_VERSION_3_0,
-	OGLGraphics::ATTRIB_LIST_GL_VERSION_3_1,
-	OGLGraphics::ATTRIB_LIST_GL_VERSION_3_2,
-	OGLGraphics::ATTRIB_LIST_GL_VERSION_3_3,
-	OGLGraphics::ATTRIB_LIST_GL_VERSION_4_0,
-	OGLGraphics::ATTRIB_LIST_GL_VERSION_4_1,
-	OGLGraphics::ATTRIB_LIST_GL_VERSION_4_2
-};
-
 OGLGraphics::~OGLGraphics()
 {
 	if (m_isInit)
@@ -88,6 +16,8 @@ bool OGLGraphics::Init(HWND hwnd, const GraphicsConfig& config)
 {
 #if SE_PLATFORM_WINDOWS
 	m_hwnd = hwnd;
+	m_openGLMajorVersion = config.OpenGLMajorVersion;
+	m_openGLMinorVersion = config.OpenGLMinorVersion;
 
 	if (!(m_deviceContext = GetDC(hwnd)))
 		throw std::runtime_error("GetDC() failed: Can not create context.");
@@ -123,23 +53,42 @@ bool OGLGraphics::Init(HWND hwnd, const GraphicsConfig& config)
 	if (!gl::ExtensionSupported("WGL_ARB_create_context"))
 		throw std::runtime_error("Required extension WGL_ARB_create_context is not supported.");
 
-	if (m_preferredGLVersion == GL_VERSION_UNKNOWN)
-		m_preferredGLVersion = static_cast<GLVersion>((sizeof(ATTRIB_LISTS) / sizeof(ATTRIB_LISTS[0])) - 1);
-
-	for (int i = m_preferredGLVersion; i >= 0; --i)
+	while (1)
 	{
-		m_renderContext = wglCreateContextAttribsARB(m_deviceContext, 0, ATTRIB_LISTS[i]);
-		if (m_renderContext)
+		const int AttribList_OLD[] =
 		{
-			m_actualGLVersion = static_cast<GLVersion>(i);
-			break;
-		}
-	}
+			WGL_CONTEXT_MAJOR_VERSION_ARB, m_openGLMajorVersion,
+			WGL_CONTEXT_MINOR_VERSION_ARB, m_openGLMinorVersion,
+			WGL_CONTEXT_FLAGS_ARB, WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB,
+			0
+		};
+		const int AttribList[] =
+		{
+			WGL_CONTEXT_MAJOR_VERSION_ARB, m_openGLMajorVersion,
+			WGL_CONTEXT_MINOR_VERSION_ARB, m_openGLMinorVersion,
+			WGL_CONTEXT_FLAGS_ARB, WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB,
+			WGL_CONTEXT_PROFILE_MASK_ARB, WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
+			0
+		};
 
-	if (!m_renderContext)
-	{
-		m_actualGLVersion = GL_VERSION_UNKNOWN;
-		throw std::runtime_error("wglCreateContextAttribsARB() failed.");
+		if (m_openGLMajorVersion == 3 && m_openGLMinorVersion < 2)
+			m_renderContext = wglCreateContextAttribsARB(m_deviceContext, 0, AttribList_OLD);
+		else
+			m_renderContext = wglCreateContextAttribsARB(m_deviceContext, 0, AttribList);
+
+		if (m_renderContext)
+			break;
+		else
+		{
+			m_openGLMinorVersion--;
+			if (m_openGLMinorVersion < 0 && m_openGLMajorVersion == 4)
+			{
+				m_openGLMajorVersion = 3;
+				m_openGLMinorVersion = 3;
+			}
+			else if (m_openGLMinorVersion < 0 && m_openGLMajorVersion == 3)
+				throw std::runtime_error("OpenGL not support");	
+		}
 	}
 
 	if (!wglMakeCurrent(m_deviceContext, m_renderContext))

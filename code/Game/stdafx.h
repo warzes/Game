@@ -1,7 +1,7 @@
 #pragma once
 
 //=============================================================================
-// Engine header
+// Pre Engine header
 //=============================================================================
 #include "Macros.h"
 #include "Config.h"
@@ -40,8 +40,9 @@ SE_PRAGMA_WARNING_LEVEL(3)
 #if SE_PLATFORM_WINDOWS
 #	define WIN32_LEAN_AND_MEAN      // 
 #	define WIN32_EXTRA_LEAN         // 
+#	define VC_EXTRALEAN
 #	define NOMINMAX
-#	define _WIN32_WINNT 0x0501
+#	define _WIN32_WINNT 0x0600		// Windows Vista
 #	include <windows.h>
 #endif
 
@@ -56,3 +57,8 @@ SE_PRAGMA_WARNING_LEVEL(3)
 #include <irrKlang/irrKlang.h>
 
 SE_PRAGMA_WARNING_POP
+
+//=============================================================================
+// Post Engine header
+//=============================================================================
+#include "Example.h"

@@ -9,23 +9,14 @@
     <ClCompile Include="Window.cpp">
       <Filter>engine\Platform</Filter>
     </ClCompile>
-    <ClCompile Include="Log.cpp">
-      <Filter>engine\Subsystem</Filter>
-    </ClCompile>
     <ClCompile Include="OGLGraphics.cpp">
       <Filter>engine\Render</Filter>
     </ClCompile>
     <ClCompile Include="OGLFunc.cpp">
       <Filter>engine\Render</Filter>
     </ClCompile>
-    <ClCompile Include="Input.cpp">
-      <Filter>engine\Platform</Filter>
-    </ClCompile>
     <ClCompile Include="WGLFunc.cpp">
       <Filter>engine\Render</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>game</Filter>
     </ClCompile>
     <ClCompile Include="Shader.cpp">
       <Filter>engine\Render</Filter>
@@ -35,9 +26,6 @@
     </ClCompile>
     <ClCompile Include="ResourceManager.cpp">
       <Filter>engine\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="SpriteRenderer.cpp">
-      <Filter>engine\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="GameLevel.cpp">
       <Filter>game\Breakout</Filter>
@@ -55,6 +43,24 @@
       <Filter>game\Breakout</Filter>
     </ClCompile>
     <ClCompile Include="TextRenderer.cpp">
+      <Filter>game\Breakout</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Keyboard.cpp">
+      <Filter>engine\input</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>engine\input</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteRenderer.cpp">
+      <Filter>game\Breakout</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2.cpp">
+      <Filter>engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="GameBreakout.cpp">
       <Filter>game\Breakout</Filter>
     </ClCompile>
   </ItemGroup>
@@ -92,6 +98,15 @@
     <Filter Include="game\Breakout">
       <UniqueIdentifier>{b2c53b8f-b7a1-4db1-8039-8f97be572a9e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="engine\IO">
+      <UniqueIdentifier>{5e8b0ba7-7a10-4f42-9574-9daaaf14254c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\input">
+      <UniqueIdentifier>{a24bb5ba-efa7-4f9e-bbc0-4a93ff47bfea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Math">
+      <UniqueIdentifier>{5f24c66b-dc7c-471b-9d8c-25eeb64d7759}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -107,23 +122,14 @@
     <ClInclude Include="Window.h">
       <Filter>engine\Platform</Filter>
     </ClInclude>
-    <ClInclude Include="Log.h">
-      <Filter>engine\Subsystem</Filter>
-    </ClInclude>
     <ClInclude Include="OGLGraphics.h">
       <Filter>engine\Render</Filter>
     </ClInclude>
     <ClInclude Include="OGLFunc.h">
       <Filter>engine\Render</Filter>
     </ClInclude>
-    <ClInclude Include="Input.h">
-      <Filter>engine\Platform</Filter>
-    </ClInclude>
     <ClInclude Include="WGLFunc.h">
       <Filter>engine\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>game</Filter>
     </ClInclude>
     <ClInclude Include="Shader.h">
       <Filter>engine\Render</Filter>
@@ -136,9 +142,6 @@
     </ClInclude>
     <ClInclude Include="ResourceManager.h">
       <Filter>engine\Resource</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteRenderer.h">
-      <Filter>engine\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="GameLevel.h">
       <Filter>game\Breakout</Filter>
@@ -159,6 +162,25 @@
       <Filter>game\Breakout</Filter>
     </ClInclude>
     <ClInclude Include="TextRenderer.h">
+      <Filter>game\Breakout</Filter>
+    </ClInclude>
+    <ClInclude Include="Example.h" />
+    <ClInclude Include="Log.h">
+      <Filter>engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Keyboard.h">
+      <Filter>engine\input</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>engine\input</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteRenderer.h">
+      <Filter>game\Breakout</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="GameBreakout.h">
       <Filter>game\Breakout</Filter>
     </ClInclude>
   </ItemGroup>

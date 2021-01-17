@@ -39,13 +39,13 @@ public:
     void ResetLevel();
     void ResetPlayer();
     // powerups
-    void SpawnPowerUps(GameObject& block);
+    void SpawnPowerUps(Breakout::GameObject& block);
     void UpdatePowerUps(float dt);
 
     GameState State = GameState::Active;
 
-    std::vector<GameLevel> Levels;
-    std::vector<PowerUp>   PowerUps;
+    std::vector<Breakout::GameLevel> Levels;
+    std::vector<Breakout::PowerUp>   PowerUps;
     unsigned int           Level;
 
     unsigned int Lives = 3;

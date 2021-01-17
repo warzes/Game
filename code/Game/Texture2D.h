@@ -7,16 +7,15 @@ public:
 	void Generate(unsigned int width, unsigned int height, unsigned char* data);
 	void Bind() const;
 
-	// holds the ID of the texture object, used for all texture operations to reference to this particlar texture
 	unsigned int ID;
 	// texture image dimensions
-	unsigned int Width, Height; // width and height of loaded image in pixels
+	unsigned int Width = 0, Height = 0;    // width and height of loaded image in pixels
 	// texture Format
-	unsigned int Internal_Format; // format of texture object
-	unsigned int Image_Format; // format of loaded image
+	unsigned int Internal_Format = GL_RGB; // format of texture object
+	unsigned int Image_Format = GL_RGB;    // format of loaded image
 	// texture configuration
-	unsigned int Wrap_S; // wrapping mode on S axis
-	unsigned int Wrap_T; // wrapping mode on T axis
-	unsigned int Filter_Min; // filtering mode if texture pixels < screen pixels
-	unsigned int Filter_Max; // filtering mode if texture pixels > screen pixels
+	unsigned int Wrap_S = GL_REPEAT;       // wrapping mode on S axis
+	unsigned int Wrap_T = GL_REPEAT;       // wrapping mode on T axis
+	unsigned int Filter_Min = GL_LINEAR;   // filtering mode if texture pixels < screen pixels
+	unsigned int Filter_Max = GL_LINEAR;   // filtering mode if texture pixels > screen pixels
 };

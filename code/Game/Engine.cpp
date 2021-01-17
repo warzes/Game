@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Engine.h"
-#include "Input.h"
+#include "Keyboard.h"
+#include "Mouse.h"
 //-----------------------------------------------------------------------------
 Engine& GetEngine()
 {

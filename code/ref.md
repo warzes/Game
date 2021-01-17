@@ -3,6 +3,10 @@ https://www.youtube.com/watch?v=B7UYWpCZlAg
 
 
 тайлы
+https://themightyglider.itch.io/roguebox-adventures
+
+
+
 https://egordorichev.itch.io/toi
 https://franuka.itch.io/rpg-asset-pack
 https://pixelart001.blogspot.com
@@ -21,3 +25,8 @@ https://habr.com/ru/post/282590/
 
 https://github.com/evanw/webgl-water
 	вода
+
+
+
+https://www.youtube.com/watch?v=Ujkq0QqwWXk
+	объединие коммитов (уменьшение кол-ва)

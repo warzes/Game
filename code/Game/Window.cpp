@@ -2,7 +2,8 @@
 #include "Window.h"
 #include "Engine.h"
 #include "Log.h"
-#include "Input.h"
+#include "Keyboard.h"
+#include "Mouse.h"
 
 static Window* thisWindow = nullptr;
 

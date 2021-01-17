@@ -3,7 +3,7 @@
 Микроскопическая 2д игра.
 
 
-### 17.01.2021 - тестовая игра BREAOUT
+### 17.01.2021 - тестовая игра BREAKOUT
 <p align="center">
   <img src="screenshot/breakout.jpg"/>
 </p>

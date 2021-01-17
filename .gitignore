@@ -7,7 +7,17 @@ Thumbs.db
 /*/.vs/
 /*/ipch/
 /code/3rdparty/glm/
+/code/3rdparty/freetype/
+/code/3rdparty/irrKlang/
+/code/3rdparty/ft2build.h
+/code/3rdparty/lib/irrKlang.*
+/code/3rdparty/lib/*/freetype.lib
+
 
 #Ignore bin file
 /bin/*/Game_*.*
 /bin/*/log.txt
+/bin/*/ikpFlac.dll
+/bin/*/ikpMP3.dll
+/bin/*/irrKlang.dll
+/bin/*/freetype.dll

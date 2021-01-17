@@ -53,4 +53,6 @@ SE_PRAGMA_WARNING_LEVEL(3)
 
 #include <stb_image.h>
 
+#include <irrKlang/irrKlang.h>
+
 SE_PRAGMA_WARNING_POP

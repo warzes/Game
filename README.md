@@ -1,5 +1,6 @@
-# SmallIsland2D
+# Micro Game 2D
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+Микроскопическая 2д игра.
 
 
 ### 16.01.2021 - TEST GAME BREAOUT

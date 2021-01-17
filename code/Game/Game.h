@@ -47,4 +47,6 @@ public:
     std::vector<GameLevel> Levels;
     std::vector<PowerUp>   PowerUps;
     unsigned int           Level;
+
+    unsigned int Lives = 3;
 };

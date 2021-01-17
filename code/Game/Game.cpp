@@ -7,6 +7,9 @@
 #include "BallObject.h"
 #include "Particle.h"
 #include "PostProcessor.h"
+#include "TextRenderer.h"
+
+using namespace irrklang;
 
 #define SIMPLE_SPRITE 0
 
@@ -15,6 +18,9 @@ GameObject* Player;
 BallObject* Ball;
 ParticleGenerator* Particles;
 PostProcessor* Effects;
+TextRenderer* Text;
+
+ISoundEngine* SoundEngine = createIrrKlangDevice();
 
 float ShakeTime = 0.0f;
 
@@ -87,13 +93,18 @@ void Game::Init()
 	Levels.push_back(two);
 	Levels.push_back(three);
 	Levels.push_back(four);
-	Level = 2;
+	Level = 0;
 
 	// configure game objects
 	glm::vec2 playerPos = glm::vec2(width / 2.0f - PLAYER_SIZE.x / 2.0f, height - PLAYER_SIZE.y);
 	Player = new GameObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("paddle"));
 	glm::vec2 ballPos = playerPos + glm::vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, -BALL_RADIUS * 2.0f);
 	Ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::GetTexture("face"));
+
+	SoundEngine->play2D("../data/audio/breakout.mp3", true);
+
+	Text = new TextRenderer(width, height);
+	Text->Load("../data/fonts/ocraext.TTF", 24);
 #endif
 }
 
@@ -121,13 +132,53 @@ void Game::Update(float dt)
 	// check loss condition
 	if (Ball->Position.y >= height) // did ball reach bottom edge?
 	{
-		ResetLevel();
+		--this->Lives;
+		// did the player lose all his lives? : Game over
+		if (this->Lives == 0)
+		{
+			ResetLevel();
+			State = GameState::Menu;
+		}
 		ResetPlayer();
+	}
+	// check win condition
+	if (this->State == GameState::Active && this->Levels[this->Level].IsCompleted())
+	{
+		this->ResetLevel();
+		this->ResetPlayer();
+		Effects->Chaos = true;
+		this->State = GameState::Win;
 	}
 }
 
 void Game::ProcessInput(float dt)
 {
+	if (this->State == GameState::Menu)
+	{
+		if (Keyboard::Get().KeyPressed(Keyboard::KEY_ENTER))
+		{
+			this->State = GameState::Active;
+		}
+		if (Keyboard::Get().KeyPressed(Keyboard::KEY_W))
+		{
+			this->Level = (this->Level + 1) % 4;
+		}
+		if (Keyboard::Get().KeyPressed(Keyboard::KEY_S))
+		{
+			if (this->Level > 0)
+				--this->Level;
+			else
+				this->Level = 3;
+		}
+	}
+	if (this->State == GameState::Win)
+	{
+		if (Keyboard::Get().KeyPressed(Keyboard::KEY_ENTER))
+		{
+			Effects->Chaos = false;
+			this->State = GameState::Menu;
+		}
+	}
 	if (State == GameState::Active)
 	{
 		static auto& engineConfig = GetEngine().GetConfig();
@@ -161,15 +212,15 @@ void Game::ProcessInput(float dt)
 
 void Game::Render()
 {
+	static auto& engineConfig = GetEngine().GetConfig();
+	auto& width = engineConfig.window.width;
+	auto& height = engineConfig.window.height;
+
 #if SIMPLE_SPRITE
 	sprite->DrawSprite(ResourceManager::GetTexture("face"), glm::vec2(200.0f, 200.0f), glm::vec2(300.0f, 400.0f), 0.0f, glm::vec3(1.0f, 1.0f, 1.0f));
 #else
-	if (State == GameState::Active)
+	if (State == GameState::Active || this->State == GameState::Menu || this->State == GameState::Win)
 	{
-		static auto& engineConfig = GetEngine().GetConfig();
-		auto& width = engineConfig.window.width;
-		auto& height = engineConfig.window.height;
-
 		// begin rendering to postprocessing framebuffer
 		Effects->BeginRender();
 		{
@@ -195,6 +246,19 @@ void Game::Render()
 		static float time = 0.0f;
 		time += 0.001f;
 		Effects->Render(time);// TODO: GetTime
+
+		std::stringstream ss; ss << Lives;
+		Text->RenderText("Lives:" + ss.str(), 5.0f, 5.0f, 1.0f);
+	}
+	if (this->State == GameState::Menu)
+	{
+		Text->RenderText("Press ENTER to start", 250.0f, height / 2.0f, 1.0f);
+		Text->RenderText("Press W or S to select level", 245.0f, height / 2.0f + 20.0f, 0.75f);
+	}
+	if (this->State == GameState::Win)
+	{
+		Text->RenderText("You WON!!!", 320.0f, height / 2.0f - 20.0f, 1.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+		Text->RenderText("Press ENTER to retry or ESC to quit", 130.0f, height / 2.0f, 1.0f, glm::vec3(1.0f, 1.0f, 0.0f));
 	}
 #endif
 }
@@ -206,6 +270,8 @@ void Game::Close()
 	delete Ball;
 	delete Particles;
 	delete Effects;
+	delete Text;
+	SoundEngine->drop();
 	ResourceManager::Clear();
 }
 
@@ -223,6 +289,8 @@ void Game::ResetLevel()
 		this->Levels[2].Load("../data/levels/three.lvl", width, height / 2);
 	else if (this->Level == 3)
 		this->Levels[3].Load("../data/levels/four.lvl", width, height / 2);
+
+	Lives = 3;
 }
 
 void Game::ResetPlayer()
@@ -388,11 +456,13 @@ void Game::DoCollisions()
 				{
 					box.Destroyed = true;
 					this->SpawnPowerUps(box);
+					SoundEngine->play2D("../data/audio/bleep.mp3", false);
 				}
 				else
 				{   // if block is solid, enable shake effect
 					ShakeTime = 0.05f;
 					Effects->Shake = true;
+					SoundEngine->play2D("../data/audio/solid.wav", false);
 				}
 				// collision resolution
 				Direction dir = std::get<1>(collision);
@@ -438,6 +508,7 @@ void Game::DoCollisions()
 				ActivatePowerUp(powerUp);
 				powerUp.Destroyed = true;
 				powerUp.Activated = true;
+				SoundEngine->play2D("../data/audio/powerup.wav", false);
 			}
 		}
 	}
@@ -461,6 +532,8 @@ void Game::DoCollisions()
 
 		// if Sticky powerup is activated, also stick ball to paddle once new velocity vectors were calculated
 		Ball->Stuck = Ball->Sticky;
+
+		SoundEngine->play2D("../data/audio/bleep.wav", false);
 	}
 }
 

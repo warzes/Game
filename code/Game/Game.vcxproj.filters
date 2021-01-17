@@ -54,6 +54,9 @@
     <ClCompile Include="PostProcessor.cpp">
       <Filter>game\Breakout</Filter>
     </ClCompile>
+    <ClCompile Include="TextRenderer.cpp">
+      <Filter>game\Breakout</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -153,6 +156,9 @@
       <Filter>game\Breakout</Filter>
     </ClInclude>
     <ClInclude Include="PowerUp.h">
+      <Filter>game\Breakout</Filter>
+    </ClInclude>
+    <ClInclude Include="TextRenderer.h">
       <Filter>game\Breakout</Filter>
     </ClInclude>
   </ItemGroup>

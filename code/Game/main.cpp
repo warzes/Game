@@ -7,6 +7,10 @@
 #   pragma comment(lib, "OpenGL32.lib")
 #endif
 
+#pragma comment(lib, "irrKlang.lib")
+
+#pragma comment(lib, "freetype.lib")
+
 #define SAMPLE_TRIANGLE 0
 
 #if SAMPLE_TRIANGLE

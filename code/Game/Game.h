@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GameLevel.h"
+#include "PowerUp.h"
 
 enum class GameState 
 {
@@ -37,9 +38,13 @@ public:
     // reset
     void ResetLevel();
     void ResetPlayer();
+    // powerups
+    void SpawnPowerUps(GameObject& block);
+    void UpdatePowerUps(float dt);
 
     GameState State = GameState::Active;
 
     std::vector<GameLevel> Levels;
+    std::vector<PowerUp>   PowerUps;
     unsigned int           Level;
 };

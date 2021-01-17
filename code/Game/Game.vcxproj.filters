@@ -48,6 +48,12 @@
     <ClCompile Include="BallObject.cpp">
       <Filter>game\Breakout</Filter>
     </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>game\Breakout</Filter>
+    </ClCompile>
+    <ClCompile Include="PostProcessor.cpp">
+      <Filter>game\Breakout</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -138,6 +144,15 @@
       <Filter>game\Breakout</Filter>
     </ClInclude>
     <ClInclude Include="BallObject.h">
+      <Filter>game\Breakout</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>game\Breakout</Filter>
+    </ClInclude>
+    <ClInclude Include="PostProcessor.h">
+      <Filter>game\Breakout</Filter>
+    </ClInclude>
+    <ClInclude Include="PowerUp.h">
       <Filter>game\Breakout</Filter>
     </ClInclude>
   </ItemGroup>

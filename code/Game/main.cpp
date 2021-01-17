@@ -170,7 +170,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char **argv)
 
 			while (!engine.IsEnd())
 			{
-				float dt = 0.001f; // TODO:
+				float dt = 0.002f; // TODO:
 
 				engine.Update();
 #if !SAMPLE_TRIANGLE

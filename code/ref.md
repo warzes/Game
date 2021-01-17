@@ -13,3 +13,11 @@ https://github.com/Pakz001/Raylib-Examples
 
 
 Reventure - стиль для платформера
+
+https://habr.com/ru/post/282065/
+	- там есть про рекламу
+https://habr.com/ru/post/282191/
+https://habr.com/ru/post/282590/
+
+https://github.com/evanw/webgl-water
+	вода

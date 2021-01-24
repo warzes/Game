@@ -1,29 +1,26 @@
 #include "stdafx.h"
-#include "ResourceManager.h"
+#include "ShaderManager.h"
 #include "OGLFunc.h"
-
-std::map<std::string, Shader>       ResourceManager::Shaders;
-
-
-Shader ResourceManager::LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, std::string name)
+//-----------------------------------------------------------------------------
+std::map<std::string, ShaderProgram> ShaderManager::Shaders;
+//-----------------------------------------------------------------------------
+ShaderProgram ShaderManager::LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, const std::string& name)
 {
 	Shaders[name] = loadShaderFromFile(vShaderFile, fShaderFile, gShaderFile);
 	return Shaders[name];
 }
-
-Shader ResourceManager::GetShader(std::string name)
+//-----------------------------------------------------------------------------
+ShaderProgram ShaderManager::GetShader(const std::string& name)
 {
 	return Shaders[name];
 }
-
-void ResourceManager::Clear()
+//-----------------------------------------------------------------------------
+void ShaderManager::Clear()
 {
-	// (properly) delete all shaders	
-	for (auto iter : Shaders)
-		glDeleteProgram(iter.second.ID);
+	Shaders.clear();
 }
-
-Shader ResourceManager::loadShaderFromFile(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile)
+//-----------------------------------------------------------------------------
+ShaderProgram ShaderManager::loadShaderFromFile(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile)
 {
 	// 1. retrieve the vertex/fragment source code from filePath
 	std::string vertexCode;
@@ -62,7 +59,8 @@ Shader ResourceManager::loadShaderFromFile(const char* vShaderFile, const char* 
 	const char* fShaderCode = fragmentCode.c_str();
 	const char* gShaderCode = geometryCode.c_str();
 	// 2. now create shader object from source code
-	Shader shader;
+	ShaderProgram shader;
 	shader.Compile(vShaderCode, fShaderCode, gShaderFile != nullptr ? gShaderCode : nullptr);
 	return shader;
 }
+//-----------------------------------------------------------------------------

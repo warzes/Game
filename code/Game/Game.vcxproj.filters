@@ -12,14 +12,8 @@
     <ClCompile Include="OGLGraphics.cpp">
       <Filter>engine\Render</Filter>
     </ClCompile>
-    <ClCompile Include="Shader.cpp">
-      <Filter>engine\Render</Filter>
-    </ClCompile>
     <ClCompile Include="Texture2D.cpp">
       <Filter>engine\Render</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourceManager.cpp">
-      <Filter>engine\Resource</Filter>
     </ClCompile>
     <ClCompile Include="GameLevel.cpp">
       <Filter>game\Breakout</Filter>
@@ -67,6 +61,12 @@
       <Filter>game\temp</Filter>
     </ClCompile>
     <ClCompile Include="TextureManager.cpp">
+      <Filter>engine\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderProgram.cpp">
+      <Filter>engine\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderManager.cpp">
       <Filter>engine\Resource</Filter>
     </ClCompile>
   </ItemGroup>
@@ -137,17 +137,11 @@
     <ClInclude Include="OGLGraphics.h">
       <Filter>engine\Render</Filter>
     </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>engine\Render</Filter>
-    </ClInclude>
     <ClInclude Include="Texture2D.h">
       <Filter>engine\Render</Filter>
     </ClInclude>
     <ClInclude Include="InlineFunc.h">
       <Filter>engine\base</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceManager.h">
-      <Filter>engine\Resource</Filter>
     </ClInclude>
     <ClInclude Include="GameLevel.h">
       <Filter>game\Breakout</Filter>
@@ -205,6 +199,12 @@
       <Filter>engine\Render</Filter>
     </ClInclude>
     <ClInclude Include="TextureManager.h">
+      <Filter>engine\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderProgram.h">
+      <Filter>engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderManager.h">
       <Filter>engine\Resource</Filter>
     </ClInclude>
   </ItemGroup>

@@ -8,7 +8,7 @@ public:
 	void Generate(unsigned int width, unsigned int height, unsigned char* data);
 	void Bind() const;
 
-	unsigned int ID;
+	unsigned int ID = 0;
 	// texture image dimensions
 	unsigned int Width = 0, Height = 0;    // width and height of loaded image in pixels
 	// texture Format

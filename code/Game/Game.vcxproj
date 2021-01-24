@@ -186,8 +186,8 @@
     <ClCompile Include="OGLGraphics.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="PostProcessor.cpp" />
-    <ClCompile Include="ResourceManager.cpp" />
-    <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="ShaderManager.cpp" />
+    <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="SpriteRenderer.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -221,8 +221,8 @@
     <ClInclude Include="Particle.h" />
     <ClInclude Include="PostProcessor.h" />
     <ClInclude Include="PowerUp.h" />
-    <ClInclude Include="ResourceManager.h" />
-    <ClInclude Include="Shader.h" />
+    <ClInclude Include="ShaderManager.h" />
+    <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="SpriteRenderer.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TestGame.h" />

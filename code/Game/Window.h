@@ -16,7 +16,7 @@ public:
 	void ToggleFullScreen();
 
 #if SE_PLATFORM_WINDOWS
-	HWND GetHWND() { return m_hwnd; }
+	HWND GetHWND() const { return m_hwnd; }
 #endif
 
 	bool hasWindowFocus = true; // TODO:

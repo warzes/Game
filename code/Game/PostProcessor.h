@@ -1,5 +1,7 @@
 #pragma once
 
+#if EXAMPLE_BREAKOUT
+
 #include "SpriteRenderer.h"
 
 namespace Breakout
@@ -32,3 +34,5 @@ namespace Breakout
     };
 
 }
+
+#endif

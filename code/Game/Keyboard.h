@@ -1,9 +1,5 @@
 #pragma once
 
-//-----------------------------------------------------------------------------
-// Keyboard.
-//-----------------------------------------------------------------------------
-
 class Keyboard
 {
 public:
@@ -116,7 +112,7 @@ public:
 		KEY_NUMPAD_9 = 105,
 	};
 
-	static Keyboard& Get();
+	static Keyboard& Get() noexcept;
 
 	int GetLastChar() const noexcept
 	{
@@ -138,15 +134,18 @@ public:
 		return ((m_pCurrKeyStates[key] & 0x80)
 			&& !(m_pPrevKeyStates[key] & 0x80)) ? true : false;
 	}
-
-	void HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
-	void Update();
+#if SE_PLATFORM_WINDOWS
+	void HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept;
+#endif
+	void Update() noexcept;
 
 private:
-	Keyboard();
+	Keyboard() noexcept;
 
-	int m_lastChar;
+	int m_lastChar = 0;
+#if SE_PLATFORM_WINDOWS
 	BYTE m_keyStates[2][256];
 	BYTE* m_pCurrKeyStates;
 	BYTE* m_pPrevKeyStates;
+#endif
 };

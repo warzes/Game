@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if EXAMPLE_BREAKOUT
 #include "BallObject.h"
 
 namespace Breakout
@@ -47,5 +48,5 @@ namespace Breakout
 		this->PassThrough = false;
 
 	}
-
 }
+#endif

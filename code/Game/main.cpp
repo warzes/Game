@@ -1,13 +1,17 @@
 ﻿#include "stdafx.h"
 #include "Engine.h"
-#include "GameBreakout.h"
-
+#if EXAMPLE_BREAKOUT
+#	include "GameBreakout.h"
+#else
+#	include "TestGame.h"
+#endif
 #if SE_COMPILER_MSVC
 #   pragma comment(lib, "OpenGL32.lib")
-#	pragma comment(lib, "irrKlang.lib")
-#	pragma comment(lib, "freetype.lib")
+#	if EXAMPLE_BREAKOUT
+#		pragma comment(lib, "irrKlang.lib")
+#		pragma comment(lib, "freetype.lib")
+#	endif
 #endif
-
 
 #if EXAMPLE_TRIANGLE
 struct 

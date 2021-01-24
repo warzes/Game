@@ -6,6 +6,7 @@
 #include "Macros.h"
 #include "Config.h"
 #include "InlineFunc.h"
+#include "Example.h"
 
 //=============================================================================
 // Standart header
@@ -52,13 +53,14 @@ SE_PRAGMA_WARNING_LEVEL(3)
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include <stb_image.h>
+#if EXAMPLE_BREAKOUT
+#	include <irrKlang/irrKlang.h>
+#endif
 
-#include <irrKlang/irrKlang.h>
+#include <stb_image.h>
 
 SE_PRAGMA_WARNING_POP
 
 //=============================================================================
 // Post Engine header
 //=============================================================================
-#include "Example.h"

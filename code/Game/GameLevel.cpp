@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if EXAMPLE_BREAKOUT
 #include "GameLevel.h"
 
 namespace Breakout
@@ -84,3 +85,4 @@ namespace Breakout
 		}
 	}
 }
+#endif

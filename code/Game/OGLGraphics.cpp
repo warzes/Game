@@ -109,9 +109,9 @@ bool OGLGraphics::Init(HWND hwnd, const GraphicsConfig& config)
 
 void OGLGraphics::BeginFrame()
 {
-	static Engine& engine = GetEngine();
+	static const auto& windowConfig = GetEngine().GetConfig().window;
 
-	glViewport(0, 0, engine.GetConfig().window.width, engine.GetConfig().window.height);
+	glViewport(0, 0, windowConfig.width, windowConfig.height);
 	glClearColor(0.129f, 0.586f, 0.949f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 }

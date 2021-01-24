@@ -4,9 +4,9 @@
 #include "Log.h"
 #include "Keyboard.h"
 #include "Mouse.h"
-
+//-----------------------------------------------------------------------------
 static Window* thisWindow = nullptr;
-
+//-----------------------------------------------------------------------------
 #if SE_PLATFORM_WINDOWS
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 {
@@ -40,6 +40,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 			}
 			break;
 		case WM_SIZE:
+			// TODO: переделать
 			glViewport(0, 0, LOWORD(lparam), HIWORD(lparam));
 			engine.GetConfig().window.width = static_cast<int>(LOWORD(lparam));
 			engine.GetConfig().window.height = static_cast<int>(HIWORD(lparam));
@@ -57,13 +58,13 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 	return ::DefWindowProc(hwnd, msg, wparam, lparam);
 }
 #endif
-
+//-----------------------------------------------------------------------------
 Window::~Window()
 {
 	if (m_isInit)
 		close();
 }
-
+//-----------------------------------------------------------------------------
 bool Window::Init(const WindowConfig& config)
 {
 #if SE_PLATFORM_WINDOWS
@@ -81,7 +82,7 @@ bool Window::Init(const WindowConfig& config)
 	thisWindow = this;
 	return true;
 }
-
+//-----------------------------------------------------------------------------
 bool Window::Broadcast()
 {
 #if SE_PLATFORM_WINDOWS
@@ -96,15 +97,14 @@ bool Window::Broadcast()
 #endif
 	return true;
 }
-
+//-----------------------------------------------------------------------------
 void Window::ToggleFullScreen()
 {
 #if SE_PLATFORM_WINDOWS
 	static DWORD savedExStyle;
 	static DWORD savedStyle;
 	static RECT rcSaved;
-
-	Engine& engine = GetEngine();
+	static auto& windowConfig = GetEngine().GetConfig().window;
 
 	isFullScreen = !isFullScreen;
 
@@ -120,10 +120,10 @@ void Window::ToggleFullScreen()
 		SetWindowLong(m_hwnd, GWL_STYLE, WS_POPUP | WS_CLIPCHILDREN | WS_CLIPSIBLINGS);
 		SetWindowPos(m_hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_FRAMECHANGED | SWP_SHOWWINDOW);
 
-		engine.GetConfig().window.width = GetSystemMetrics(SM_CXSCREEN);
-		engine.GetConfig().window.height = GetSystemMetrics(SM_CYSCREEN);
+		windowConfig.width = GetSystemMetrics(SM_CXSCREEN);
+		windowConfig.height = GetSystemMetrics(SM_CYSCREEN);
 
-		SetWindowPos(m_hwnd, HWND_TOPMOST, 0, 0, engine.GetConfig().window.width, engine.GetConfig().window.height, SWP_SHOWWINDOW);
+		SetWindowPos(m_hwnd, HWND_TOPMOST, 0, 0, windowConfig.width, windowConfig.height, SWP_SHOWWINDOW);
 	}
 	else
 	{
@@ -133,14 +133,14 @@ void Window::ToggleFullScreen()
 		SetWindowLong(m_hwnd, GWL_STYLE, savedStyle);
 		SetWindowPos(m_hwnd, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_FRAMECHANGED | SWP_SHOWWINDOW);
 
-		engine.GetConfig().window.width = rcSaved.right - rcSaved.left;
-		engine.GetConfig().window.height = rcSaved.bottom - rcSaved.top;
+		windowConfig.width = rcSaved.right - rcSaved.left;
+		windowConfig.height = rcSaved.bottom - rcSaved.top;
 
-		SetWindowPos(m_hwnd, HWND_NOTOPMOST, rcSaved.left, rcSaved.top, engine.GetConfig().window.width, engine.GetConfig().window.height, SWP_SHOWWINDOW);
+		SetWindowPos(m_hwnd, HWND_NOTOPMOST, rcSaved.left, rcSaved.top, windowConfig.width, windowConfig.height, SWP_SHOWWINDOW);
 	}
 #endif
 }
-
+//-----------------------------------------------------------------------------
 #if SE_PLATFORM_WINDOWS
 bool Window::registerClass()
 {
@@ -167,11 +167,11 @@ bool Window::registerClass()
 	return true;
 }
 #endif
-
+//-----------------------------------------------------------------------------
 #if SE_PLATFORM_WINDOWS
 bool Window::createWindow(const WindowConfig& config)
 {
-	Engine& engine = GetEngine();
+	auto& windowConfig = GetEngine().GetConfig().window;
 
 	DWORD wndExStyle = WS_EX_OVERLAPPEDWINDOW;
 	DWORD wndStyle = WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_CLIPCHILDREN | WS_CLIPSIBLINGS;
@@ -185,13 +185,13 @@ bool Window::createWindow(const WindowConfig& config)
 
 	RECT rect = { 0 };
 	GetClientRect(m_hwnd, &rect);
-	engine.GetConfig().window.width = rect.right - rect.left;
-	engine.GetConfig().window.height = rect.bottom - rect.top;
+	windowConfig.width = rect.right - rect.left;
+	windowConfig.height = rect.bottom - rect.top;
 
 	MONITORINFO mi = { sizeof(mi) };
 	GetMonitorInfo(MonitorFromWindow(m_hwnd, MONITOR_DEFAULTTONEAREST), &mi);
-	int x = (mi.rcMonitor.right - mi.rcMonitor.left - engine.GetConfig().window.width) / 2;
-	int y = (mi.rcMonitor.bottom - mi.rcMonitor.top - engine.GetConfig().window.height) / 2;
+	int x = (mi.rcMonitor.right - mi.rcMonitor.left - windowConfig.width) / 2;
+	int y = (mi.rcMonitor.bottom - mi.rcMonitor.top - windowConfig.height) / 2;
 	SetWindowPos(m_hwnd, 0, x, y, 0, 0, SWP_NOZORDER | SWP_NOSIZE | SWP_SHOWWINDOW);
 
 	::ShowWindow(m_hwnd, SW_SHOW);
@@ -199,7 +199,7 @@ bool Window::createWindow(const WindowConfig& config)
 	return true;
 }
 #endif
-
+//-----------------------------------------------------------------------------
 void Window::close()
 {
 #if SE_PLATFORM_WINDOWS
@@ -208,3 +208,4 @@ void Window::close()
 #endif
 	m_isInit = false;
 }
+//-----------------------------------------------------------------------------

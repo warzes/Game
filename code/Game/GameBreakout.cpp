@@ -1,5 +1,6 @@
 #include "stdafx.h"
-#include "Game.h"
+#if EXAMPLE_BREAKOUT
+#include "GameBreakout.h"
 #include "ResourceManager.h"
 #include "SpriteRenderer.h"
 #include "Engine.h"
@@ -594,3 +595,4 @@ Direction VectorDirection(glm::vec2 target)
 	}
 	return (Direction)best_match;
 }
+#endif

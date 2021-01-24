@@ -1,44 +1,27 @@
 #include "stdafx.h"
 #include "Mouse.h"
-
 //-----------------------------------------------------------------------------
-// Mouse.
-//-----------------------------------------------------------------------------
-
 const float Mouse::WEIGHT_MODIFIER = 0.2f;
 BYTE Mouse::m_tempBuffer[TEMP_BUFFER_SIZE];
-
-Mouse& Mouse::Get()
+//-----------------------------------------------------------------------------
+Mouse& Mouse::Get() noexcept
 {
 	static Mouse theInstance;
 	return theInstance;
 }
-
-Mouse::Mouse()
+//-----------------------------------------------------------------------------
+Mouse::Mouse() noexcept
 {
-	m_hWnd = 0;
-	m_cursorVisible = true;
-	m_enableFiltering = true;
-
-	m_wheelDelta = 0;
-	m_prevWheelDelta = 0;
-	m_mouseWheel = 0.0f;
-
-	m_xPosAbsolute = 0;
-	m_yPosAbsolute = 0;
-	m_xPosRelative = 0;
-	m_yPosRelative = 0;
-
 	m_weightModifier = WEIGHT_MODIFIER;
 	m_historyBufferSize = HISTORY_BUFFER_SIZE;
 }
-
+//-----------------------------------------------------------------------------
 Mouse::~Mouse()
 {
 	Detach();
 }
-
-bool Mouse::Attach(HWND hWnd)
+//-----------------------------------------------------------------------------
+bool Mouse::Attach(HWND hWnd) noexcept
 {
 	if (!hWnd)
 		return false;
@@ -75,8 +58,8 @@ bool Mouse::Attach(HWND hWnd)
 
 	return true;
 }
-
-void Mouse::Detach()
+//-----------------------------------------------------------------------------
+void Mouse::Detach() noexcept
 {
 	if (!m_cursorVisible)
 	{
@@ -88,8 +71,8 @@ void Mouse::Detach()
 
 	m_hWnd = 0;
 }
-
-void Mouse::performMouseFiltering(float x, float y)
+//-----------------------------------------------------------------------------
+void Mouse::performMouseFiltering(float x, float y) noexcept
 {
 	// Filter the relative mouse movement based on a weighted sum of the mouse
 	// movement from previous frames to ensure that the mouse movement this
@@ -127,8 +110,8 @@ void Mouse::performMouseFiltering(float x, float y)
 	m_filtered[0] = averageX / averageTotal;
 	m_filtered[1] = averageY / averageTotal;
 }
-
-void Mouse::performMouseSmoothing(float x, float y)
+//-----------------------------------------------------------------------------
+void Mouse::performMouseSmoothing(float x, float y) noexcept
 {
 	// Smooth out the mouse movement by averaging the distance the mouse
 	// has moved over a couple of frames.
@@ -143,8 +126,8 @@ void Mouse::performMouseSmoothing(float x, float y)
 	m_mouseMovementX[m_mouseIndex] = 0.0f;
 	m_mouseMovementY[m_mouseIndex] = 0.0f;
 }
-
-void Mouse::HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+//-----------------------------------------------------------------------------
+void Mouse::HandleMsg(HWND /*hWnd*/, UINT msg, WPARAM wParam, LPARAM lParam) noexcept
 {
 	RAWINPUT* pRaw = 0;
 	UINT size = TEMP_BUFFER_SIZE;
@@ -190,8 +173,8 @@ void Mouse::HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		break;
 	}
 }
-
-void Mouse::HideCursor(bool hideCursor)
+//-----------------------------------------------------------------------------
+void Mouse::HideCursor(bool hideCursor) noexcept
 {
 	if (hideCursor)
 	{
@@ -208,8 +191,8 @@ void Mouse::HideCursor(bool hideCursor)
 			; // do nothing
 	}
 }
-
-void Mouse::SetPosition(UINT x, UINT y)
+//-----------------------------------------------------------------------------
+void Mouse::SetPosition(UINT x, UINT y) noexcept
 {
 	POINT pt = { x, y };
 
@@ -224,18 +207,18 @@ void Mouse::SetPosition(UINT x, UINT y)
 		m_yPosRelative = 0.0f;
 	}
 }
-
-void Mouse::SetWeightModifier(float weightModifier)
+//-----------------------------------------------------------------------------
+void Mouse::SetWeightModifier(float weightModifier) noexcept
 {
 	m_weightModifier = weightModifier;
 }
-
-void Mouse::SmoothMouse(bool smooth)
+//-----------------------------------------------------------------------------
+void Mouse::SmoothMouse(bool smooth) noexcept
 {
 	m_enableFiltering = smooth;
 }
-
-void Mouse::Update()
+//-----------------------------------------------------------------------------
+void Mouse::Update() noexcept
 {
 	bool* pTempMouseStates = m_pPrevButtonStates;
 
@@ -249,3 +232,4 @@ void Mouse::Update()
 	m_mouseWheel = static_cast<float>(m_wheelDelta - m_prevWheelDelta) / static_cast<float>(WHEEL_DELTA);
 	m_prevWheelDelta = m_wheelDelta;
 }
+//-----------------------------------------------------------------------------

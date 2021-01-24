@@ -1,5 +1,7 @@
 #pragma once
 
+#if EXAMPLE_BREAKOUT
+
 #include "GameLevel.h"
 #include "PowerUp.h"
 
@@ -50,3 +52,5 @@ public:
 
     unsigned int Lives = 3;
 };
+
+#endif

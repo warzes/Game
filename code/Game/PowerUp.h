@@ -1,5 +1,7 @@
 #pragma once
 
+#if EXAMPLE_BREAKOUT
+
 #include "GameObject.h"
 
 namespace Breakout
@@ -22,5 +24,6 @@ namespace Breakout
 		PowerUp(std::string type, glm::vec3 color, float duration, glm::vec2 position, Texture2D texture)
 			: GameObject(position, POWERUP_SIZE, texture, color, VELOCITY), Type(type), Duration(duration), Activated() { }
 	};
-
 }
+
+#endif

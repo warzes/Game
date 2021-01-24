@@ -1,5 +1,7 @@
 #pragma once
 
+#if EXAMPLE_BREAKOUT
+
 #include "Texture2D.h"
 #include "SpriteRenderer.h"
 
@@ -25,3 +27,5 @@ namespace Breakout
 	};
 
 }
+
+#endif

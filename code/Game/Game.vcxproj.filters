@@ -12,12 +12,6 @@
     <ClCompile Include="OGLGraphics.cpp">
       <Filter>engine\Render</Filter>
     </ClCompile>
-    <ClCompile Include="OGLFunc.cpp">
-      <Filter>engine\Render</Filter>
-    </ClCompile>
-    <ClCompile Include="WGLFunc.cpp">
-      <Filter>engine\Render</Filter>
-    </ClCompile>
     <ClCompile Include="Shader.cpp">
       <Filter>engine\Render</Filter>
     </ClCompile>
@@ -63,6 +57,15 @@
     <ClCompile Include="GameBreakout.cpp">
       <Filter>game\Breakout</Filter>
     </ClCompile>
+    <ClCompile Include="OGLFunc.cpp">
+      <Filter>engine\Render\OpenGL API</Filter>
+    </ClCompile>
+    <ClCompile Include="WGLFunc.cpp">
+      <Filter>engine\Render\OpenGL API</Filter>
+    </ClCompile>
+    <ClCompile Include="TestGame.cpp">
+      <Filter>game\temp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -107,6 +110,12 @@
     <Filter Include="engine\Math">
       <UniqueIdentifier>{5f24c66b-dc7c-471b-9d8c-25eeb64d7759}</UniqueIdentifier>
     </Filter>
+    <Filter Include="engine\Render\OpenGL API">
+      <UniqueIdentifier>{bd34f97b-af06-47a9-af44-189a3e4906e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\temp">
+      <UniqueIdentifier>{dd79ea9a-d44c-4b71-afc2-a2faa55ca83a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -123,12 +132,6 @@
       <Filter>engine\Platform</Filter>
     </ClInclude>
     <ClInclude Include="OGLGraphics.h">
-      <Filter>engine\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="OGLFunc.h">
-      <Filter>engine\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="WGLFunc.h">
       <Filter>engine\Render</Filter>
     </ClInclude>
     <ClInclude Include="Shader.h">
@@ -182,6 +185,15 @@
     </ClInclude>
     <ClInclude Include="GameBreakout.h">
       <Filter>game\Breakout</Filter>
+    </ClInclude>
+    <ClInclude Include="OGLFunc.h">
+      <Filter>engine\Render\OpenGL API</Filter>
+    </ClInclude>
+    <ClInclude Include="WGLFunc.h">
+      <Filter>engine\Render\OpenGL API</Filter>
+    </ClInclude>
+    <ClInclude Include="TestGame.h">
+      <Filter>game\temp</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

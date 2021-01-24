@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if EXAMPLE_BREAKOUT
 #include "Particle.h"
 #include "OGLFunc.h"
 
@@ -117,3 +118,4 @@ namespace Breakout
 	}
 
 }
+#endif

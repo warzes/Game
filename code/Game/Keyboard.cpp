@@ -1,45 +1,47 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "Keyboard.h"
-
 //-----------------------------------------------------------------------------
-// Keyboard.
+// TODO: переделать HandleMsg и Update в одну функцию
 //-----------------------------------------------------------------------------
-
-Keyboard& Keyboard::Get()
+Keyboard& Keyboard::Get() noexcept
 {
 	static Keyboard theInstance;
 	return theInstance;
 }
-
-Keyboard::Keyboard()
+//-----------------------------------------------------------------------------
+Keyboard::Keyboard() noexcept
 {
-	m_lastChar = 0;
 	m_pCurrKeyStates = m_keyStates[0];
 	m_pPrevKeyStates = m_keyStates[1];
-
 	memset(m_pCurrKeyStates, 0, 256);
 	memset(m_pPrevKeyStates, 0, 256);
 }
-
-void Keyboard::HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+//-----------------------------------------------------------------------------
+#if SE_PLATFORM_WINDOWS
+void Keyboard::HandleMsg(HWND /*hWnd*/, UINT msg, WPARAM wParam, LPARAM /*lParam*/) noexcept
 {
+	// TODO: как-то убрать эту функцию
 	switch (msg)
 	{
 	case WM_CHAR:
 		m_lastChar = static_cast<int>(wParam);
 		break;
-
 	default:
 		break;
 	}
 }
-
-void Keyboard::Update()
+#endif
+//-----------------------------------------------------------------------------
+void Keyboard::Update() noexcept
 {
+#if SE_PLATFORM_WINDOWS
+	// TODO: в будущем найти лучшее решение, а не копирование всех состояний клавиш
 	BYTE* pTempKeyStates = m_pPrevKeyStates;
 
 	m_pPrevKeyStates = m_pCurrKeyStates;
 	m_pCurrKeyStates = pTempKeyStates;
 
-	GetKeyboardState(reinterpret_cast<BYTE*>(m_pCurrKeyStates));
+	GetKeyboardState(m_pCurrKeyStates);
+#endif
 }
+//-----------------------------------------------------------------------------

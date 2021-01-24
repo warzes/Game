@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if EXAMPLE_BREAKOUT
 #include "SpriteRenderer.h"
 #include "OGLFunc.h"
 
@@ -70,3 +71,4 @@ namespace Breakout
 		glBindVertexArray(0);
 	}
 }
+#endif

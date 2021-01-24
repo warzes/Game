@@ -1,5 +1,6 @@
 #pragma once
 
+#if EXAMPLE_BREAKOUT
 #include "GameObject.h"
 #include "ResourceManager.h"
 
@@ -24,3 +25,5 @@ namespace Breakout
 	};
 
 }
+
+#endif

@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if EXAMPLE_BREAKOUT
 #include "PostProcessor.h"
 #include "OGLFunc.h"
 
@@ -113,5 +114,5 @@ namespace Breakout
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
     }
-
 }
+#endif

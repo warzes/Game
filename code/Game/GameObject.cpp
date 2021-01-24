@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if EXAMPLE_BREAKOUT
 #include "GameObject.h"
 
 namespace Breakout
@@ -16,3 +17,5 @@ namespace Breakout
 	}
 
 }
+
+#endif

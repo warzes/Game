@@ -4067,4 +4067,3 @@ void glTexStorage3D(GLenum target, GLsizei levels, GLenum internalformat, GLsize
 	LOAD_ENTRYPOINT("glTexStorage3D", pfnTexStorage3D, PFNGLTEXSTORAGE3DPROC);
 	pfnTexStorage3D(target, levels, internalformat, width, height, depth);
 }
-

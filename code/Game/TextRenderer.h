@@ -1,5 +1,7 @@
 #pragma once
 
+#if EXAMPLE_BREAKOUT
+
 #include "Texture2D.h"
 #include "Shader.h"
 
@@ -36,5 +38,6 @@ namespace Breakout
 		// render state
 		unsigned int VAO, VBO;
 	};
-
 }
+
+#endif

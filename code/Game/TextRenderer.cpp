@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if EXAMPLE_BREAKOUT
 #include "TextRenderer.h"
 #include "OGLfunc.h"
 #include "ResourceManager.h"
@@ -130,5 +131,5 @@ namespace Breakout
 		glBindVertexArray(0);
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
-
 }
+#endif

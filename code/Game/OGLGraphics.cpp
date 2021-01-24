@@ -103,6 +103,10 @@ bool OGLGraphics::Init(HWND hwnd, const GraphicsConfig& config)
 	title << "OpenGL " << major << "." << minor;
 	SetWindowTextA(hwnd, title.str().c_str());
 
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glActiveTexture(GL_TEXTURE0);
+
 	m_isInit = true;
 	return true;
 }
@@ -113,6 +117,7 @@ void OGLGraphics::BeginFrame()
 
 	glViewport(0, 0, windowConfig.width, windowConfig.height);
 	glClearColor(0.129f, 0.586f, 0.949f, 1.0f);
+	glClearDepth(1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 }
 

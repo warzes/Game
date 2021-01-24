@@ -66,6 +66,9 @@
     <ClCompile Include="TestGame.cpp">
       <Filter>game\temp</Filter>
     </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>engine\Resource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -194,6 +197,15 @@
     </ClInclude>
     <ClInclude Include="TestGame.h">
       <Filter>game\temp</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>engine\Resource</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

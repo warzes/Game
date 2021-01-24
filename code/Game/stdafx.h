@@ -33,6 +33,7 @@ SE_PRAGMA_WARNING_LEVEL(3)
 #include <algorithm>
 
 #include <string>
+#include <string_view>
 
 #include <vector>
 #include <set>

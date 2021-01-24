@@ -1,12 +1,18 @@
 #include "stdafx.h"
 #include "Texture2D.h"
 #include "OGLFunc.h"
-
+//-----------------------------------------------------------------------------
 Texture2D::Texture2D()
 {
 	glGenTextures(1, &ID);
 }
-
+//-----------------------------------------------------------------------------
+Texture2D::~Texture2D()
+{
+	glDeleteTextures(1, &ID);
+	ID = 0;
+}
+//-----------------------------------------------------------------------------
 void Texture2D::Generate(unsigned int width, unsigned int height, unsigned char* data)
 {
 	Width = width;
@@ -22,8 +28,9 @@ void Texture2D::Generate(unsigned int width, unsigned int height, unsigned char*
 	// unbind texture
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
-
+//-----------------------------------------------------------------------------
 void Texture2D::Bind() const
 {
 	glBindTexture(GL_TEXTURE_2D, ID);
 }
+//-----------------------------------------------------------------------------

@@ -69,6 +69,45 @@
     <ClCompile Include="ShaderManager.cpp">
       <Filter>engine\Resource</Filter>
     </ClCompile>
+    <ClCompile Include="AABB.cpp">
+      <Filter>engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Rectangle.cpp">
+      <Filter>engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="FilledRectangle.cpp">
+      <Filter>engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadTree.cpp">
+      <Filter>engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiSprite.cpp">
+      <Filter>engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh2D.cpp">
+      <Filter>engine\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>game\temp</Filter>
+    </ClCompile>
+    <ClCompile Include="Ball.cpp">
+      <Filter>game\temp</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>game\temp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -206,6 +245,48 @@
     </ClInclude>
     <ClInclude Include="ShaderManager.h">
       <Filter>engine\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="AABB.h">
+      <Filter>engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderable.h">
+      <Filter>engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Rectangle.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="FilledRectangle.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="QuadTree.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiSprite.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh2D.h">
+      <Filter>engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>game\temp</Filter>
+    </ClInclude>
+    <ClInclude Include="Ball.h">
+      <Filter>game\temp</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>game\temp</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

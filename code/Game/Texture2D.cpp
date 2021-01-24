@@ -4,7 +4,6 @@
 //-----------------------------------------------------------------------------
 Texture2D::Texture2D()
 {
-	glGenTextures(1, &ID);
 }
 //-----------------------------------------------------------------------------
 Texture2D::~Texture2D()
@@ -18,6 +17,7 @@ void Texture2D::Generate(unsigned int width, unsigned int height, unsigned char*
 	Width = width;
 	Height = height;
 	// create Texture
+	glGenTextures(1, &ID);
 	glBindTexture(GL_TEXTURE_2D, ID);
 	glTexImage2D(GL_TEXTURE_2D, 0, Internal_Format, width, height, 0, Image_Format, GL_UNSIGNED_BYTE, data);
 	// set Texture wrap and filter modes

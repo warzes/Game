@@ -31,10 +31,12 @@ SE_PRAGMA_WARNING_LEVEL(3)
 
 #include <exception>
 #include <algorithm>
+#include <functional>
 
 #include <string>
 #include <string_view>
 
+#include <list>
 #include <vector>
 #include <set>
 #include <map>

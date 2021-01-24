@@ -12,7 +12,7 @@ public:
 	void SetColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a) { color.r = r, color.g = g, color.b = b, color.a = a; }
 	void SetColor(const Color& ncolor) { color = ncolor; }
 	void SetUV(float x, float y) { uv.x = x, uv.y = y; }
-	void SetUV(const Vector2& nuv) { uv = uv; }
+	void SetUV(const Vector2& nuv) { uv = nuv; }
 
 	Vector2 pos;
 	Color color;

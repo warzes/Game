@@ -4,7 +4,6 @@
 //-----------------------------------------------------------------------------
 ShaderProgram::ShaderProgram()
 {
-	ID = glCreateProgram();
 }
 //-----------------------------------------------------------------------------
 ShaderProgram::~ShaderProgram()
@@ -39,6 +38,7 @@ void ShaderProgram::Compile(const char* vertexSource, const char* fragmentSource
 		checkCompileErrors(gShader, "GEOMETRY");
 	}
 	// shader program	
+	ID = glCreateProgram();
 	glAttachShader(ID, sVertex);
 	glAttachShader(ID, sFragment);
 	if (geometrySource != nullptr)

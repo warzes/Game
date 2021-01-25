@@ -2,9 +2,11 @@
 #include "Engine.h"
 #if EXAMPLE_BREAKOUT
 #	include "GameBreakout.h"
-#else
+#endif
+#if EXAMPLE_TEST
 #	include "TestGame.h"
 #endif
+#include "1BitRoguelike.h"
 #if SE_COMPILER_MSVC
 #   pragma comment(lib, "OpenGL32.lib")
 #	if EXAMPLE_BREAKOUT
@@ -153,8 +155,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char **argv)
 #endif
 
 	try
-	{
-		EngineConfig config;
+	{	
 
 		Engine& engine = GetEngine();
 
@@ -162,7 +163,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char **argv)
 		Game game;
 #endif
 
-		if (engine.Init(config))
+		if (engine.Init(game.InitConfig()))
 		{
 #if EXAMPLE_TRIANGLE
 			initShader();

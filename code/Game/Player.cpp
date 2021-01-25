@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if EXAMPLE_TEST
 #include "Player.h"
 #include "Ball.h"
 #include "Keyboard.h"
@@ -138,3 +139,5 @@ void Player::BallCollision(glm::vec2& newPos, Entity* ball)
         }
     }
 }
+
+#endif

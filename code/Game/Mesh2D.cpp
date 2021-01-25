@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if EXAMPLE_TEST
 #include "Mesh2D.h"
 #include "OGLFunc.h"
 
@@ -107,3 +108,4 @@ void Mesh::Draw()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mIndexBuffer);
 	glDrawElements(mDrawType, mIndexes.size(), GL_UNSIGNED_INT, nullptr);
 }
+#endif

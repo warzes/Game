@@ -1,5 +1,5 @@
 #pragma once
-
+#if EXAMPLE_TEST
 #include "Renderable.h"
 #include "AABB.h"
 
@@ -12,6 +12,8 @@ public:
 private:
 	void buildVertices();
 	float mX, mY, mWidth, mHeight;
+	float m_z = 0.0f; // TODO: слой сетки
 	int mStep;
 	Color mColor;
 };
+#endif

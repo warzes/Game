@@ -1,5 +1,5 @@
 #pragma once
-
+#if EXAMPLE_TEST
 #include "Sprite.h"
 
 class MultiSprite : public Sprite 
@@ -13,3 +13,4 @@ public:
 private:
 	int mNumX, mNumY;
 };
+#endif

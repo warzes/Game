@@ -1,11 +1,14 @@
 #pragma once
 
 #include "OGLFunc.h"
+#include "Color.h"
 
 struct GraphicsConfig
 {
 	int OpenGLMajorVersion = 4;
 	int OpenGLMinorVersion = 6;
+
+	Color ClearColor = { 0.129f*255.0f, 0.586f * 255.0f, 0.949f * 255.0f, 255.0f };
 };
 
 class OGLGraphics
@@ -39,6 +42,7 @@ private:
 
 	int m_openGLMajorVersion = 0;
 	int m_openGLMinorVersion = 0;
+	Color m_clearColor;
 
 	// TODO:
 	static const int BEST_ANTI_ALIASING_SAMPLES = -1;

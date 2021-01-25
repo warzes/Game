@@ -1,5 +1,7 @@
 #pragma once
 
+#if EXAMPLE_TEST
+
 #include "AABB.h"
 
 class Camera
@@ -30,3 +32,5 @@ private:
 	glm::mat4 m_Matrix;
 	bool m_Dirty = false;
 };
+
+#endif

@@ -1,4 +1,5 @@
 #pragma once
+#if EXAMPLE_TEST
 
 #include "Renderable.h"
 #include "AABB.h"
@@ -8,8 +9,8 @@ class Rectangle2 : public Renderable
 public:
 	Rectangle2() : m_UV(0, 0, 1, 1) {}
 	Rectangle2(float x, float y, float width, float height, const Color& color);
-	void SetPos(float x, float y);
-	void SetPos(const glm::vec2& pos);
+	void SetPos(float x, float y, float z = 0.0f);
+	void SetPos(const glm::vec2& pos, float z = 0.0f);
 	glm::vec2 GetPos() { return glm::vec2(m_X, m_Y); }
 	void SetColor(const Color& color);
 	void SetColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
@@ -33,4 +34,6 @@ protected:
 	float m_X, m_Y, m_Width, m_Height;
 	Color m_Color;
 	AABB m_UV;
+	float m_z;
 };
+#endif

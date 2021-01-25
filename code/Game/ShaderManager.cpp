@@ -18,6 +18,8 @@ ShaderProgram ShaderManager::GetShader(const std::string& name)
 //-----------------------------------------------------------------------------
 void ShaderManager::Clear()
 {
+	for (auto iter : Shaders)
+		glDeleteProgram(iter.second.ID);
 	Shaders.clear();
 }
 //-----------------------------------------------------------------------------

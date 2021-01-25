@@ -1,5 +1,7 @@
 #pragma once
 
+#if EXAMPLE_TEST
+
 #include "Entity.h"
 #include "MultiSprite.h"
 
@@ -38,3 +40,5 @@ private:
     void BrickCollision(glm::vec2& newPos, Entity* brick);
     void BallCollision(glm::vec2& newPos, Entity* other);
 };
+
+#endif

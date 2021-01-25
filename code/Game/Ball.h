@@ -1,5 +1,7 @@
 #pragma once
 
+#if EXAMPLE_TEST
+
 #include "Entity.h"
 #include "Sprite.h"
 
@@ -40,3 +42,5 @@ private:
     float mRadius;
     Sprite mSprite;
 };
+
+#endif

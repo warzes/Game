@@ -1,13 +1,7 @@
 #pragma once
 
-#include "Window.h"
-#include "OGLGraphics.h"
+#include "EngineConfig.h"
 
-struct EngineConfig
-{
-	WindowConfig window;
-	GraphicsConfig graphics;
-};
 class Engine
 {
 	friend Engine& GetEngine();

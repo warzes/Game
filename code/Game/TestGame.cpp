@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if EXAMPLE_TEST
 #include "TestGame.h"
 #include "Engine.h"
 #include "QuadTree.h"
@@ -20,7 +21,7 @@ public:
         , mSprite(width, height, texId)
     {
         m_Type = BRICK;
-        mSprite.SetPos(m_Pos);
+        mSprite.SetPos(m_Pos, 1.0f);
     }
     Renderable* GetRenderable() { return &mSprite; }
 
@@ -36,7 +37,7 @@ public:
         , mSprite(width, height, texId)
     {
         m_Type = FLOOR;
-        mSprite.SetPos(m_Pos);
+        mSprite.SetPos(m_Pos, -1.0);
     }
     Renderable* GetRenderable() { return &mSprite; }
 
@@ -70,7 +71,6 @@ void Game::buildMap()
     mMapX = 0;
     Brick* brick;
     Floor* floor;
-
     for (unsigned i = 0; i < map.size(); i++) 
     {
         switch (map[i])
@@ -82,9 +82,6 @@ void Game::buildMap()
             x++;
             break;
         case ' ':
-            floor = new Floor(x * TSZ, y * TSZ, TSZ, TSZ, TextureManager::GetTexture("floor").ID);
-            mRenderer.Add(floor->GetRenderable());
-            mEntities.push_back(floor);
             x++;
             break;
         case '\n':
@@ -96,6 +93,33 @@ void Game::buildMap()
             std::cout << "Unknown symbol: " << map[i] << " at " << x << ", " << y;
         }
     }
+    // кривой костыль, так как батчинг неправильно заполняется
+    {
+        x = 0, y = 0;
+        for (unsigned i = 0; i < map.size(); i++)
+        {
+            switch (map[i])
+            {
+            case '#':
+                x++;
+                break;
+            case ' ':
+                floor = new Floor(x * TSZ, y * TSZ, TSZ, TSZ, TextureManager::GetTexture("floor").ID);
+                mRenderer.Add(floor->GetRenderable());
+                x++;
+                break;
+            case '\n':
+                mMapX = std::max(mMapX, x);
+                x = 0;
+                y++;
+                break;
+            default:
+                std::cout << "Unknown symbol: " << map[i] << " at " << x << ", " << y;
+            }
+        }
+    }  
+
+
     mMapY = y;
 }
 
@@ -205,3 +229,5 @@ void Game::Close()
     for (unsigned i = 0; i < mEntities.size(); i++)
         delete mEntities[i];
 }
+
+#endif

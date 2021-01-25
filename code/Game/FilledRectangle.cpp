@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if EXAMPLE_TEST
 #include "FilledRectangle.h"
 //-----------------------------------------------------------------------------
 FilledRectangle::FilledRectangle(float x, float y, float width, float height, const Color& color)
@@ -15,3 +16,4 @@ FilledRectangle::FilledRectangle(float x, float y, float width, float height, co
 	buildVertices();
 }
 //-----------------------------------------------------------------------------
+#endif

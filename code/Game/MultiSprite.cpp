@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if EXAMPLE_TEST
 #include "MultiSprite.h"
 
 MultiSprite::MultiSprite(float x, float y, float width, float height, const Color& color, unsigned tex)
@@ -31,3 +32,5 @@ void MultiSprite::SetFrame(int x, int y)
 	AABB uv(x * fx, y * fy, (x + 1) * fx, (y + 1) * fy);
 	SetUV(uv);
 }
+
+#endif

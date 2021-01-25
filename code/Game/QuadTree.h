@@ -1,5 +1,6 @@
 #pragma once
 
+#if EXAMPLE_TEST
 #include "AABB.h"
 
 enum 
@@ -93,3 +94,4 @@ private:
 	unsigned mItems;
 	bool mExpandable;
 };
+#endif

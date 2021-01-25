@@ -4,7 +4,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Engine.cpp">
-      <Filter>engine\Subsystem</Filter>
+      <Filter>engine\Engine</Filter>
     </ClCompile>
     <ClCompile Include="Window.cpp">
       <Filter>engine\Platform</Filter>
@@ -16,22 +16,22 @@
       <Filter>engine\Render</Filter>
     </ClCompile>
     <ClCompile Include="GameLevel.cpp">
-      <Filter>game\Breakout</Filter>
+      <Filter>test\Breakout</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
-      <Filter>game\Breakout</Filter>
+      <Filter>test\Breakout</Filter>
     </ClCompile>
     <ClCompile Include="BallObject.cpp">
-      <Filter>game\Breakout</Filter>
+      <Filter>test\Breakout</Filter>
     </ClCompile>
     <ClCompile Include="Particle.cpp">
-      <Filter>game\Breakout</Filter>
+      <Filter>test\Breakout</Filter>
     </ClCompile>
     <ClCompile Include="PostProcessor.cpp">
-      <Filter>game\Breakout</Filter>
+      <Filter>test\Breakout</Filter>
     </ClCompile>
     <ClCompile Include="TextRenderer.cpp">
-      <Filter>game\Breakout</Filter>
+      <Filter>test\Breakout</Filter>
     </ClCompile>
     <ClCompile Include="Log.cpp">
       <Filter>engine\Core</Filter>
@@ -43,13 +43,13 @@
       <Filter>engine\input</Filter>
     </ClCompile>
     <ClCompile Include="SpriteRenderer.cpp">
-      <Filter>game\Breakout</Filter>
+      <Filter>test\Breakout</Filter>
     </ClCompile>
     <ClCompile Include="Vector2.cpp">
       <Filter>engine\Math</Filter>
     </ClCompile>
     <ClCompile Include="GameBreakout.cpp">
-      <Filter>game\Breakout</Filter>
+      <Filter>test\Breakout</Filter>
     </ClCompile>
     <ClCompile Include="OGLFunc.cpp">
       <Filter>engine\Render\OpenGL API</Filter>
@@ -58,7 +58,7 @@
       <Filter>engine\Render\OpenGL API</Filter>
     </ClCompile>
     <ClCompile Include="TestGame.cpp">
-      <Filter>game\temp</Filter>
+      <Filter>test\temp</Filter>
     </ClCompile>
     <ClCompile Include="TextureManager.cpp">
       <Filter>engine\Resource</Filter>
@@ -73,40 +73,43 @@
       <Filter>engine\Math</Filter>
     </ClCompile>
     <ClCompile Include="Rectangle.cpp">
-      <Filter>engine\Graphics</Filter>
+      <Filter>test\temp\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="FilledRectangle.cpp">
-      <Filter>engine\Graphics</Filter>
+      <Filter>test\temp\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>engine\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>engine\Graphics</Filter>
+      <Filter>test\temp\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Grid.cpp">
-      <Filter>engine\Graphics</Filter>
+      <Filter>test\temp\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="QuadTree.cpp">
-      <Filter>engine\Graphics</Filter>
+      <Filter>test\temp\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Sprite.cpp">
-      <Filter>engine\Graphics</Filter>
+      <Filter>test\temp\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="MultiSprite.cpp">
-      <Filter>engine\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Mesh2D.cpp">
-      <Filter>engine\Render</Filter>
+      <Filter>test\temp\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
-      <Filter>game\temp</Filter>
+      <Filter>test\temp</Filter>
     </ClCompile>
     <ClCompile Include="Ball.cpp">
-      <Filter>game\temp</Filter>
+      <Filter>test\temp</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>game\temp</Filter>
+      <Filter>test\temp</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3.cpp">
+      <Filter>engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="1BitRoguelike.cpp">
+      <Filter>game\1BitRoguelike</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh2D.cpp">
+      <Filter>test\temp\Render</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -116,32 +119,17 @@
     <Filter Include="engine\base">
       <UniqueIdentifier>{45eb78d9-4a1d-408a-8fb2-6b5aa6661b27}</UniqueIdentifier>
     </Filter>
-    <Filter Include="engine\Subsystem">
-      <UniqueIdentifier>{6afc63b2-c772-4d07-af79-da9ad02a846b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="engine\Platform">
       <UniqueIdentifier>{fee40604-c525-4501-a60b-1af806f9ce3a}</UniqueIdentifier>
     </Filter>
     <Filter Include="engine\Core">
       <UniqueIdentifier>{0b3dd572-3020-4cab-ab16-102379f9f4de}</UniqueIdentifier>
     </Filter>
-    <Filter Include="game">
-      <UniqueIdentifier>{becd53a5-5082-464f-a984-56e7c5c8e147}</UniqueIdentifier>
-    </Filter>
     <Filter Include="engine\Resource">
       <UniqueIdentifier>{b19dd28a-8ea4-4e27-ab4e-44c508ce5de3}</UniqueIdentifier>
     </Filter>
     <Filter Include="engine\Render">
       <UniqueIdentifier>{6123480a-23c1-4aaa-baeb-6337d538a224}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\Graphics">
-      <UniqueIdentifier>{d38c068c-a6be-42fe-802f-ce43c46cd9ee}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="game\Core">
-      <UniqueIdentifier>{c47c75e3-39d9-4a26-ae62-50c0eb2d5f23}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="game\Breakout">
-      <UniqueIdentifier>{b2c53b8f-b7a1-4db1-8039-8f97be572a9e}</UniqueIdentifier>
     </Filter>
     <Filter Include="engine\IO">
       <UniqueIdentifier>{5e8b0ba7-7a10-4f42-9574-9daaaf14254c}</UniqueIdentifier>
@@ -155,8 +143,35 @@
     <Filter Include="engine\Render\OpenGL API">
       <UniqueIdentifier>{bd34f97b-af06-47a9-af44-189a3e4906e6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="game\temp">
+    <Filter Include="test">
+      <UniqueIdentifier>{becd53a5-5082-464f-a984-56e7c5c8e147}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\Core">
+      <UniqueIdentifier>{c47c75e3-39d9-4a26-ae62-50c0eb2d5f23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\Breakout">
+      <UniqueIdentifier>{b2c53b8f-b7a1-4db1-8039-8f97be572a9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\temp">
       <UniqueIdentifier>{dd79ea9a-d44c-4b71-afc2-a2faa55ca83a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game">
+      <UniqueIdentifier>{ec7e6253-9eac-4cad-aba9-08a8042ec7c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\1BitRoguelike">
+      <UniqueIdentifier>{bb39e346-e09e-4b57-af99-454a8415546b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Engine">
+      <UniqueIdentifier>{6afc63b2-c772-4d07-af79-da9ad02a846b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\1BitRoguelike\microFramework">
+      <UniqueIdentifier>{de365bcd-50dc-424e-8455-ec6ca80051a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\temp\Render">
+      <UniqueIdentifier>{0bb3ec77-4a19-48c0-89cd-9a61a4ccb3bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\temp\Graphics">
+      <UniqueIdentifier>{d38c068c-a6be-42fe-802f-ce43c46cd9ee}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -168,7 +183,7 @@
       <Filter>engine\base</Filter>
     </ClInclude>
     <ClInclude Include="Engine.h">
-      <Filter>engine\Subsystem</Filter>
+      <Filter>engine\Engine</Filter>
     </ClInclude>
     <ClInclude Include="Window.h">
       <Filter>engine\Platform</Filter>
@@ -183,25 +198,25 @@
       <Filter>engine\base</Filter>
     </ClInclude>
     <ClInclude Include="GameLevel.h">
-      <Filter>game\Breakout</Filter>
+      <Filter>test\Breakout</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
-      <Filter>game\Breakout</Filter>
+      <Filter>test\Breakout</Filter>
     </ClInclude>
     <ClInclude Include="BallObject.h">
-      <Filter>game\Breakout</Filter>
+      <Filter>test\Breakout</Filter>
     </ClInclude>
     <ClInclude Include="Particle.h">
-      <Filter>game\Breakout</Filter>
+      <Filter>test\Breakout</Filter>
     </ClInclude>
     <ClInclude Include="PostProcessor.h">
-      <Filter>game\Breakout</Filter>
+      <Filter>test\Breakout</Filter>
     </ClInclude>
     <ClInclude Include="PowerUp.h">
-      <Filter>game\Breakout</Filter>
+      <Filter>test\Breakout</Filter>
     </ClInclude>
     <ClInclude Include="TextRenderer.h">
-      <Filter>game\Breakout</Filter>
+      <Filter>test\Breakout</Filter>
     </ClInclude>
     <ClInclude Include="Example.h" />
     <ClInclude Include="Log.h">
@@ -214,13 +229,13 @@
       <Filter>engine\input</Filter>
     </ClInclude>
     <ClInclude Include="SpriteRenderer.h">
-      <Filter>game\Breakout</Filter>
+      <Filter>test\Breakout</Filter>
     </ClInclude>
     <ClInclude Include="Vector2.h">
       <Filter>engine\Math</Filter>
     </ClInclude>
     <ClInclude Include="GameBreakout.h">
-      <Filter>game\Breakout</Filter>
+      <Filter>test\Breakout</Filter>
     </ClInclude>
     <ClInclude Include="OGLFunc.h">
       <Filter>engine\Render\OpenGL API</Filter>
@@ -229,7 +244,7 @@
       <Filter>engine\Render\OpenGL API</Filter>
     </ClInclude>
     <ClInclude Include="TestGame.h">
-      <Filter>game\temp</Filter>
+      <Filter>test\temp</Filter>
     </ClInclude>
     <ClInclude Include="Color.h">
       <Filter>engine\Math</Filter>
@@ -249,44 +264,53 @@
     <ClInclude Include="AABB.h">
       <Filter>engine\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Renderable.h">
-      <Filter>engine\Render</Filter>
-    </ClInclude>
     <ClInclude Include="Rectangle.h">
-      <Filter>engine\Graphics</Filter>
+      <Filter>test\temp\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="FilledRectangle.h">
-      <Filter>engine\Graphics</Filter>
+      <Filter>test\temp\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>engine\Graphics</Filter>
+      <Filter>test\temp\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
-      <Filter>engine\Graphics</Filter>
+      <Filter>test\temp\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Grid.h">
-      <Filter>engine\Graphics</Filter>
+      <Filter>test\temp\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="QuadTree.h">
-      <Filter>engine\Graphics</Filter>
+      <Filter>test\temp\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Sprite.h">
-      <Filter>engine\Graphics</Filter>
+      <Filter>test\temp\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="MultiSprite.h">
-      <Filter>engine\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Mesh2D.h">
-      <Filter>engine\Render</Filter>
+      <Filter>test\temp\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
-      <Filter>game\temp</Filter>
+      <Filter>test\temp</Filter>
     </ClInclude>
     <ClInclude Include="Ball.h">
-      <Filter>game\temp</Filter>
+      <Filter>test\temp</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>game\temp</Filter>
+      <Filter>test\temp</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3.h">
+      <Filter>engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="1BitRoguelike.h">
+      <Filter>game\1BitRoguelike</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineConfig.h">
+      <Filter>engine\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh2D.h">
+      <Filter>test\temp\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderable.h">
+      <Filter>test\temp\Render</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

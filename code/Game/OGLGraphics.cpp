@@ -18,6 +18,7 @@ bool OGLGraphics::Init(HWND hwnd, const GraphicsConfig& config)
 	m_hwnd = hwnd;
 	m_openGLMajorVersion = config.OpenGLMajorVersion;
 	m_openGLMinorVersion = config.OpenGLMinorVersion;
+	m_clearColor = config.ClearColor;
 
 	if (!(m_deviceContext = GetDC(hwnd)))
 		throw std::runtime_error("GetDC() failed: Can not create context.");
@@ -116,7 +117,7 @@ void OGLGraphics::BeginFrame()
 	static const auto& windowConfig = GetEngine().GetConfig().window;
 
 	glViewport(0, 0, windowConfig.width, windowConfig.height);
-	glClearColor(0.129f, 0.586f, 0.949f, 1.0f);
+	glClearColor(m_clearColor.r / 255.0f, m_clearColor.g / 255.0f, m_clearColor.b / 255.0f, 1.0f);
 	glClearDepth(1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 }

@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if EXAMPLE_TEST
 #include "Renderer.h"
 #include "OGLFunc.h"
 
@@ -34,15 +35,15 @@ void Renderer::Init()
 
     glVertexAttribPointer(
         POSITION, sizeof(mVertices[0].pos) / sizeof(float), GL_FLOAT, GL_FALSE,
-        sizeof(mVertices[0]), (void*)offsetof(Vertex2PCT, pos));
+        sizeof(mVertices[0]), (void*)offsetof(Vertex3PCT, pos));
 
     glVertexAttribPointer(
         COLOR, sizeof(mVertices[0].color) / sizeof(uint8_t), GL_UNSIGNED_BYTE, GL_TRUE,
-        sizeof(mVertices[0]), (void*)offsetof(Vertex2PCT, color));
+        sizeof(mVertices[0]), (void*)offsetof(Vertex3PCT, color));
 
     glVertexAttribPointer(
         UV, sizeof(mVertices[0].uv) / sizeof(float), GL_FLOAT, GL_FALSE,
-        sizeof(mVertices[0]), (void*)offsetof(Vertex2PCT, uv));
+        sizeof(mVertices[0]), (void*)offsetof(Vertex3PCT, uv));
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -82,7 +83,8 @@ RenderBatch* Renderer::GetBatch(DrawType drawType, GLuint textureId, unsigned ve
     RenderBatch batch(verticesOffs, indexesOffs, drawType, textureId);
     auto it = std::find(mBatches.begin(), mBatches.end(), batch);
 
-    if (it == mBatches.end()) {
+    if (it == mBatches.end())
+    {
         // std::cout << "new batch" << std::endl;
         RenderBatch batch(verticesOffs, indexesOffs, drawType, textureId);
         mBatches.push_back(batch);
@@ -121,7 +123,8 @@ void Renderer::BuildBatches()
 
     for (unsigned i = 0; i < mQueue.size(); i++) 
     {
-        if (lastDrawType != mQueue[i]->DrawType || lastTextureId != mQueue[i]->TextureId) {
+        if (lastDrawType != mQueue[i]->DrawType || lastTextureId != mQueue[i]->TextureId) 
+        {
             lastDrawType = mQueue[i]->DrawType;
             lastTextureId = mQueue[i]->TextureId;
             batch = GetBatch(lastDrawType, lastTextureId, verticesOffs, indexesOffs);
@@ -203,3 +206,5 @@ void Renderer::PrintBatches()
             << std::endl;
     }
 }
+
+#endif

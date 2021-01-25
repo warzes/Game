@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if EXAMPLE_TEST
 #include "Sprite.h"
 
 Sprite::Sprite(float x, float y, float width, float height, const Color& color, unsigned tex)
@@ -12,3 +13,4 @@ Sprite::Sprite(float width, float height, unsigned tex)
 {
 	TextureId = tex;
 }
+#endif

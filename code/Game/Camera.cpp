@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if EXAMPLE_TEST
 #include "Camera.h"
 #include "OGLFunc.h"
 //-----------------------------------------------------------------------------
@@ -64,3 +65,4 @@ void Camera::computeMatrix()
 	m_Dirty = false;
 }
 //-----------------------------------------------------------------------------
+#endif

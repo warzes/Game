@@ -1,5 +1,7 @@
 #pragma once
 
+#if EXAMPLE_TEST
+
 #include "ShaderProgram.h"
 #include "Renderer.h"
 #include "Player.h"
@@ -36,3 +38,5 @@ private:
 	void CameraUpdate(float dt);
 	void buildMap();
 };
+
+#endif

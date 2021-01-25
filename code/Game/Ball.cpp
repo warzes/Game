@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if EXAMPLE_TEST
 #include "Ball.h"
 #include "TestGame.h"
 
@@ -10,7 +11,6 @@ void Ball::SetPos(const glm::vec2& pos)
 
 void Ball::Update(float dt)
 {
-    //SetPos(mX + mVelocity.x * ticks, mY + mVelocity.y * ticks);
     glm::vec2 pos = GetPos();
     pos += m_Velocity * dt;
     CheckCollisions(pos);
@@ -96,7 +96,6 @@ void Ball::BallCollision(glm::vec2& newPos, Ball* other)
 
     float arc = mRadius * mRadius * mRadius;
     float brc = oRadius * oRadius * oRadius;
-    // v1New = (v1 * (vol1 - vol2) + 2 * vol2 * v2) / (vol1 + vol2) //
     glm::vec2 aVNew = m_Velocity * (arc - brc);
     aVNew = aVNew + other->GetVelocity() * (2 * brc);
     aVNew = aVNew / (arc + brc);
@@ -108,3 +107,5 @@ void Ball::BallCollision(glm::vec2& newPos, Ball* other)
     m_Velocity = aVNew;
     other->SetVelocity(bVNew);
 }
+
+#endif

@@ -1,5 +1,7 @@
 #pragma once
 
+#if EXAMPLE_TEST
+
 #include "Rectangle.h"
 #include "Vertex.h"
 
@@ -41,7 +43,7 @@ public:
 
 private:
     GLuint mVertexArray, mVertexBuffer, mIndexBuffer;
-    std::vector<Vertex2PCT> mVertices;
+    std::vector<Vertex3PCT> mVertices;
     std::vector<int> mIndexes;
     std::vector<Renderable*> mQueue;
     std::vector<RenderBatch> mBatches;
@@ -50,3 +52,5 @@ private:
     RenderBatch* GetBatch(DrawType draqType, GLuint textureId, unsigned verticesOffs, unsigned indexesOffs);
     void PrintBatches();
 };
+
+#endif

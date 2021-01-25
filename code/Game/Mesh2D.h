@@ -1,5 +1,5 @@
 #pragma once
-
+#if EXAMPLE_TEST
 #include "Vertex.h"
 
 // TODO; refactor
@@ -28,3 +28,5 @@ protected:
 private:
 	void Update();
 };
+
+#endif

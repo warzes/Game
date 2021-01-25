@@ -1,5 +1,7 @@
 #pragma once
 
+#if EXAMPLE_TEST
+
 // TODO: rename?
 
 #include "Renderable.h"
@@ -44,3 +46,5 @@ protected:
 	glm::vec2 m_Dim;
 	glm::vec2 m_Velocity;
 };
+
+#endif

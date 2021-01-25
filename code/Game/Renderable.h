@@ -1,7 +1,7 @@
 #pragma once
 
+#if EXAMPLE_TEST
 #include "Vertex.h"
-
 
 enum DrawType
 {
@@ -15,8 +15,9 @@ enum DrawType
 class Renderable
 {
 public:
-	std::vector<Vertex2PCT> Vertices;
+	std::vector<Vertex3PCT> Vertices;
 	std::vector<int> Indexes;
 	DrawType DrawType = D_NONE;
 	unsigned TextureId = 0;
 };
+#endif

@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if EXAMPLE_TEST
 #include "QuadTree.h"
 
 // QTNode methods
@@ -500,3 +501,4 @@ bool QuadTree::Test()
 
 	return true;
 }
+#endif

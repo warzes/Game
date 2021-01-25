@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#if EXAMPLE_TEST
 #include "Rectangle.h"
 //-----------------------------------------------------------------------------
 Rectangle2::Rectangle2(float x, float y, float width, float height, const Color& color)
@@ -15,18 +16,19 @@ Rectangle2::Rectangle2(float x, float y, float width, float height, const Color&
 	buildVertices();
 }
 //-----------------------------------------------------------------------------
-void Rectangle2::SetPos(float x, float y)
+void Rectangle2::SetPos(float x, float y, float z)
 {
 	if (m_X == x && m_Y == y)
 		return;
 	m_X = x;
 	m_Y = y;
+	m_z = z;
 	buildVertices();
 }
 //-----------------------------------------------------------------------------
-void Rectangle2::SetPos(const glm::vec2& pos)
+void Rectangle2::SetPos(const glm::vec2& pos, float z)
 {
-	SetPos(pos.x, pos.y);
+	SetPos(pos.x, pos.y, z);
 }
 //-----------------------------------------------------------------------------
 void Rectangle2::SetColor(const Color& color)
@@ -49,10 +51,10 @@ void Rectangle2::SetUV(AABB uv)
 //-----------------------------------------------------------------------------
 void Rectangle2::buildVertices()
 {
-	Vertices[LB].SetPos(m_X, m_Y);
-	Vertices[LT].SetPos(m_X, m_Y + m_Height);
-	Vertices[RT].SetPos(m_X + m_Width, m_Y + m_Height);
-	Vertices[RB].SetPos(m_X + m_Width, m_Y);
+	Vertices[LB].SetPos(m_X, m_Y, m_z);
+	Vertices[LT].SetPos(m_X, m_Y + m_Height, m_z);
+	Vertices[RT].SetPos(m_X + m_Width, m_Y + m_Height, m_z);
+	Vertices[RB].SetPos(m_X + m_Width, m_Y, m_z);
 
 	for (size_t i = 0; i < Vertices.size(); i++)
 		Vertices[i].SetColor(m_Color);
@@ -63,3 +65,4 @@ void Rectangle2::buildVertices()
 	Vertices[RB].SetUV(m_UV.maxX, m_UV.minY);
 }
 //-----------------------------------------------------------------------------
+#endif

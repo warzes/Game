@@ -20,7 +20,8 @@ Texture2D TextureManager::GetTexture(const std::string& name)
 //-----------------------------------------------------------------------------
 void TextureManager::Clear()
 {
-	// TODO:
+	for (auto iter : Textures)
+		glDeleteTextures(1, &iter.second.ID);
 	Textures.clear();
 }
 //-----------------------------------------------------------------------------

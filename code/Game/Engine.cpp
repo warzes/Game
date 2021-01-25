@@ -22,7 +22,7 @@ bool Engine::Init(const EngineConfig& config)
 		return false;
 
 #if SE_PLATFORM_WINDOWS
-	if (!m_graphics.Init(m_window.GetHWND(), config.graphics))
+	if (!m_renderSystem.Init(m_window.GetHWND(), config.graphics))
 		return false;
 #endif
 	m_isRun = true;
@@ -43,7 +43,7 @@ void Engine::BeginFrame()
 	if (m_isEnd) return;
 
 	if (m_window.hasWindowFocus)
-		m_graphics.BeginFrame();
+		m_renderSystem.BeginFrame(m_config.window.width, m_config.window.height);
 }
 //-----------------------------------------------------------------------------
 void Engine::EndFrame()
@@ -51,7 +51,7 @@ void Engine::EndFrame()
 	if (m_isEnd) return;
 
 	if (m_window.hasWindowFocus)
-		m_graphics.EndFrame();
+		m_renderSystem.EndFrame();
 	else
 		::WaitMessage();
 }
@@ -59,8 +59,8 @@ void Engine::EndFrame()
 void Engine::close()
 {
 	TextureManager::Get().Clear();
-	ShaderManager::Clear();
-	m_graphics.close();
+	ShaderManager::Get().Clear();
+	m_renderSystem.Close();
 	m_window.close();
 }
 //-----------------------------------------------------------------------------

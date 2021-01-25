@@ -4,11 +4,11 @@
 
 #include "AABB.h"
 
-class Camera
+class tCamera
 {
 public:
-	Camera() = default;
-	Camera(float screenWidth, float screenHeight, float scale, float speed);
+	tCamera() = default;
+	tCamera(float screenWidth, float screenHeight, float scale, float speed);
 	void SetPos(float x, float y);
 	void SetPos(const glm::vec2& pos);
 	glm::vec2 GetPos() { return m_Pos; }

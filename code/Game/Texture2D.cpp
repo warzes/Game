@@ -43,6 +43,7 @@ void Texture2D::Bind(GLbyte unit) const
 //-----------------------------------------------------------------------------
 void Texture2D::Delete()
 {
+	glBindTexture(GL_TEXTURE_2D, 0);
 	glDeleteTextures(1, &ID);
 }
 //-----------------------------------------------------------------------------

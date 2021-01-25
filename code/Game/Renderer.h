@@ -3,7 +3,7 @@
 #if EXAMPLE_TEST
 
 #include "Rectangle.h"
-#include "Vertex.h"
+#include "tVertex.h"
 
 struct RenderBatch {
     unsigned verticesOffs,
@@ -34,8 +34,8 @@ public:
     Renderer();
     ~Renderer();
     void Init();
-    void Add(Renderable* renderable);
-    bool Delete(Renderable* renderable);
+    void Add(tRenderable* renderable);
+    bool Delete(tRenderable* renderable);
     void Clear();
     void Draw();
     void BuildBatches();
@@ -45,7 +45,7 @@ private:
     GLuint mVertexArray, mVertexBuffer, mIndexBuffer;
     std::vector<Vertex3PCT> mVertices;
     std::vector<int> mIndexes;
-    std::vector<Renderable*> mQueue;
+    std::vector<tRenderable*> mQueue;
     std::vector<RenderBatch> mBatches;
     bool mDirty;
 

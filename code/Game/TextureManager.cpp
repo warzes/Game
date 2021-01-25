@@ -31,9 +31,9 @@ std::shared_ptr<Texture2D> TextureManager::GetTexture(const std::string& name)
 //-----------------------------------------------------------------------------
 void TextureManager::Clear()
 {
-	for (auto iter : m_textures)
-		iter.second->Delete();
-	m_textures.clear();
+	//for (auto iter : m_textures)
+	//	iter.second->Delete();
+	//m_textures.clear();
 }
 //-----------------------------------------------------------------------------
 void TextureManager::loadTextureFromFile(std::shared_ptr<Texture2D> outTexture, const char* file, bool alpha)

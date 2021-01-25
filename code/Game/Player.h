@@ -14,7 +14,7 @@ public:
     void SetPos(const glm::vec2& pos);
 
     void Update(float dt) override;
-    Renderable* GetRenderable() { return &mSprite; }
+    tRenderable* GetRenderable() { return &mSprite; }
 
 private:
     enum {

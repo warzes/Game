@@ -39,7 +39,7 @@ private:
 
 	EngineConfig m_config;
 	Window m_window;
-	RenderSystem m_graphics;
+	RenderSystem m_renderSystem;
 	bool m_isEnd = false;
 	bool m_isRun = false;
 };

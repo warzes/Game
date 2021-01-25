@@ -1,23 +1,23 @@
 #pragma once
 
-#if EXAMPLE_TEST
 #include "Vertex.h"
+#include "Texture2D.h"
+#include "ShaderProgram.h"
 
-enum DrawType
+enum class DrawType
 {
-	D_NONE,
-	D_POINTS,
-	D_LINES,
-	D_TRIANGLES,
-	D_MAX
+	None,
+	Points,
+	Lines,
+	Triangles,
 };
 
 class Renderable
 {
 public:
-	std::vector<Vertex3PCT> Vertices;
-	std::vector<int> Indexes;
-	DrawType DrawType = D_NONE;
-	unsigned TextureId = 0;
+	std::vector<Vertex3PCT> vertices;
+	std::vector<int> indexes;
+	DrawType drawType = DrawType::None;
+	std::shared_ptr<Texture2D> texture;
+	std::shared_ptr<ShaderProgram> shaders;
 };
-#endif

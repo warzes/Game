@@ -3,37 +3,53 @@
 #include "OGLFunc.h"
 #include "Log.h"
 //-----------------------------------------------------------------------------
-std::map<std::string, ShaderProgram> ShaderManager::Shaders;
-//-----------------------------------------------------------------------------
-ShaderProgram ShaderManager::LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, const std::string& name)
+std::shared_ptr<ShaderProgram> ShaderManager::LoadShader(const std::string& name, const char* vShaderFile, const char* fShaderFile, const char* gShaderFile)
 {
-	Shaders[name] = loadShaderFromFile(vShaderFile, fShaderFile, gShaderFile);
-	return Shaders[name];
+	// first check if shader has been loader already, if so; return earlier loaded texture
+	auto it = m_shaders.find(name);
+	if (it != m_shaders.end())
+		return it->second;
+	std::shared_ptr<ShaderProgram> shader(new ShaderProgram);
+	loadShaderFromFile(shader, vShaderFile, fShaderFile, gShaderFile);
+
+	m_shaders[name] = shader;
+	return shader;
 }
 //-----------------------------------------------------------------------------
-ShaderProgram ShaderManager::GetShader(const std::string& name)
+std::shared_ptr<ShaderProgram> ShaderManager::GetShader(const std::string& name)
 {
-	return Shaders[name];
+	auto it = m_shaders.find(name);
+	if (it != m_shaders.end())
+		return it->second;
+	else
+		return std::shared_ptr<ShaderProgram>();
 }
 //-----------------------------------------------------------------------------
 void ShaderManager::Clear()
 {
-	for (auto iter : Shaders)
-		glDeleteProgram(iter.second.ID);
-	Shaders.clear();
+	//for (auto iter : m_shaders)
+	//	iter.second->Destroy();
+	//m_shaders.clear();
 }
 //-----------------------------------------------------------------------------
-ShaderProgram ShaderManager::loadShaderFromFile(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile)
+void ShaderManager::loadShaderFromFile(std::shared_ptr<ShaderProgram> outShaders, const char* vShaderFile, const char* fShaderFile, const char* gShaderFile)
 {
 	// 1. retrieve the vertex/fragment source code from filePath
 	std::string vertexCode;
 	std::string fragmentCode;
 	std::string geometryCode;
+	std::ifstream vertexShaderFile;
+	std::ifstream fragmentShaderFile;
+	std::ifstream geometryShaderFile;
+	// ensures ifstream objects can throw exceptions:
+	vertexShaderFile.exceptions(std::ifstream::badbit);
+	fragmentShaderFile.exceptions(std::ifstream::badbit);
+	geometryShaderFile.exceptions(std::ifstream::badbit);
 	try
 	{
 		// open files
-		std::ifstream vertexShaderFile(vShaderFile);
-		std::ifstream fragmentShaderFile(fShaderFile);
+		vertexShaderFile.open(vShaderFile);
+		fragmentShaderFile.open(fShaderFile);
 		std::stringstream vShaderStream, fShaderStream;
 		// read file's buffer contents into streams
 		vShaderStream << vertexShaderFile.rdbuf();
@@ -47,16 +63,20 @@ ShaderProgram ShaderManager::loadShaderFromFile(const char* vShaderFile, const c
 		// if geometry shader path is present, also load a geometry shader
 		if (gShaderFile != nullptr)
 		{
-			std::ifstream geometryShaderFile(gShaderFile);
+			geometryShaderFile.open(gShaderFile);
 			std::stringstream gShaderStream;
 			gShaderStream << geometryShaderFile.rdbuf();
 			geometryShaderFile.close();
 			geometryCode = gShaderStream.str();
 		}
 	}
-	catch (std::exception e)
+	catch (std::ifstream::failure e)
 	{
 		std::cout << "ERROR::SHADER: Failed to read shader files" << std::endl;
+	}
+	catch (std::exception e)
+	{
+		// TODO:
 	}
 
 #if SE_LOG_SHADER_CODE
@@ -75,8 +95,6 @@ ShaderProgram ShaderManager::loadShaderFromFile(const char* vShaderFile, const c
 	const char* fShaderCode = fragmentCode.c_str();
 	const char* gShaderCode = geometryCode.c_str();
 	// 2. now create shader object from source code
-	ShaderProgram shader;
-	shader.Compile(vShaderCode, fShaderCode, gShaderFile != nullptr ? gShaderCode : nullptr);
-	return shader;
+	outShaders->Compile(vShaderCode, fShaderCode, gShaderFile != nullptr ? gShaderCode : nullptr);
 }
 //-----------------------------------------------------------------------------

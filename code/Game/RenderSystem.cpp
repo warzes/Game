@@ -2,14 +2,15 @@
 #include "RenderSystem.h"
 #include "Window.h"
 #include "WGLFunc.h"
-#include "Engine.h"
-
+#include "OpenGLStateCache.h"
+#include "Log.h"
+//-----------------------------------------------------------------------------
 RenderSystem::~RenderSystem()
 {
 	if (m_isInit)
-		close();
+		Close();
 }
-
+//-----------------------------------------------------------------------------
 #if SE_PLATFORM_WINDOWS
 bool RenderSystem::Init(HWND hwnd, const GraphicsConfig& config)
 #endif
@@ -41,7 +42,6 @@ bool RenderSystem::Init(HWND hwnd, const GraphicsConfig& config)
 		gl::ChooseBestAntiAliasingPixelFormat(pf);
 	else
 		gl::ChooseAntiAliasingPixelFormat(pf, m_antiAliasingSamples);
-
 	if (!pf)
 		pf = ChoosePixelFormat(m_deviceContext, &pfd);
 
@@ -102,7 +102,7 @@ bool RenderSystem::Init(HWND hwnd, const GraphicsConfig& config)
 	gl::GetGLVersion(major, minor);
 	std::ostringstream title;
 	title << "OpenGL " << major << "." << minor;
-	SetWindowTextA(hwnd, title.str().c_str());
+	SE_LOG(title.str().c_str());
 
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -111,32 +111,8 @@ bool RenderSystem::Init(HWND hwnd, const GraphicsConfig& config)
 	m_isInit = true;
 	return true;
 }
-
-void RenderSystem::BeginFrame()
-{
-	static const auto& windowConfig = GetEngine().GetConfig().window;
-
-	glViewport(0, 0, windowConfig.width, windowConfig.height);
-	glClearColor(m_clearColor.r, m_clearColor.g, m_clearColor.b, 1.0f);
-	glClearDepth(1.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-}
-
-void RenderSystem::EndFrame()
-{
-#if SE_PLATFORM_WINDOWS
-	SwapBuffers(m_deviceContext);
-#endif
-}
-
-void RenderSystem::SetVsync()
-{
-	// TODO:
-	if (wglSwapIntervalEXT)
-		wglSwapIntervalEXT(1);
-}
-
-void RenderSystem::close()
+//-----------------------------------------------------------------------------
+void RenderSystem::Close()
 {
 	if (m_deviceContext)
 	{
@@ -153,3 +129,26 @@ void RenderSystem::close()
 
 	m_isInit = false;
 }
+//-----------------------------------------------------------------------------
+void RenderSystem::BeginFrame(int width, int height)
+{
+	OpenGLStateCache::Get().Viewport(0, 0, width, height);
+	glClearColor(m_clearColor.r, m_clearColor.g, m_clearColor.b, 1.0f);
+	glClearDepth(1.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+}
+//-----------------------------------------------------------------------------
+void RenderSystem::EndFrame()
+{
+#if SE_PLATFORM_WINDOWS
+	SwapBuffers(m_deviceContext);
+#endif
+}
+//-----------------------------------------------------------------------------
+void RenderSystem::SetVsync()
+{
+	// TODO:
+	if (wglSwapIntervalEXT)
+		wglSwapIntervalEXT(1);
+}
+//-----------------------------------------------------------------------------

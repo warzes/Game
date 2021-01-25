@@ -4,7 +4,7 @@
 
 // TODO: rename?
 
-#include "Renderable.h"
+#include "tRenderable.h"
 #include "AABB.h"
 
 class Entity

@@ -57,13 +57,13 @@ Renderer::~Renderer()
     glDeleteBuffers(1, &mIndexBuffer);
 }
 
-void Renderer::Add(Renderable* renderable)
+void Renderer::Add(tRenderable* renderable)
 {
     mQueue.push_back(renderable);
     mDirty = true;
 }
 
-bool Renderer::Delete(Renderable* renderable)
+bool Renderer::Delete(tRenderable* renderable)
 {
     auto it = std::remove(mQueue.begin(), mQueue.end(), renderable);
     if (it != mQueue.end()) {

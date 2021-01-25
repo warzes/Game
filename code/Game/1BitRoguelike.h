@@ -1,6 +1,9 @@
 #pragma once
 
 #include "EngineConfig.h"
+#include "MicroGraphics.h"
+#include "Camera2D.h"
+
 
 class Game
 {
@@ -17,4 +20,8 @@ public:
 	void Render();
 
 	void Close();
+
+private:
+	MicroGraphics m_graphics;
+	Camera2D m_mainCamera;
 };

@@ -5,16 +5,24 @@
 class ShaderManager
 {
 public:
-	// loads (and generates) a shader program from file loading vertex, fragment (and geometry) shader's source code. If gShaderFile is not nullptr, it also loads a geometry shader
-	static ShaderProgram LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, const std::string& name);
-	// retrieves a stored sader
-	static ShaderProgram GetShader(const std::string &name);
-	
-	static void Clear();
+	// retrieves a single instance of this object
+	static ShaderManager& Get() noexcept
+	{
+		static ShaderManager theInstance;
+		return theInstance;
+	}
 
-	static std::map<std::string, ShaderProgram> Shaders;
+	// loads (and generates) a shader program from file loading vertex, fragment (and geometry) shader's source code. If gShaderFile is not nullptr, it also loads a geometry shader
+	std::shared_ptr<ShaderProgram> LoadShader(const std::string& name, const char* vShaderFile, const char* fShaderFile, const char* gShaderFile = nullptr);
+	// retrieves a stored sader
+	std::shared_ptr<ShaderProgram> GetShader(const std::string &name);
+	
+	void Clear();
+
 private:
-	ShaderManager() = delete;
+	ShaderManager() = default;
 	// loads and generates a shader from file
-	static ShaderProgram loadShaderFromFile(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile = nullptr);
+	void loadShaderFromFile(std::shared_ptr<ShaderProgram> outShaders, const char* vShaderFile, const char* fShaderFile, const char* gShaderFile = nullptr);
+
+	std::map<std::string, std::shared_ptr<ShaderProgram>> m_shaders;
 };

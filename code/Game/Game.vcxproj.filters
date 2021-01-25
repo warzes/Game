@@ -75,16 +75,10 @@
     <ClCompile Include="FilledRectangle.cpp">
       <Filter>test\temp\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>test\temp\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="Grid.cpp">
       <Filter>test\temp\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="QuadTree.cpp">
-      <Filter>test\temp\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Sprite.cpp">
       <Filter>test\temp\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="MultiSprite.cpp">
@@ -105,12 +99,6 @@
     <ClCompile Include="1BitRoguelike.cpp">
       <Filter>game\1BitRoguelike</Filter>
     </ClCompile>
-    <ClCompile Include="Mesh2D.cpp">
-      <Filter>test\temp\Render</Filter>
-    </ClCompile>
-    <ClCompile Include="OGLCasheBinder.cpp">
-      <Filter>engine\Render</Filter>
-    </ClCompile>
     <ClCompile Include="CoreMath.cpp">
       <Filter>engine\Math</Filter>
     </ClCompile>
@@ -119,6 +107,24 @@
     </ClCompile>
     <ClCompile Include="RenderSystem.cpp">
       <Filter>engine\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLStateCache.cpp">
+      <Filter>engine\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="MicroGraphics.cpp">
+      <Filter>game\1BitRoguelike\microFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="tSprite.cpp">
+      <Filter>test\temp\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="tCamera.cpp">
+      <Filter>test\temp\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera2D.cpp">
+      <Filter>engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>engine\Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +187,9 @@
     </Filter>
     <Filter Include="test\temp\Graphics">
       <UniqueIdentifier>{d38c068c-a6be-42fe-802f-ce43c46cd9ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Graphics">
+      <UniqueIdentifier>{e9f10251-8a3e-454c-b837-cf4aaea2459d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -255,9 +264,6 @@
     <ClInclude Include="Color.h">
       <Filter>engine\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Vertex.h">
-      <Filter>engine\Render</Filter>
-    </ClInclude>
     <ClInclude Include="TextureManager.h">
       <Filter>engine\Resource</Filter>
     </ClInclude>
@@ -276,9 +282,6 @@
     <ClInclude Include="FilledRectangle.h">
       <Filter>test\temp\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>test\temp\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="Entity.h">
       <Filter>test\temp\Graphics</Filter>
     </ClInclude>
@@ -286,9 +289,6 @@
       <Filter>test\temp\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="QuadTree.h">
-      <Filter>test\temp\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Sprite.h">
       <Filter>test\temp\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="MultiSprite.h">
@@ -312,15 +312,6 @@
     <ClInclude Include="EngineConfig.h">
       <Filter>engine\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Mesh2D.h">
-      <Filter>test\temp\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="Renderable.h">
-      <Filter>test\temp\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="OGLCasheBinder.h">
-      <Filter>engine\Render</Filter>
-    </ClInclude>
     <ClInclude Include="CoreMath.h">
       <Filter>engine\Math</Filter>
     </ClInclude>
@@ -329,6 +320,36 @@
     </ClInclude>
     <ClInclude Include="RenderSystem.h">
       <Filter>engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLStateCache.h">
+      <Filter>engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="MicroGraphics.h">
+      <Filter>game\1BitRoguelike\microFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="tSprite.h">
+      <Filter>test\temp\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="tVertex.h">
+      <Filter>test\temp\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="tRenderable.h">
+      <Filter>test\temp\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderable.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="tCamera.h">
+      <Filter>test\temp\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera2D.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>engine\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

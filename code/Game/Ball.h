@@ -28,7 +28,7 @@ public:
     float GetRadius() { return mRadius; }
     void Update(float dt) override;
     bool CheckCollisions(glm::vec2& newPos);
-    Renderable* GetRenderable() { return &mSprite; }
+    tRenderable* GetRenderable() { return &mSprite; }
     void SetColor(const Color& color)
     {
         mSprite.SetColor(color);

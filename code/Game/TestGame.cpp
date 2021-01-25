@@ -23,7 +23,7 @@ public:
         m_Type = BRICK;
         mSprite.SetPos(m_Pos, 1.0f);
     }
-    Renderable* GetRenderable() { return &mSprite; }
+    tRenderable* GetRenderable() { return &mSprite; }
 
 private:
     Sprite mSprite;
@@ -39,7 +39,7 @@ public:
         m_Type = FLOOR;
         mSprite.SetPos(m_Pos, -1.0);
     }
-    Renderable* GetRenderable() { return &mSprite; }
+    tRenderable* GetRenderable() { return &mSprite; }
 
 private:
     Sprite mSprite;
@@ -145,7 +145,7 @@ void Game::Init()
 	auto width = GetEngine().GetConfig().window.width;
 	auto height = GetEngine().GetConfig().window.height;
 
-    mCamera = Camera(width, height, 1.0f, 1.001f);
+    mCamera = tCamera(width, height, 1.0f, 1.001f);
 
 	QuadTree::Test();
 

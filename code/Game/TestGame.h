@@ -5,7 +5,7 @@
 #include "ShaderProgram.h"
 #include "Renderer.h"
 #include "Player.h"
-#include "Camera.h"
+#include "tCamera.h"
 
 class Game
 {
@@ -30,7 +30,7 @@ private:
 	Renderer mRenderer;
 
 	Player* mPlayer;
-	Camera mCamera;
+	tCamera mCamera;
 	std::vector<Entity*> mEntities;
 
 	unsigned mMapX, mMapY;

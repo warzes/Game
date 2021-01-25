@@ -1,9 +1,9 @@
 #pragma once
 #if EXAMPLE_TEST
-#include "Renderable.h"
+#include "tRenderable.h"
 #include "AABB.h"
 
-class Grid : public Renderable
+class Grid : public tRenderable
 {
 public:
 	Grid() {}

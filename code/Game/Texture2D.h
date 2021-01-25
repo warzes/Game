@@ -11,6 +11,8 @@ public:
 	// texture image dimensions
 	unsigned int Width = 0;               // width of loaded image in pixels
 	unsigned int Height = 0;              // height of loaded image in pixels
+
+	// TODO: код ниже возможно не нужно сохранять
 	// texture Format
 	unsigned int InternalFormat = GL_RGBA;// format of texture object
 	unsigned int ImageFormat = GL_RGBA;   // format of loaded image

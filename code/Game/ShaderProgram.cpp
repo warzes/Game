@@ -1,11 +1,11 @@
 #include "stdafx.h"
 #include "ShaderProgram.h"
 #include "OGLFunc.h"
-#include "OGLCasheBinder.h"
+#include "OpenGLStateCache.h"
 //-----------------------------------------------------------------------------
 void ShaderProgram::Bind() const
 {
-	OGLCasheBinder::Get().glUseProgram(ID);
+	OpenGLStateCache::Get().UseProgram(ID);
 }
 //-----------------------------------------------------------------------------
 void ShaderProgram::Compile(const char* vertexSource, const char* fragmentSource, const char* geometrySource)
@@ -46,6 +46,8 @@ void ShaderProgram::Compile(const char* vertexSource, const char* fragmentSource
 //-----------------------------------------------------------------------------
 void ShaderProgram::Destroy()
 {
+	// TODO:
+	glDeleteProgram(ID);
 }
 //-----------------------------------------------------------------------------
 void ShaderProgram::SetFloat(const char* name, float value)

@@ -1,10 +1,10 @@
 #pragma once
 #if EXAMPLE_TEST
 
-#include "Renderable.h"
+#include "tRenderable.h"
 #include "AABB.h"
 
-class Rectangle2 : public Renderable
+class Rectangle2 : public tRenderable
 {
 public:
 	Rectangle2() : m_UV(0, 0, 1, 1) {}

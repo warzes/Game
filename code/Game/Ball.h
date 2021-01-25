@@ -7,6 +7,7 @@ enum EntityType {
     NO_ENTITY,
     BALL,
     BRICK,
+    FLOOR,
     PLAYER
 };
 

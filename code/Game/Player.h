@@ -18,8 +18,8 @@ private:
     enum {
         F_DOWN,
         F_LEFT,
-        F_UP,
-        F_RIGHT
+        F_RIGHT,
+        F_UP       
     }; 
     enum {
         P_STOP,

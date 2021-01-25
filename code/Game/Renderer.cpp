@@ -119,7 +119,8 @@ void Renderer::BuildBatches()
     unsigned verticesOffs = 0, indexesOffs = 0;
     RenderBatch* batch = nullptr;
 
-    for (unsigned i = 0; i < mQueue.size(); i++) {
+    for (unsigned i = 0; i < mQueue.size(); i++) 
+    {
         if (lastDrawType != mQueue[i]->DrawType || lastTextureId != mQueue[i]->TextureId) {
             lastDrawType = mQueue[i]->DrawType;
             lastTextureId = mQueue[i]->TextureId;

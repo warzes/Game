@@ -8,9 +8,9 @@
 #include "Keyboard.h"
 #include <random>
 
-const int TSZ = 128;
-const int BSZ = 32;
-const int NUM_BALLS = 200;
+const int TSZ = 64;
+const int BSZ = 16;
+const int NUM_BALLS = 100;
 
 class Brick : public Entity 
 {
@@ -28,28 +28,48 @@ private:
     Sprite mSprite;
 };
 
+class Floor : public Entity
+{
+public:
+    Floor(float x, float y, float width, float height, unsigned texId)
+        : Entity(x, y, width, height)
+        , mSprite(width, height, texId)
+    {
+        m_Type = FLOOR;
+        mSprite.SetPos(m_Pos);
+    }
+    Renderable* GetRenderable() { return &mSprite; }
+
+private:
+    Sprite mSprite;
+};
+
 void Game::buildMap()
 {
-    std::string map = 
+
+    std::string map =
         "####################\n"
         "#                  #\n"
+        "#   # # ###  #  #  #\n"
+        "#   ### ##   #  #  #\n"
+        "#   # # ###  ## ## #\n"
         "#                  #\n"
-        "#   ####    ###### #\n"
-        "#   #            # #\n"
-        "#   ####         # #\n"
-        "#   #      ####### #\n"
-        "#   ####           #\n"
         "#                  #\n"
-        "#    #         #####\n"
-        "#                  #\n"
-        "#    ##            #\n"
-        "#            ###   #\n"
+        "#    #########     #\n"
+        "#            #     #\n"
+        "#    #########     #\n"
+        "#        #         #\n"
+        "#        #         #\n"
+        "#        #         #\n"
         "#                  #\n"
         "####################\n";
+
+
 
     unsigned x = 0, y = 0;
     mMapX = 0;
     Brick* brick;
+    Floor* floor;
 
     for (unsigned i = 0; i < map.size(); i++) 
     {
@@ -62,6 +82,9 @@ void Game::buildMap()
             x++;
             break;
         case ' ':
+            floor = new Floor(x * TSZ, y * TSZ, TSZ, TSZ, TextureManager::GetTexture("floor").ID);
+            mRenderer.Add(floor->GetRenderable());
+            mEntities.push_back(floor);
             x++;
             break;
         case '\n':
@@ -104,8 +127,9 @@ void Game::Init()
 
     shader = ShaderManager::LoadShader("../data/shaders/simple.vs", "../data/shaders/simple.fs", nullptr, "simple");
 
-    TextureManager::LoadTexture("../data/textures/circle.png", true, "circle");
-    TextureManager::LoadTexture("../data/textures/brick.png", true, "brick");
+    TextureManager::LoadTexture("../data/textures/floor1.png", true, "floor");
+    TextureManager::LoadTexture("../data/textures/block.png", true, "circle");
+    TextureManager::LoadTexture("../data/textures/brick1.png", true, "brick");
     TextureManager::LoadTexture("../data/textures/hero.png", true, "hero");
 
     mCamera.SetPos(width / 2, height / 2);
@@ -135,8 +159,8 @@ void Game::Init()
     }
 
     // Player
-    mPlayer = new Player(300, 300, 32, 64, TextureManager::GetTexture("hero").ID);
-    mPlayer->SetSpriteNumFrames(6, 4);
+    mPlayer = new Player(300, 300, 32, 32, TextureManager::GetTexture("hero").ID);
+    mPlayer->SetSpriteNumFrames(3, 4);
     mRenderer.Add(mPlayer->GetRenderable());
     mEntities.push_back(mPlayer);
 }

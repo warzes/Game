@@ -6,7 +6,7 @@
 
 Player::Player(float x, float y, float width, float height, unsigned texId)
     : Entity(x, y, width, height)
-    , mAnimSpeed(0.01f * 5000.0f)
+    , mAnimSpeed(0.01f * 2000.0f)
     , mSpeed(0.3f)
     , mSprite(width, height, texId)
 {
@@ -37,7 +37,7 @@ void Player::Update(float dt)
     velocity *= mSpeed;
 
     glm::vec2 pos = GetPos();
-    pos += velocity * dt * 5000.0f;
+    pos += velocity * dt * 2000.0f;
     CheckCollisions(pos);
 
     // this is too texture dependent    

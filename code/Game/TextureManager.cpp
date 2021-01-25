@@ -5,50 +5,52 @@
 #include <stb_image.h>
 #undef STB_IMAGE_IMPLEMENTATION
 //-----------------------------------------------------------------------------
-std::map<std::string, Texture2D> TextureManager::Textures;
+std::shared_ptr<TextureManager> TextureManager::m_instance = std::shared_ptr<TextureManager>();
 //-----------------------------------------------------------------------------
-Texture2D TextureManager::LoadTexture(const char* file, bool alpha, const std::string& name)
+std::shared_ptr<Texture2D> TextureManager::LoadTexture(const std::string& name, const char* fileTexture, bool alpha)
 {
-	Textures[name] = loadTextureFromFile(file, alpha);
-	return Textures[name];
+	// first check if texture has been loader already, if so; return earlier loaded texture
+	auto it = m_textures.find(name);
+	if (it != m_textures.end())
+		return it->second;
+
+	std::shared_ptr<Texture2D> texture(new Texture2D);
+	// Load image
+	loadTextureFromFile(texture, fileTexture, alpha);
+	// Store and return
+	m_textures[name] = texture;
+	return texture;
 }
 //-----------------------------------------------------------------------------
-Texture2D TextureManager::GetTexture(const std::string& name)
+std::shared_ptr<Texture2D> TextureManager::GetTexture(const std::string& name)
 {
-	return Textures[name];
+	auto it = m_textures.find(name);
+	if (it != m_textures.end())
+		return it->second;
+	else
+		return std::shared_ptr<Texture2D>();
 }
 //-----------------------------------------------------------------------------
 void TextureManager::Clear()
 {
-	for (auto iter : Textures)
-		glDeleteTextures(1, &iter.second.ID);
-	Textures.clear();
+	for (auto iter : m_textures)
+		iter.second->Delete();
+	m_textures.clear();
 }
 //-----------------------------------------------------------------------------
-Texture2D TextureManager::loadTextureFromFile(const char* file, bool alpha)
+void TextureManager::loadTextureFromFile(std::shared_ptr<Texture2D> outTexture, const char* file, bool alpha)
 {
-	int desired_channels = 0;
-	// create texture object
-	Texture2D texture;
-	if (alpha)
-	{
-		texture.Internal_Format = GL_RGBA;
-		texture.Image_Format = GL_RGBA;
-		desired_channels = STBI_rgb_alpha;
-	}
-	else
-	{
-		texture.Internal_Format = GL_RGB;
-		texture.Image_Format = GL_RGB;
-		desired_channels = STBI_rgb;
-	}
 	// load image
+	int desiredChannels = 0;
+	if (alpha)
+		desiredChannels = STBI_rgb_alpha;
+	else
+		desiredChannels = STBI_rgb;
 	int width, height, nrChannels;
-	unsigned char* data = stbi_load(file, &width, &height, &nrChannels, desired_channels);
+	unsigned char* data = stbi_load(file, &width, &height, &nrChannels, desiredChannels);
 	// now generate texture
-	texture.Generate(width, height, data);
+	outTexture->Generate(width, height, data, alpha);
 	// and finally free image data
 	stbi_image_free(data);
-	return texture;
 }
 //-----------------------------------------------------------------------------

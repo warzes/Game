@@ -41,6 +41,8 @@ SE_PRAGMA_WARNING_LEVEL(3)
 #include <set>
 #include <map>
 
+#include <memory>
+
 #if SE_PLATFORM_WINDOWS
 #	define WIN32_LEAN_AND_MEAN      // 
 #	define WIN32_EXTRA_LEAN         // 

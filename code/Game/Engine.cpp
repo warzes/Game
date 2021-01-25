@@ -2,6 +2,8 @@
 #include "Engine.h"
 #include "Keyboard.h"
 #include "Mouse.h"
+#include "TextureManager.h"
+#include "ShaderManager.h"
 //-----------------------------------------------------------------------------
 Engine& GetEngine()
 {
@@ -56,6 +58,8 @@ void Engine::EndFrame()
 //-----------------------------------------------------------------------------
 void Engine::close()
 {
+	TextureManager::Get()->Clear();
+	ShaderManager::Clear();
 	m_graphics.close();
 	m_window.close();
 }

@@ -5,18 +5,28 @@
 class TextureManager
 {
 public:
-	// loads (and generates) a texture from file
-	static Texture2D LoadTexture(const char* file, bool alpha, const std::string& name);
-	// retrieves a stored texture
-	static Texture2D GetTexture(const std::string& name);
+	// retrieves a single instance of this object
+	static std::shared_ptr<TextureManager> Get()
+	{
+		if (!m_instance)
+			m_instance = std::shared_ptr<TextureManager>(new TextureManager);
+		return m_instance;
+	}
 
-	static void Clear();
+	// loads a texture from file with a given name
+	std::shared_ptr<Texture2D> LoadTexture(const std::string& name, const char* fileTexture, bool alpha);
+	// retrieves a texture given its name if previously loaded 
+	std::shared_ptr<Texture2D> GetTexture(const std::string& name);
 
-	static std::map<std::string, Texture2D> Textures;
+	void Clear();
 
 private:
-	TextureManager() = delete;
+	TextureManager() = default;
 
 	// loads a single texture from file
-	static Texture2D loadTextureFromFile(const char* file, bool alpha);
+	void loadTextureFromFile(std::shared_ptr<Texture2D> outTexture, const char* file, bool alpha);
+
+	static std::shared_ptr<TextureManager> m_instance; // the specific singleton instance of the class
+
+	std::map<std::string, std::shared_ptr<Texture2D>> m_textures;
 };

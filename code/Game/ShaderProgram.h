@@ -5,10 +5,8 @@
 class ShaderProgram
 {
 public:
-	ShaderProgram();
-	~ShaderProgram();
-
 	void Compile(const char* vertexSource, const char* fragmentSource, const char* geometrySource = nullptr);
+	void Destroy();
 
 	void Bind() const;
 	

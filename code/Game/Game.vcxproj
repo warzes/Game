@@ -178,6 +178,7 @@
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="BallObject.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="OGLCasheBinder.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="FilledRectangle.cpp" />
     <ClCompile Include="GameBreakout.cpp" />
@@ -240,6 +241,7 @@
     <ClInclude Include="Mesh2D.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="MultiSprite.h" />
+    <ClInclude Include="OGLCasheBinder.h" />
     <ClInclude Include="OGLFunc.h" />
     <ClInclude Include="OGLGraphics.h" />
     <ClInclude Include="Particle.h" />

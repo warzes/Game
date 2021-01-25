@@ -111,6 +111,9 @@
     <ClCompile Include="Mesh2D.cpp">
       <Filter>test\temp\Render</Filter>
     </ClCompile>
+    <ClCompile Include="OGLCasheBinder.cpp">
+      <Filter>engine\Render</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -311,6 +314,9 @@
     </ClInclude>
     <ClInclude Include="Renderable.h">
       <Filter>test\temp\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="OGLCasheBinder.h">
+      <Filter>engine\Render</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

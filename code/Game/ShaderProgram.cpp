@@ -1,19 +1,11 @@
 #include "stdafx.h"
 #include "ShaderProgram.h"
 #include "OGLFunc.h"
-//-----------------------------------------------------------------------------
-ShaderProgram::ShaderProgram()
-{
-}
-//-----------------------------------------------------------------------------
-ShaderProgram::~ShaderProgram()
-{
-	//glDeleteProgram(ID);
-}
+#include "OGLCasheBinder.h"
 //-----------------------------------------------------------------------------
 void ShaderProgram::Bind() const
 {
-	glUseProgram(ID);
+	OGLCasheBinder::Get().glUseProgram(ID);
 }
 //-----------------------------------------------------------------------------
 void ShaderProgram::Compile(const char* vertexSource, const char* fragmentSource, const char* geometrySource)
@@ -50,6 +42,10 @@ void ShaderProgram::Compile(const char* vertexSource, const char* fragmentSource
 	glDeleteShader(sFragment);
 	if (geometrySource != nullptr)
 		glDeleteShader(gShader);
+}
+//-----------------------------------------------------------------------------
+void ShaderProgram::Destroy()
+{
 }
 //-----------------------------------------------------------------------------
 void ShaderProgram::SetFloat(const char* name, float value)

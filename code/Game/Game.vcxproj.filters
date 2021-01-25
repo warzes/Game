@@ -114,6 +114,12 @@
     <ClCompile Include="OGLCasheBinder.cpp">
       <Filter>engine\Render</Filter>
     </ClCompile>
+    <ClCompile Include="CoreMath.cpp">
+      <Filter>engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>engine\Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -317,6 +323,12 @@
     </ClInclude>
     <ClInclude Include="OGLCasheBinder.h">
       <Filter>engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreMath.h">
+      <Filter>engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="IntPoint.h">
+      <Filter>engine\Math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

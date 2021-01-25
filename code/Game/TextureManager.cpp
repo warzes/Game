@@ -5,8 +5,6 @@
 #include <stb_image.h>
 #undef STB_IMAGE_IMPLEMENTATION
 //-----------------------------------------------------------------------------
-std::shared_ptr<TextureManager> TextureManager::m_instance = std::shared_ptr<TextureManager>();
-//-----------------------------------------------------------------------------
 std::shared_ptr<Texture2D> TextureManager::LoadTexture(const std::string& name, const char* fileTexture, bool alpha)
 {
 	// first check if texture has been loader already, if so; return earlier loaded texture

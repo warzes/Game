@@ -58,7 +58,7 @@ void Engine::EndFrame()
 //-----------------------------------------------------------------------------
 void Engine::close()
 {
-	TextureManager::Get()->Clear();
+	TextureManager::Get().Clear();
 	ShaderManager::Clear();
 	m_graphics.close();
 	m_window.close();

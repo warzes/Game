@@ -6,11 +6,10 @@ class TextureManager
 {
 public:
 	// retrieves a single instance of this object
-	static std::shared_ptr<TextureManager> Get()
+	static TextureManager& Get() noexcept
 	{
-		if (!m_instance)
-			m_instance = std::shared_ptr<TextureManager>(new TextureManager);
-		return m_instance;
+		static TextureManager theInstance;
+		return theInstance;
 	}
 
 	// loads a texture from file with a given name
@@ -25,8 +24,6 @@ private:
 
 	// loads a single texture from file
 	void loadTextureFromFile(std::shared_ptr<Texture2D> outTexture, const char* file, bool alpha);
-
-	static std::shared_ptr<TextureManager> m_instance; // the specific singleton instance of the class
 
 	std::map<std::string, std::shared_ptr<Texture2D>> m_textures;
 };

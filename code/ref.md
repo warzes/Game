@@ -30,3 +30,10 @@ https://github.com/evanw/webgl-water
 
 https://www.youtube.com/watch?v=Ujkq0QqwWXk
 	объединие коммитов (уменьшение кол-ва)
+
+
+
+игры для идей
+https://www.youtube.com/c/nextProgram/videos
+https://www.youtube.com/channel/UCZDjQltHRNiXIYXMBeLDleA
+https://www.youtube.com/c/TiMerGames/videos

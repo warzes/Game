@@ -34,7 +34,7 @@ public:
 
 	int GetType() const { return m_Type; }
 
-	virtual void Update(unsigned ticks)
+	virtual void Update(float dt)
 	{
 	}
 

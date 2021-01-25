@@ -8,15 +8,15 @@ void Ball::SetPos(const glm::vec2& pos)
     mSprite.SetPos(pos);
 }
 
-void Ball::Update(unsigned ticks)
+void Ball::Update(float dt)
 {
     //SetPos(mX + mVelocity.x * ticks, mY + mVelocity.y * ticks);
     glm::vec2 pos = GetPos();
-    pos += m_Velocity * (float)ticks;
-    CheckCollisions(ticks, pos);
+    pos += m_Velocity * dt;
+    CheckCollisions(pos);
 }
 
-bool Ball::CheckCollisions(unsigned ticks, glm::vec2& newPos)
+bool Ball::CheckCollisions(glm::vec2& newPos)
 {
     auto& game = Game::Get();
 

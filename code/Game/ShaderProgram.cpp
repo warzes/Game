@@ -8,7 +8,7 @@ ShaderProgram::ShaderProgram()
 //-----------------------------------------------------------------------------
 ShaderProgram::~ShaderProgram()
 {
-	glDeleteProgram(ID);
+	//glDeleteProgram(ID);
 }
 //-----------------------------------------------------------------------------
 void ShaderProgram::Bind() const
@@ -20,12 +20,12 @@ void ShaderProgram::Compile(const char* vertexSource, const char* fragmentSource
 {
 	// vertex Shader
 	unsigned int sVertex = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(sVertex, 1, &vertexSource, NULL);
+	glShaderSource(sVertex, 1, &vertexSource, nullptr);
 	glCompileShader(sVertex);
 	checkCompileErrors(sVertex, "VERTEX");
 	// fragment Shader
 	unsigned int sFragment = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(sFragment, 1, &fragmentSource, NULL);
+	glShaderSource(sFragment, 1, &fragmentSource, nullptr);
 	glCompileShader(sFragment);
 	checkCompileErrors(sFragment, "FRAGMENT");
 	// if geometry shader source code is given, also compile geometry shader
@@ -33,7 +33,7 @@ void ShaderProgram::Compile(const char* vertexSource, const char* fragmentSource
 	if (geometrySource != nullptr)
 	{
 		gShader = glCreateShader(GL_GEOMETRY_SHADER);
-		glShaderSource(gShader, 1, &geometrySource, NULL);
+		glShaderSource(gShader, 1, &geometrySource, nullptr);
 		glCompileShader(gShader);
 		checkCompileErrors(gShader, "GEOMETRY");
 	}

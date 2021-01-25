@@ -6,7 +6,7 @@
 
 Player::Player(float x, float y, float width, float height, unsigned texId)
     : Entity(x, y, width, height)
-    , mAnimSpeed(0.01f)
+    , mAnimSpeed(0.01f * 5000.0f)
     , mSpeed(0.3f)
     , mSprite(width, height, texId)
 {
@@ -20,44 +20,30 @@ void Player::SetPos(const glm::vec2& pos)
     mSprite.SetPos(pos);
 }
 
-void Player::Update(unsigned ticks)
+void Player::Update(float dt)
 {
-    enum {
-        P_STOP,
-        P_WALK
-    };
-    enum {
-        F_DOWN,
-        F_LEFT,
-        F_UP,
-        F_RIGHT
-    };
-
     glm::vec2 velocity = glm::vec2(0);
 
 
-
-    if (Keyboard::Get().KeyPressed(Keyboard::KEY_W))
+    if (Keyboard::Get().KeyDown(Keyboard::KEY_W))
         velocity.y = 1;
-    else if (Keyboard::Get().KeyPressed(Keyboard::KEY_S))
+    else if (Keyboard::Get().KeyDown(Keyboard::KEY_S))
         velocity.y = -1;
-    if (Keyboard::Get().KeyPressed(Keyboard::KEY_A))
+    if (Keyboard::Get().KeyDown(Keyboard::KEY_A))
         velocity.x = -1;
-    else if (Keyboard::Get().KeyPressed(Keyboard::KEY_D))
+    else if (Keyboard::Get().KeyDown(Keyboard::KEY_D))
         velocity.x = 1;
 
     velocity *= mSpeed;
 
     glm::vec2 pos = GetPos();
-    pos += velocity * (float)ticks;
-    CheckCollisions(ticks, pos);
-    //SetPos(pos);
+    pos += velocity * dt * 5000.0f;
+    CheckCollisions(pos);
 
-    // this is too texture dependent
-    int pFace = F_DOWN,
-        pState = P_WALK;
+    // this is too texture dependent    
     static float frameX = 0;
 
+    pState = P_WALK;
     if (velocity.x < 0)
         pFace = F_LEFT;
     else if (velocity.x > 0)
@@ -69,7 +55,7 @@ void Player::Update(unsigned ticks)
     else
         pState = P_STOP;
 
-    frameX = pState * ((frameX + mAnimSpeed * ticks));
+    frameX = pState * ((frameX + mAnimSpeed * dt));
     if (frameX > 5.0f)
         frameX = 0;
 
@@ -79,7 +65,7 @@ void Player::Update(unsigned ticks)
         m_Velocity = velocity;
 }
 
-bool Player::CheckCollisions(unsigned ticks, glm::vec2& newPos)
+bool Player::CheckCollisions(glm::vec2& newPos)
 {
     bool collided = false;
 
@@ -97,7 +83,7 @@ bool Player::CheckCollisions(unsigned ticks, glm::vec2& newPos)
                 BrickCollision(newPos, entities[i]);
                 break;
             case BALL:
-                BallCollision(ticks, newPos, entities[i]);
+                BallCollision(newPos, entities[i]);
                 break;
             }
         }
@@ -126,7 +112,7 @@ void Player::BrickCollision(glm::vec2& newPos, Entity* brick)
         newPos.y -= depth.y;
 }
 
-void Player::BallCollision(unsigned ticks, glm::vec2& newPos, Entity* ball)
+void Player::BallCollision(glm::vec2& newPos, Entity* ball)
 {
     glm::vec2 depth = GetAABB().GetIntersectionDepth(ball->GetAABB());
 
@@ -139,7 +125,7 @@ void Player::BallCollision(unsigned ticks, glm::vec2& newPos, Entity* ball)
         ballNewPos.y += depth.y;
     }
     // check if pushed ball collides with something else
-    ((Ball*)ball)->CheckCollisions(ticks, ballNewPos);
+    ((Ball*)ball)->CheckCollisions(ballNewPos);
 
     if (GetAABB().Intersects(ball->GetAABB())) {
         // step back player

@@ -23,8 +23,8 @@ public:
     }
 
     float GetRadius() { return mRadius; }
-    void Update(unsigned ticks) override;
-    bool CheckCollisions(unsigned ticks, glm::vec2& newPos);
+    void Update(float dt) override;
+    bool CheckCollisions(glm::vec2& newPos);
     Renderable* GetRenderable() { return &mSprite; }
     void SetColor(const Color& color)
     {

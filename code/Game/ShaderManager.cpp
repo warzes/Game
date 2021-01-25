@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ShaderManager.h"
 #include "OGLFunc.h"
+#include "Log.h"
 //-----------------------------------------------------------------------------
 std::map<std::string, ShaderProgram> ShaderManager::Shaders;
 //-----------------------------------------------------------------------------
@@ -55,6 +56,19 @@ ShaderProgram ShaderManager::loadShaderFromFile(const char* vShaderFile, const c
 	{
 		std::cout << "ERROR::SHADER: Failed to read shader files" << std::endl;
 	}
+
+#if SE_LOG_SHADER_CODE
+	SE_LOG("VERTEX SHADER CODE:");
+	SE_LOG(vertexCode);
+	SE_LOG("FRAGMENT SHADER CODE:");
+	SE_LOG(fragmentCode);
+	if (gShaderFile != nullptr)
+	{
+		SE_LOG("GEOMETRY SHADER CODE:");
+		SE_LOG(geometryCode);
+	}
+#endif
+
 	const char* vShaderCode = vertexCode.c_str();
 	const char* fShaderCode = fragmentCode.c_str();
 	const char* gShaderCode = geometryCode.c_str();

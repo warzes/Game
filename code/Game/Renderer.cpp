@@ -169,7 +169,8 @@ void Renderer::Draw()
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, mIndexes.size() * sizeof(mIndexes[0]), &mIndexes[0], GL_DYNAMIC_DRAW);
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mIndexBuffer);
-    for (unsigned i = 0; i < mBatches.size(); i++) {
+    for (unsigned i = 0; i < mBatches.size(); i++) 
+    {
         GLuint drawType;
         switch (mBatches[i].drawType) {
         case D_POINTS:

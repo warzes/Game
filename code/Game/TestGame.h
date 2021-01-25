@@ -33,6 +33,6 @@ private:
 
 	unsigned mMapX, mMapY;
 
-	void CameraUpdate(unsigned ticks);
+	void CameraUpdate(float dt);
 	void buildMap();
 };

@@ -33,6 +33,7 @@ glm::mat4 Camera::GetMatrix()
 //-----------------------------------------------------------------------------
 void Camera::SetMatrix(unsigned int programId, const std::string& name)
 {
+	glUseProgram(programId);
 	// TODO:  delete?
 	GLint pLoc = glGetUniformLocation(programId, name.c_str());
 	if (m_Dirty)

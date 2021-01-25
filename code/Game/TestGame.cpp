@@ -56,7 +56,7 @@ void Game::buildMap()
         switch (map[i])
         {
         case '#':
-            brick = new Brick(x * TSZ, y * TSZ, TSZ, TSZ, TextureManager::GetTexture("background").ID);
+            brick = new Brick(x * TSZ, y * TSZ, TSZ, TSZ, TextureManager::GetTexture("brick").ID);
             mRenderer.Add(brick->GetRenderable());
             mEntities.push_back(brick);
             x++;
@@ -119,7 +119,8 @@ void Game::Init()
     std::normal_distribution<float> fgen(-1, 1);
 
     // Init balls
-    for (int i = 0; i < NUM_BALLS; i++) {
+    for (int i = 0; i < NUM_BALLS; i++) 
+    {
         float radius = BSZ / 2 + gen(rng) % BSZ / 2;
 
         Ball* ball = new Ball(
@@ -129,26 +130,24 @@ void Game::Init()
 
         ball->SetColor(Color(gen(rng), gen(rng), gen(rng), 200));
         ball->SetVelocity(glm::vec2(0.05f * fgen(rng), 0.05f * fgen(rng)));
-        // ball->SetVelocity(glm::vec2(0.0001f * fgen(rng), 0.0001f * fgen(rng)));
         mRenderer.Add(ball->GetRenderable());
         mEntities.push_back((Entity*)ball);
     }
 
     // Player
-    mPlayer = new Player(300, 300, 32, 64, TextureManager::GetTexture("player").ID);
+    mPlayer = new Player(300, 300, 32, 64, TextureManager::GetTexture("hero").ID);
     mPlayer->SetSpriteNumFrames(6, 4);
     mRenderer.Add(mPlayer->GetRenderable());
     mEntities.push_back(mPlayer);
 }
 
-void Game::CameraUpdate(unsigned ticks)
+void Game::CameraUpdate(float dt)
 {
-    // float speed = 0.3f * ticks;
-    float scaleSpeed = 1.0f + (float)ticks / 1000;
+    float scaleSpeed = 1.0f + dt;
 
-    if (Keyboard::Get().KeyPressed(Keyboard::KEY_Q))
+    if (Keyboard::Get().KeyDown(Keyboard::KEY_Q))
         mCamera.SetScale(mCamera.GetScale() * scaleSpeed);
-    else if (Keyboard::Get().KeyPressed(Keyboard::KEY_E))
+    else if (Keyboard::Get().KeyDown(Keyboard::KEY_E))
         mCamera.SetScale(mCamera.GetScale() / scaleSpeed);
 
     // Follow the player

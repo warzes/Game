@@ -9,9 +9,6 @@
     <ClCompile Include="Window.cpp">
       <Filter>engine\Platform</Filter>
     </ClCompile>
-    <ClCompile Include="OGLGraphics.cpp">
-      <Filter>engine\Render</Filter>
-    </ClCompile>
     <ClCompile Include="Texture2D.cpp">
       <Filter>engine\Render</Filter>
     </ClCompile>
@@ -120,6 +117,9 @@
     <ClCompile Include="Color.cpp">
       <Filter>engine\Math</Filter>
     </ClCompile>
+    <ClCompile Include="RenderSystem.cpp">
+      <Filter>engine\Render</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -196,9 +196,6 @@
     </ClInclude>
     <ClInclude Include="Window.h">
       <Filter>engine\Platform</Filter>
-    </ClInclude>
-    <ClInclude Include="OGLGraphics.h">
-      <Filter>engine\Render</Filter>
     </ClInclude>
     <ClInclude Include="Texture2D.h">
       <Filter>engine\Render</Filter>
@@ -329,6 +326,9 @@
     </ClInclude>
     <ClInclude Include="IntPoint.h">
       <Filter>engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem.h">
+      <Filter>engine\Render</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

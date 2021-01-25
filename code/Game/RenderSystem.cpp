@@ -1,24 +1,24 @@
 #include "stdafx.h"
-#include "OGLGraphics.h"
+#include "RenderSystem.h"
 #include "Window.h"
 #include "WGLFunc.h"
 #include "Engine.h"
 
-OGLGraphics::~OGLGraphics()
+RenderSystem::~RenderSystem()
 {
 	if (m_isInit)
 		close();
 }
 
 #if SE_PLATFORM_WINDOWS
-bool OGLGraphics::Init(HWND hwnd, const GraphicsConfig& config)
+bool RenderSystem::Init(HWND hwnd, const GraphicsConfig& config)
 #endif
 {
 #if SE_PLATFORM_WINDOWS
 	m_hwnd = hwnd;
 	m_openGLMajorVersion = config.OpenGLMajorVersion;
 	m_openGLMinorVersion = config.OpenGLMinorVersion;
-	m_clearColor = config.ClearColor;
+	m_clearColor = LinearColor{ config.ClearColor };
 
 	if (!(m_deviceContext = GetDC(hwnd)))
 		throw std::runtime_error("GetDC() failed: Can not create context.");
@@ -112,31 +112,31 @@ bool OGLGraphics::Init(HWND hwnd, const GraphicsConfig& config)
 	return true;
 }
 
-void OGLGraphics::BeginFrame()
+void RenderSystem::BeginFrame()
 {
 	static const auto& windowConfig = GetEngine().GetConfig().window;
 
 	glViewport(0, 0, windowConfig.width, windowConfig.height);
-	glClearColor(m_clearColor.r / 255.0f, m_clearColor.g / 255.0f, m_clearColor.b / 255.0f, 1.0f);
+	glClearColor(m_clearColor.r, m_clearColor.g, m_clearColor.b, 1.0f);
 	glClearDepth(1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 }
 
-void OGLGraphics::EndFrame()
+void RenderSystem::EndFrame()
 {
 #if SE_PLATFORM_WINDOWS
 	SwapBuffers(m_deviceContext);
 #endif
 }
 
-void OGLGraphics::SetVsync()
+void RenderSystem::SetVsync()
 {
 	// TODO:
 	if (wglSwapIntervalEXT)
 		wglSwapIntervalEXT(1);
 }
 
-void OGLGraphics::close()
+void RenderSystem::close()
 {
 	if (m_deviceContext)
 	{

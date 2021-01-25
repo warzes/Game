@@ -39,7 +39,7 @@ private:
 
 	EngineConfig m_config;
 	Window m_window;
-	OGLGraphics m_graphics;
+	RenderSystem m_graphics;
 	bool m_isEnd = false;
 	bool m_isRun = false;
 };

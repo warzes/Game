@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Window.h"
-#include "OGLGraphics.h"
+#include "RenderSystem.h"
 
 struct EngineConfig
 {

@@ -194,7 +194,7 @@
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="MultiSprite.cpp" />
     <ClCompile Include="OGLFunc.cpp" />
-    <ClCompile Include="OGLGraphics.cpp" />
+    <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PostProcessor.cpp" />
@@ -247,7 +247,7 @@
     <ClInclude Include="MultiSprite.h" />
     <ClInclude Include="OGLCasheBinder.h" />
     <ClInclude Include="OGLFunc.h" />
-    <ClInclude Include="OGLGraphics.h" />
+    <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PostProcessor.h" />

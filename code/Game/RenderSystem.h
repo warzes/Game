@@ -8,10 +8,10 @@ struct GraphicsConfig
 	int OpenGLMajorVersion = 4;
 	int OpenGLMinorVersion = 6;
 
-	Color ClearColor = { 0.129f*255.0f, 0.586f * 255.0f, 0.949f * 255.0f, 255.0f };
+	Color ClearColor = { 0.129f*255.0f, 0.586f * 255.0f, 0.949f * 255.0f, 255 };
 };
 
-class OGLGraphics
+class RenderSystem
 {
 	friend class Engine;
 public:
@@ -25,12 +25,12 @@ public:
 	void SetVsync();
 
 private:
-	OGLGraphics() = default;
-	OGLGraphics(const OGLGraphics&) = delete;
-	OGLGraphics(OGLGraphics&&) = delete;
-	OGLGraphics& operator=(const OGLGraphics&) = delete;
-	OGLGraphics& operator=(OGLGraphics&&) = delete;
-	~OGLGraphics();
+	RenderSystem() = default;
+	RenderSystem(const RenderSystem&) = delete;
+	RenderSystem(RenderSystem&&) = delete;
+	RenderSystem& operator=(const RenderSystem&) = delete;
+	RenderSystem& operator=(RenderSystem&&) = delete;
+	~RenderSystem();
 
 	void close();
 
@@ -42,11 +42,11 @@ private:
 
 	int m_openGLMajorVersion = 0;
 	int m_openGLMinorVersion = 0;
-	Color m_clearColor;
+	LinearColor m_clearColor;
 
 	// TODO:
 	static const int BEST_ANTI_ALIASING_SAMPLES = -1;
-	int m_antiAliasingSamples = 0;
+	int m_antiAliasingSamples = BEST_ANTI_ALIASING_SAMPLES;
 	// TODO END
 
 	bool m_isInit = false;

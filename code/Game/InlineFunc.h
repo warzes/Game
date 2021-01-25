@@ -7,3 +7,9 @@ inline constexpr Result function_cast(Original fptr) noexcept
 {
 	return reinterpret_cast<Result>(reinterpret_cast<void*>(fptr));
 }
+
+template <typename T, size_t N>
+constexpr size_t countof(T const (&)[N]) noexcept
+{
+	return N;
+}

@@ -13,10 +13,11 @@
 namespace
 {
 	// TODO: повтор
-	WNDCLASSEX g_wcl;
-	HWND g_hWnd;
-	HDC g_hDC;
-	HGLRC g_hRC;
+	const wchar_t* DummyGLWindowClass = L"DummyGLWindowClass";
+	HINSTANCE gInstance = nullptr;
+	HWND g_hWnd = nullptr;
+	HDC g_hDC = nullptr;
+	HGLRC g_hRC = nullptr;
 	char g_szAAPixelFormat[32];
 
 	LRESULT CALLBACK DummyGLWndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -24,8 +25,6 @@ namespace
 		switch (msg)
 		{
 		case WM_CREATE:
-			if (!(g_hDC = GetDC(hWnd)))
-				return -1;
 			break;
 
 		case WM_DESTROY:
@@ -54,22 +53,23 @@ namespace
 
 	bool CreateDummyGLWindow()
 	{
-		g_wcl.cbSize = sizeof(g_wcl);
-		g_wcl.style = CS_OWNDC;
-		g_wcl.lpfnWndProc = DummyGLWndProc;
-		g_wcl.hInstance = reinterpret_cast<HINSTANCE>(GetModuleHandle(0));
-		g_wcl.lpszClassName = L"DummyGLWindowClass";
+		gInstance = reinterpret_cast<HINSTANCE>(GetModuleHandle(0));
 
-		if (!RegisterClassEx(&g_wcl))
+		WNDCLASSEX wcl = { 0 };
+		wcl.cbSize = sizeof(wcl);
+		wcl.style = CS_OWNDC;
+		wcl.lpfnWndProc = DummyGLWndProc;
+		wcl.hInstance = gInstance;
+		wcl.lpszClassName = DummyGLWindowClass;
+		if (!RegisterClassEx(&wcl))
 			return false;
 
-		g_hWnd = CreateWindow(g_wcl.lpszClassName, L"", WS_OVERLAPPEDWINDOW, 0, 0, 0, 0, 0, 0, g_wcl.hInstance, 0);
-
+		g_hWnd = CreateWindow(DummyGLWindowClass, L"", WS_OVERLAPPEDWINDOW, 0, 0, 0, 0, 0, 0, gInstance, 0);
 		if (!g_hWnd)
 			return false;
+		g_hDC = GetDC(g_hWnd);
 
 		PIXELFORMATDESCRIPTOR pfd = { 0 };
-
 		pfd.nSize = sizeof(pfd);
 		pfd.nVersion = 1;
 		pfd.dwFlags = PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL;
@@ -288,7 +288,7 @@ namespace
 			}
 		}
 
-		UnregisterClass(g_wcl.lpszClassName, g_wcl.hInstance);
+		UnregisterClass(DummyGLWindowClass, gInstance);
 	}
 
 	bool ExtensionSupported(const char* pszExtensionName)

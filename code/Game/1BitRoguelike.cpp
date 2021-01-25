@@ -6,7 +6,7 @@ EngineConfig Game::InitConfig()
 {
     EngineConfig config;
 
-    config.graphics.ClearColor = {0,0,0,0};
+    //config.graphics.ClearColor = {0,0,0,0};
 
     return config;
 }

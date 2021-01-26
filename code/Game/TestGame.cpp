@@ -2,7 +2,6 @@
 #if EXAMPLE_TEST
 #include "TestGame.h"
 #include "Engine.h"
-#include "tQuadTree.h"
 #include "Ball.h"
 #include "ShaderManager.h"
 #include "TextureManager.h"
@@ -26,8 +25,8 @@ public:
         : Entity(x, y, width, height)
         , mSprite(width, height, tex)
     {
-        m_Type = BRICK;
-        mSprite.SetPos(m_Pos.x, m_Pos.y, 1.0f);
+        m_type = BRICK;
+        mSprite.SetPos(m_pos.x, m_pos.y, 1.0f);
     }
     Renderable* GetRenderable() { return &mSprite; }
 
@@ -42,8 +41,8 @@ public:
         : Entity(x, y, width, height)
         , mSprite(width, height, tex)
     {
-        m_Type = FLOOR;
-        mSprite.SetPos(m_Pos.x, m_Pos.y, -1.0);
+        m_type = FLOOR;
+        mSprite.SetPos(m_pos.x, m_pos.y, -1.0);
     }
     Renderable* GetRenderable() { return &mSprite; }
 
@@ -152,8 +151,6 @@ void Game::Init()
 	auto height = GetEngine().GetConfig().window.height;
 
     mCamera = Camera2D(width, height, 1.0f, 1.001f);
-
-	QuadTree::Test();
 
     shader = ShaderManager::Get().LoadShader("simple", "../data/shaders/simple.vs", "../data/shaders/simple.fs", nullptr);
 

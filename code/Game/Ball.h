@@ -2,7 +2,7 @@
 
 #if EXAMPLE_TEST
 
-#include "tEntity.h"
+#include "Entity.h"
 #include "DrawSprite.h"
 
 enum EntityType {
@@ -21,7 +21,7 @@ public:
         , mRadius(radius)
         , mSprite(2 * radius, 2 * radius, tex)
     {
-        m_Type = BALL;
+        m_type = BALL;
         mSprite.SetPos(x, y);
     }
 

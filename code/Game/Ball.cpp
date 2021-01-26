@@ -5,14 +5,14 @@
 
 void Ball::SetPos(const glm::vec2& pos)
 {
-    m_Pos = pos;
+    m_pos = pos;
     mSprite.SetPos(pos.x, pos.y);
 }
 
 void Ball::Update(float dt)
 {
     glm::vec2 pos = GetPos();
-    pos += m_Velocity * dt;
+    pos += m_velocity * dt;
     CheckCollisions(pos);
 }
 
@@ -64,12 +64,14 @@ void Ball::BrickCollision(glm::vec2& newPos, Entity* brick)
     else if (pAABB.maxY > bAABB.minY && bAABB.minY > pAABB.minY)
         depth.y = pAABB.maxY - bAABB.minY;
 
-    if (fabs(depth.x) < fabs(depth.y)) {
-        m_Velocity.x *= -1;
+    if (fabs(depth.x) < fabs(depth.y)) 
+    {
+        m_velocity.x *= -1;
         newPos.x -= depth.x;
     }
-    else {
-        m_Velocity.y *= -1;
+    else
+    {
+        m_velocity.y *= -1;
         newPos.y -= depth.y;
     }
 }
@@ -79,8 +81,8 @@ void Ball::BallCollision(glm::vec2& newPos, Ball* other)
     float oRadius = other->GetRadius();
     float minDist = mRadius + oRadius;
     const glm::vec2 v2Dist(
-        m_Pos.x + mRadius - (other->GetPos().x + oRadius),
-        m_Pos.y + mRadius - (other->GetPos().y + oRadius));
+        m_pos.x + mRadius - (other->GetPos().x + oRadius),
+        m_pos.y + mRadius - (other->GetPos().y + oRadius));
     float dist = glm::length(v2Dist);
 
     if (minDist < dist)
@@ -96,15 +98,15 @@ void Ball::BallCollision(glm::vec2& newPos, Ball* other)
 
     float arc = mRadius * mRadius * mRadius;
     float brc = oRadius * oRadius * oRadius;
-    glm::vec2 aVNew = m_Velocity * (arc - brc);
+    glm::vec2 aVNew = m_velocity * (arc - brc);
     aVNew = aVNew + other->GetVelocity() * (2 * brc);
     aVNew = aVNew / (arc + brc);
 
     glm::vec2 bVNew = other->GetVelocity() * (brc - arc);
-    bVNew = bVNew + m_Velocity * (2 * arc);
+    bVNew = bVNew + m_velocity * (2 * arc);
     bVNew = bVNew / (arc + brc);
 
-    m_Velocity = aVNew;
+    m_velocity = aVNew;
     other->SetVelocity(bVNew);
 }
 

@@ -6,6 +6,7 @@
 #include "Mesh.h"
 #include "Camera2D.h"
 #include "DrawSprite.h"
+#include "DrawGrid.h"
 
 class MicroGraphics
 {
@@ -18,6 +19,8 @@ private:
 	std::shared_ptr<ShaderProgram> m_shaders;
 	Mesh spriteMesh;
 	DrawSprite recta;
+	DrawGrid grid;
+
 };
 
 #endif

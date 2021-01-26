@@ -105,12 +105,6 @@
     <ClCompile Include="tPlayer.cpp">
       <Filter>test\temp</Filter>
     </ClCompile>
-    <ClCompile Include="tQuadTree.cpp">
-      <Filter>test\temp\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="tGrid.cpp">
-      <Filter>test\temp\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="GraphicsSystem.cpp">
       <Filter>engine\Graphics</Filter>
     </ClCompile>
@@ -121,6 +115,9 @@
       <Filter>engine\Graphics\DrawElements</Filter>
     </ClCompile>
     <ClCompile Include="DrawMultiSprite.cpp">
+      <Filter>engine\Graphics\DrawElements</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawGrid.cpp">
       <Filter>engine\Graphics\DrawElements</Filter>
     </ClCompile>
   </ItemGroup>
@@ -184,6 +181,9 @@
     </Filter>
     <Filter Include="engine\Graphics\DrawElements">
       <UniqueIdentifier>{882b4c6a-bd17-405c-9a72-8084e24ce07d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Scene">
+      <UniqueIdentifier>{4e5b8a27-a966-4c79-847d-3a97842e2751}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -315,15 +315,6 @@
     <ClInclude Include="tPlayer.h">
       <Filter>test\temp</Filter>
     </ClInclude>
-    <ClInclude Include="tQuadTree.h">
-      <Filter>test\temp\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="tGrid.h">
-      <Filter>test\temp\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="tEntity.h">
-      <Filter>test\temp\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="GraphicsSystem.h">
       <Filter>engine\Graphics</Filter>
     </ClInclude>
@@ -335,6 +326,12 @@
     </ClInclude>
     <ClInclude Include="DrawMultiSprite.h">
       <Filter>engine\Graphics\DrawElements</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawGrid.h">
+      <Filter>engine\Graphics\DrawElements</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>engine\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

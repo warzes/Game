@@ -11,13 +11,13 @@ Player::Player(float x, float y, float width, float height, std::shared_ptr<Text
     , mSpeed(0.3f)
     , mSprite(width, height, tex)
 {
-    m_Type = PLAYER;
-    mSprite.SetPos(m_Pos.x, m_Pos.y);
+    m_type = PLAYER;
+    mSprite.SetPos(m_pos.x, m_pos.y);
 }
 
 void Player::SetPos(const glm::vec2& pos)
 {
-    m_Pos = pos;
+    m_pos = pos;
     mSprite.SetPos(pos.x, pos.y);
 }
 
@@ -63,7 +63,7 @@ void Player::Update(float dt)
     mSprite.SetFrame(floor(frameX) + 1, pFace);
     // update velocity if is not 0 (so we keep track of previous one)
     if (velocity.x || velocity.y)
-        m_Velocity = velocity;
+        m_velocity = velocity;
 }
 
 bool Player::CheckCollisions(glm::vec2& newPos)

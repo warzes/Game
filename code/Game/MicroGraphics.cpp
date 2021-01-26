@@ -11,7 +11,9 @@ void MicroGraphics::Init()
 
 	TextureManager::Get().LoadTexture("floor", "../data/textures/floor1.png", true);
 
-	 recta = DrawSprite(0, 0, 128, 128, { 255,0,255,255 }, TextureManager::Get().GetTexture("floor"));
+	recta = DrawSprite(0, 0, 128, 128, { 255,0, 255, 255 }, TextureManager::Get().GetTexture("floor"));
+
+	grid = DrawGrid(0, 0, 256, 256, 32, { 255,0, 255, 255 });
 
 	if (recta.drawType == DrawType::Points)
 		spriteMesh.SetDrawType(GL_POINTS);
@@ -20,8 +22,9 @@ void MicroGraphics::Init()
 	if (recta.drawType == DrawType::Triangles)
 		spriteMesh.SetDrawType(GL_TRIANGLES);
 
-	spriteMesh.SetVertices(recta.vertices);
-	spriteMesh.SetIndexes(recta.indexes);
+	spriteMesh.SetDrawType(GL_LINES);
+	spriteMesh.SetVertices(grid.vertices);
+	spriteMesh.SetIndexes(grid.indexes);
 }
 
 void MicroGraphics::Render(Camera2D& camera)
@@ -29,7 +32,7 @@ void MicroGraphics::Render(Camera2D& camera)
 	m_shaders->Bind();
 	m_shaders->SetMatrix4("MVP", camera.GetMatrix());
 
-	recta.texture->Bind(0);
+	//recta.texture->Bind(0);
 	spriteMesh.Draw();
 }
 

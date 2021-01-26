@@ -2,7 +2,7 @@
 
 #if EXAMPLE_TEST
 
-#include "tEntity.h"
+#include "Entity.h"
 #include "DrawMultiSprite.h"
 
 class Player : public Entity 

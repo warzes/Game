@@ -189,7 +189,7 @@
     <ClCompile Include="GameBreakout.cpp" />
     <ClCompile Include="GameLevel.cpp" />
     <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="tGrid.cpp" />
+    <ClCompile Include="DrawGrid.cpp" />
     <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="main.cpp" />
@@ -200,7 +200,6 @@
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="tPlayer.cpp" />
     <ClCompile Include="PostProcessor.cpp" />
-    <ClCompile Include="tQuadTree.cpp" />
     <ClCompile Include="tRenderer.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
@@ -235,11 +234,11 @@
     <ClInclude Include="CoreMath.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="EngineConfig.h" />
-    <ClInclude Include="tEntity.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="Example.h" />
     <ClInclude Include="GameLevel.h" />
     <ClInclude Include="GameObject.h" />
-    <ClInclude Include="tGrid.h" />
+    <ClInclude Include="DrawGrid.h" />
     <ClInclude Include="InlineFunc.h" />
     <ClInclude Include="IntPoint.h" />
     <ClInclude Include="Keyboard.h" />
@@ -256,7 +255,6 @@
     <ClInclude Include="tPlayer.h" />
     <ClInclude Include="PostProcessor.h" />
     <ClInclude Include="PowerUp.h" />
-    <ClInclude Include="tQuadTree.h" />
     <ClInclude Include="tRenderer.h" />
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="ShaderProgram.h" />

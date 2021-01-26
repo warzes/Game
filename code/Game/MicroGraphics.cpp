@@ -23,16 +23,15 @@ void MicroGraphics::Init()
 		spriteMesh.SetDrawType(GL_TRIANGLES);
 
 	spriteMesh.SetDrawType(GL_LINES);
-	spriteMesh.SetVertices(grid.vertices);
-	spriteMesh.SetIndexes(grid.indexes);
+	spriteMesh.SetVertices(recta.vertices);
+	spriteMesh.SetIndexes(recta.indexes);
 }
 
 void MicroGraphics::Render(Camera2D& camera)
 {
 	m_shaders->Bind();
 	m_shaders->SetMatrix4("MVP", camera.GetMatrix());
-
-	//recta.texture->Bind(0);
+	recta.texture->Bind(0);
 	spriteMesh.Draw();
 }
 

@@ -200,7 +200,7 @@
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="tPlayer.cpp" />
     <ClCompile Include="PostProcessor.cpp" />
-    <ClCompile Include="tRenderer.cpp" />
+    <ClCompile Include="RenderBatcher.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="DrawSprite.cpp" />
@@ -255,7 +255,7 @@
     <ClInclude Include="tPlayer.h" />
     <ClInclude Include="PostProcessor.h" />
     <ClInclude Include="PowerUp.h" />
-    <ClInclude Include="tRenderer.h" />
+    <ClInclude Include="RenderBatcher.h" />
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="DrawSprite.h" />

@@ -99,9 +99,6 @@
     <ClCompile Include="MicroRoguelike.cpp">
       <Filter>game\1BitRoguelike</Filter>
     </ClCompile>
-    <ClCompile Include="tRenderer.cpp">
-      <Filter>test\temp</Filter>
-    </ClCompile>
     <ClCompile Include="tPlayer.cpp">
       <Filter>test\temp</Filter>
     </ClCompile>
@@ -119,6 +116,9 @@
     </ClCompile>
     <ClCompile Include="DrawGrid.cpp">
       <Filter>engine\Graphics\DrawElements</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderBatcher.cpp">
+      <Filter>engine\Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -172,9 +172,6 @@
     </Filter>
     <Filter Include="game\1BitRoguelike\microFramework">
       <UniqueIdentifier>{de365bcd-50dc-424e-8455-ec6ca80051a5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="test\temp\Graphics">
-      <UniqueIdentifier>{d38c068c-a6be-42fe-802f-ce43c46cd9ee}</UniqueIdentifier>
     </Filter>
     <Filter Include="engine\Graphics">
       <UniqueIdentifier>{e9f10251-8a3e-454c-b837-cf4aaea2459d}</UniqueIdentifier>
@@ -309,9 +306,6 @@
     <ClInclude Include="MicroRoguelike.h">
       <Filter>game\1BitRoguelike</Filter>
     </ClInclude>
-    <ClInclude Include="tRenderer.h">
-      <Filter>test\temp</Filter>
-    </ClInclude>
     <ClInclude Include="tPlayer.h">
       <Filter>test\temp</Filter>
     </ClInclude>
@@ -332,6 +326,9 @@
     </ClInclude>
     <ClInclude Include="Entity.h">
       <Filter>engine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderBatcher.h">
+      <Filter>engine\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

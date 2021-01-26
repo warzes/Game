@@ -87,6 +87,8 @@ void Game::buildMap()
             x++;
             break;
         case ' ':
+            floor = new Floor(x * TSZ, y * TSZ, TSZ, TSZ, TextureManager::Get().GetTexture("floor"));
+            mRenderer.Add(floor->GetRenderable());
             x++;
             break;
         case '\n':
@@ -98,32 +100,6 @@ void Game::buildMap()
             std::cout << "Unknown symbol: " << map[i] << " at " << x << ", " << y;
         }
     }
-    // кривой костыль, так как батчинг неправильно заполняется
-    {
-        x = 0, y = 0;
-        for (unsigned i = 0; i < map.size(); i++)
-        {
-            switch (map[i])
-            {
-            case '#':
-                x++;
-                break;
-            case ' ':
-                floor = new Floor(x * TSZ, y * TSZ, TSZ, TSZ, TextureManager::Get().GetTexture("floor"));
-                mRenderer.Add(floor->GetRenderable());
-                x++;
-                break;
-            case '\n':
-                mMapX = std::max(mMapX, x);
-                x = 0;
-                y++;
-                break;
-            default:
-                std::cout << "Unknown symbol: " << map[i] << " at " << x << ", " << y;
-            }
-        }
-    }  
-
 
     mMapY = y;
 }

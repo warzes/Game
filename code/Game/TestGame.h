@@ -4,7 +4,7 @@
 
 #include "EngineConfig.h"
 #include "ShaderProgram.h"
-#include "tRenderer.h"
+#include "RenderBatcher.h"
 #include "tPlayer.h"
 #include "Camera2D.h"
 
@@ -30,7 +30,7 @@ public:
 
 private:
 	std::shared_ptr<ShaderProgram> shader;
-	Renderer mRenderer;
+	RenderBatcher mRenderer;
 
 	Player* mPlayer;
 	Camera2D mCamera;

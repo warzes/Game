@@ -2,7 +2,6 @@
 
 #include "Vertex.h"
 #include "Texture2D.h"
-#include "ShaderProgram.h"
 
 enum class DrawType
 {
@@ -19,5 +18,4 @@ public:
 	std::vector<int> indexes;
 	DrawType drawType = DrawType::None;
 	std::shared_ptr<Texture2D> texture = nullptr;
-	std::shared_ptr<ShaderProgram> shaders = nullptr;
 };

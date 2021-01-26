@@ -3,7 +3,13 @@
 #if GAME_MICRO_ROGUE
 
 #include "EngineConfig.h"
-#include "MicroGraphics.h"
+#include "ShaderProgram.h"
+#include "Mesh.h"
+#include "Camera2D.h"
+#include "DrawSprite.h"
+#include "DrawGrid.h"
+#include "RenderBatcher.h"
+#include "DrawMultiSprite.h"
 #include "Camera2D.h"
 
 class Game
@@ -23,7 +29,10 @@ public:
 	void Close();
 
 private:
-	MicroGraphics m_graphics;
+	std::shared_ptr<ShaderProgram> m_shaders;
+	DrawSprite recta;
+	DrawMultiSprite mSprite;
+	RenderBatcher batcher;
 	Camera2D m_mainCamera;
 };
 

@@ -5,6 +5,7 @@
 class DrawMultiSprite : public DrawSprite 
 {
 public:
+	DrawMultiSprite() = default;
 	DrawMultiSprite(float width, float height, std::shared_ptr<Texture2D> tex);
 	DrawMultiSprite(float x, float y, float width, float height, const Color& color, std::shared_ptr<Texture2D> tex);
 	void SetNumFrames(int numX, int numY);

@@ -87,9 +87,6 @@
     <ClCompile Include="OpenGLStateCache.cpp">
       <Filter>engine\Render</Filter>
     </ClCompile>
-    <ClCompile Include="MicroGraphics.cpp">
-      <Filter>game\1BitRoguelike\microFramework</Filter>
-    </ClCompile>
     <ClCompile Include="Camera2D.cpp">
       <Filter>engine\Graphics</Filter>
     </ClCompile>
@@ -287,9 +284,6 @@
     </ClInclude>
     <ClInclude Include="OpenGLStateCache.h">
       <Filter>engine\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="MicroGraphics.h">
-      <Filter>game\1BitRoguelike\microFramework</Filter>
     </ClInclude>
     <ClInclude Include="Vertex.h">
       <Filter>engine\Graphics</Filter>

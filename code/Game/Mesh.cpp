@@ -93,8 +93,8 @@ void Mesh::update()
 		sizeof(m_vertices[0]), (void*)offsetof(Vertex3PCT, uv));
 
 	// Set Data
-	glBufferData(GL_ARRAY_BUFFER, m_vertices.size() * sizeof(m_vertices[0]), &m_vertices[0], /*GL_STATIC_DRAW*/GL_DYNAMIC_DRAW);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_indexes.size() * sizeof(m_indexes[0]), &m_indexes[0], /*GL_STATIC_DRAW*/GL_DYNAMIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, m_vertices.size() * sizeof(m_vertices[0]), &m_vertices[0], GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_indexes.size() * sizeof(m_indexes[0]), &m_indexes[0], GL_STATIC_DRAW);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);

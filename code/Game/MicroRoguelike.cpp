@@ -2,6 +2,9 @@
 #if GAME_MICRO_ROGUE
 #include "MicroRoguelike.h"
 #include "Engine.h"
+#include "ShaderManager.h"
+#include "TextureManager.h"
+#include "OGLFunc.h"
 
 EngineConfig Game::InitConfig()
 {
@@ -25,7 +28,21 @@ void Game::Init()
 
     m_mainCamera = Camera2D(width, height, 1.0f, 1.001f);
 
-    m_graphics.Init();
+    m_shaders = ShaderManager::Get().LoadShader("simple", "../data/shaders/simple.vs", "../data/shaders/simple.fs", nullptr);
+    TextureManager::Get().LoadTexture("floor", "../data/textures/floor1.png", true);
+    TextureManager::Get().LoadTexture("hero", "../data/textures/hero.png", true);
+
+    batcher.Init();
+
+    recta = DrawSprite(0, 0, 128, 128, { 255,0, 255, 255 }, TextureManager::Get().GetTexture("floor"));
+
+    mSprite = DrawMultiSprite(128, 128, TextureManager::Get().GetTexture("hero"));
+    mSprite.SetPos(0, 0);
+    mSprite.SetNumFrames(3, 4);
+    mSprite.SetFrame(1, 2);
+
+    batcher.Add(&recta);
+    batcher.Add(&mSprite);
 }
 
 
@@ -44,12 +61,14 @@ void Game::ProcessInput(float dt)
 
 void Game::Render()
 {
-    m_graphics.Render(m_mainCamera);
+    m_shaders->Bind();
+    m_shaders->SetMatrix4("MVP", m_mainCamera.GetMatrix());
+
+    batcher.Draw();
 }
 
 void Game::Close()
 {
-    m_graphics.Close();
 }
 
 #endif

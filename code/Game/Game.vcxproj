@@ -173,7 +173,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="1BitRoguelike.cpp" />
+    <ClCompile Include="MicroRoguelike.cpp" />
     <ClCompile Include="AABB.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="BallObject.cpp" />
@@ -223,7 +223,7 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="1BitRoguelike.h" />
+    <ClInclude Include="MicroRoguelike.h" />
     <ClInclude Include="AABB.h" />
     <ClInclude Include="Ball.h" />
     <ClInclude Include="BallObject.h" />

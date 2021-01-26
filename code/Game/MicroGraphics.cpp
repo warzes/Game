@@ -1,10 +1,11 @@
 #include "stdafx.h"
+#if GAME_MICRO_ROGUE
 #include "MicroGraphics.h"
 #include "ShaderManager.h"
 #include "TextureManager.h"
 #include "OGLFunc.h"
 
-дальше делать rectangleMesh, FilledRectangleMesh, SpriteMesh
+//дальше делать rectangleMesh, FilledRectangleMesh, SpriteMesh
 
 void MicroGraphics::Init()
 {
@@ -57,3 +58,5 @@ void MicroGraphics::Close()
 {
 	spriteMesh.Destroy();
 }
+
+#endif

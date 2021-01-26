@@ -13,6 +13,13 @@ const int TSZ = 64;
 const int BSZ = 16;
 const int NUM_BALLS = 100;
 
+EngineConfig Game::InitConfig()
+{
+    EngineConfig config;
+    //config.graphics.ClearColor = {0,0,0,0};
+    return config;
+}
+
 class Brick : public Entity 
 {
 public:
@@ -76,7 +83,7 @@ void Game::buildMap()
         switch (map[i])
         {
         case '#':
-            brick = new Brick(x * TSZ, y * TSZ, TSZ, TSZ, TextureManager::GetTexture("brick").ID);
+            brick = new Brick(x * TSZ, y * TSZ, TSZ, TSZ, TextureManager::Get().GetTexture("brick")->ID);
             mRenderer.Add(brick->GetRenderable());
             mEntities.push_back(brick);
             x++;
@@ -104,7 +111,7 @@ void Game::buildMap()
                 x++;
                 break;
             case ' ':
-                floor = new Floor(x * TSZ, y * TSZ, TSZ, TSZ, TextureManager::GetTexture("floor").ID);
+                floor = new Floor(x * TSZ, y * TSZ, TSZ, TSZ, TextureManager::Get().GetTexture("floor")->ID);
                 mRenderer.Add(floor->GetRenderable());
                 x++;
                 break;
@@ -149,12 +156,12 @@ void Game::Init()
 
 	QuadTree::Test();
 
-    shader = ShaderManager::LoadShader("../data/shaders/simple.vs", "../data/shaders/simple.fs", nullptr, "simple");
+    shader = ShaderManager::Get().LoadShader("simple", "../data/shaders/simple.vs", "../data/shaders/simple.fs", nullptr);
 
-    TextureManager::LoadTexture("../data/textures/floor1.png", true, "floor");
-    TextureManager::LoadTexture("../data/textures/block.png", true, "circle");
-    TextureManager::LoadTexture("../data/textures/brick1.png", true, "brick");
-    TextureManager::LoadTexture("../data/textures/hero.png", true, "hero");
+    TextureManager::Get().LoadTexture("floor","../data/textures/floor1.png", true);
+    TextureManager::Get().LoadTexture("circle", "../data/textures/block.png", true);
+    TextureManager::Get().LoadTexture("brick", "../data/textures/brick1.png", true);
+    TextureManager::Get().LoadTexture("hero", "../data/textures/hero.png", true);
 
     mCamera.SetPos(width / 2, height / 2);
 
@@ -174,7 +181,7 @@ void Game::Init()
         Ball* ball = new Ball(
             fgen(rng) + (1 + gen(rng) % (mMapX - 2)) * TSZ + radius,
             fgen(rng) + (1 + gen(rng) % (mMapY - 2)) * TSZ + radius,
-            radius, TextureManager::GetTexture("circle").ID);
+            radius, TextureManager::Get().GetTexture("circle")->ID);
 
         ball->SetColor(Color(gen(rng), gen(rng), gen(rng), 200));
         ball->SetVelocity(glm::vec2(0.05f * fgen(rng), 0.05f * fgen(rng)));
@@ -183,7 +190,7 @@ void Game::Init()
     }
 
     // Player
-    mPlayer = new Player(300, 300, 32, 32, TextureManager::GetTexture("hero").ID);
+    mPlayer = new Player(300, 300, 32, 32, TextureManager::Get().GetTexture("hero")->ID);
     mPlayer->SetSpriteNumFrames(3, 4);
     mRenderer.Add(mPlayer->GetRenderable());
     mEntities.push_back(mPlayer);
@@ -204,7 +211,7 @@ void Game::CameraUpdate(float dt)
         mPlayer->GetPos().y + mPlayer->GetHeight() / 2);
 
     // Send camera matrix to opengl
-    mCamera.SetMatrix(shader.ID, "MVP");
+    mCamera.SetMatrix(shader->ID, "MVP");
 }
 
 void Game::Update(float dt)

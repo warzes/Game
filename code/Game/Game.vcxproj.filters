@@ -96,9 +96,6 @@
     <ClCompile Include="Vector3.cpp">
       <Filter>engine\Math</Filter>
     </ClCompile>
-    <ClCompile Include="1BitRoguelike.cpp">
-      <Filter>game\1BitRoguelike</Filter>
-    </ClCompile>
     <ClCompile Include="CoreMath.cpp">
       <Filter>engine\Math</Filter>
     </ClCompile>
@@ -125,6 +122,9 @@
     </ClCompile>
     <ClCompile Include="Mesh.cpp">
       <Filter>engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="MicroRoguelike.cpp">
+      <Filter>game\1BitRoguelike</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -306,9 +306,6 @@
     <ClInclude Include="Vector3.h">
       <Filter>engine\Math</Filter>
     </ClInclude>
-    <ClInclude Include="1BitRoguelike.h">
-      <Filter>game\1BitRoguelike</Filter>
-    </ClInclude>
     <ClInclude Include="EngineConfig.h">
       <Filter>engine\Engine</Filter>
     </ClInclude>
@@ -350,6 +347,9 @@
     </ClInclude>
     <ClInclude Include="Mesh.h">
       <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="MicroRoguelike.h">
+      <Filter>game\1BitRoguelike</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

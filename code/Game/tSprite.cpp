@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #if EXAMPLE_TEST
-#include "Sprite.h"
+#include "tSprite.h"
 
 Sprite::Sprite(float x, float y, float width, float height, const Color& color, unsigned tex)
 	: FilledRectangle(x, y, width, height, color)

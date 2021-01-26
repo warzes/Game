@@ -3,7 +3,7 @@
 #if EXAMPLE_TEST
 
 #include "Entity.h"
-#include "Sprite.h"
+#include "tSprite.h"
 
 enum EntityType {
     NO_ENTITY,

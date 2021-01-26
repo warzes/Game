@@ -1,6 +1,6 @@
 #pragma once
 #if EXAMPLE_TEST
-#include "Sprite.h"
+#include "tSprite.h"
 
 class MultiSprite : public Sprite 
 {

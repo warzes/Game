@@ -1,9 +1,10 @@
 #pragma once
 
+#if GAME_MICRO_ROGUE
+
 #include "EngineConfig.h"
 #include "MicroGraphics.h"
 #include "Camera2D.h"
-
 
 class Game
 {
@@ -25,3 +26,5 @@ private:
 	MicroGraphics m_graphics;
 	Camera2D m_mainCamera;
 };
+
+#endif

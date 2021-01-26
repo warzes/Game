@@ -2,6 +2,7 @@
 
 #if EXAMPLE_TEST
 
+#include "EngineConfig.h"
 #include "ShaderProgram.h"
 #include "Renderer.h"
 #include "Player.h"
@@ -12,6 +13,8 @@ class Game
 public:
 	Game();
 	~Game();
+
+	EngineConfig InitConfig();
 
 	static Game& Get();
 
@@ -26,7 +29,7 @@ public:
 	std::vector<Entity*>& GetEntities() { return mEntities; }
 
 private:
-	ShaderProgram shader;
+	std::shared_ptr<ShaderProgram> shader;
 	Renderer mRenderer;
 
 	Player* mPlayer;

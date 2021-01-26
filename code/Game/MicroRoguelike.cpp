@@ -1,5 +1,6 @@
 #include "stdafx.h"
-#include "1BitRoguelike.h"
+#if GAME_MICRO_ROGUE
+#include "MicroRoguelike.h"
 #include "Engine.h"
 
 EngineConfig Game::InitConfig()
@@ -50,3 +51,5 @@ void Game::Close()
 {
     m_graphics.Close();
 }
+
+#endif

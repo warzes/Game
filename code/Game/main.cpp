@@ -6,7 +6,9 @@
 #if EXAMPLE_TEST
 #	include "TestGame.h"
 #endif
-#include "1BitRoguelike.h"
+#if GAME_MICRO_ROGUE
+#	include "MicroRoguelike.h"
+#endif
 #if SE_COMPILER_MSVC
 #   pragma comment(lib, "OpenGL32.lib")
 #	if EXAMPLE_BREAKOUT
@@ -155,15 +157,16 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char **argv)
 #endif
 
 	try
-	{	
-
+	{
 		Engine& engine = GetEngine();
 
 #if !EXAMPLE_TRIANGLE
 		Game game;
-#endif
-
 		if (engine.Init(game.InitConfig()))
+#else
+		EngineConfig config;
+		if (engine.Init(config))
+#endif
 		{
 #if EXAMPLE_TRIANGLE
 			initShader();

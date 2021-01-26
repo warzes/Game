@@ -29,6 +29,8 @@ public:
 	void Close();
 
 private:
+	void loadResource();
+
 	std::shared_ptr<ShaderProgram> m_shaders;
 	DrawSprite recta;
 	DrawMultiSprite mSprite;

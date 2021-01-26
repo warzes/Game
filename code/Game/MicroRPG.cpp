@@ -5,32 +5,31 @@
 #include "ShaderManager.h"
 #include "TextureManager.h"
 #include "OGLFunc.h"
-
+//-----------------------------------------------------------------------------
 EngineConfig Game::InitConfig()
 {
     EngineConfig config;
-    //config.graphics.ClearColor = {0,0,0,0};
+    config.graphics.ClearColor = {0,0,0,0};
     return config;
 }
-
+//-----------------------------------------------------------------------------
 Game::Game()
 {
 }
-
+//-----------------------------------------------------------------------------
 Game::~Game()
 {
 }
-
+//-----------------------------------------------------------------------------
 void Game::Init()
 {
     auto width = GetEngine().GetConfig().window.width;
     auto height = GetEngine().GetConfig().window.height;
 
-    m_mainCamera = Camera2D(width, height, 1.0f, 1.001f);
+    loadResource();
 
-    m_shaders = ShaderManager::Get().LoadShader("simple", "../data/shaders/simple.vs", "../data/shaders/simple.fs", nullptr);
-    TextureManager::Get().LoadTexture("floor", "../data/textures/floor1.png", true);
-    TextureManager::Get().LoadTexture("hero", "../data/textures/hero.png", true);
+    m_mainCamera = Camera2D(width, height, 1.0f, 1.001f);
+      
 
     batcher.Init();
 
@@ -44,8 +43,7 @@ void Game::Init()
     batcher.Add(&recta);
     batcher.Add(&mSprite);
 }
-
-
+//-----------------------------------------------------------------------------
 void Game::Update(float dt)
 {
     auto width = GetEngine().GetConfig().window.width;
@@ -54,11 +52,11 @@ void Game::Update(float dt)
     m_mainCamera.SetPos(0, 0);
     m_mainCamera.SetScale(1.0f);
 }
-
+//-----------------------------------------------------------------------------
 void Game::ProcessInput(float dt)
 {
 }
-
+//-----------------------------------------------------------------------------
 void Game::Render()
 {
     m_shaders->Bind();
@@ -66,9 +64,16 @@ void Game::Render()
 
     batcher.Draw();
 }
-
+//-----------------------------------------------------------------------------
 void Game::Close()
 {
 }
-
+//-----------------------------------------------------------------------------
+void Game::loadResource()
+{
+    m_shaders = ShaderManager::Get().LoadShader("simple", "../data/shaders/simple.vs", "../data/shaders/simple.fs", nullptr);
+    TextureManager::Get().LoadTexture("floor", "../data/textures/floor1.png", true);
+    TextureManager::Get().LoadTexture("hero", "../data/textures/hero.png", true);
+}
+//-----------------------------------------------------------------------------
 #endif

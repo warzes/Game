@@ -5,11 +5,11 @@
 #include "Keyboard.h"
 #include "TestGame.h"
 
-Player::Player(float x, float y, float width, float height, unsigned texId)
+Player::Player(float x, float y, float width, float height, std::shared_ptr<Texture2D> tex)
     : Entity(x, y, width, height)
     , mAnimSpeed(0.01f * 2000.0f)
     , mSpeed(0.3f)
-    , mSprite(width, height, texId)
+    , mSprite(width, height, tex)
 {
     m_Type = PLAYER;
     mSprite.SetPos(m_Pos);

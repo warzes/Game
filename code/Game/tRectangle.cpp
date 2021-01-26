@@ -10,9 +10,9 @@ Rectangle2::Rectangle2(float x, float y, float width, float height, const Color&
 	, m_Color(color)
 	, m_UV(0, 0, 1, 1)
 {
-	Vertices.resize(4);
-	Indexes = { LB, LT, LT, RT, RT, RB, RB, LB };
-	DrawType = D_LINES;
+	vertices.resize(4);
+	indexes = { LB, LT, LT, RT, RT, RB, RB, LB };
+	drawType = DrawType::Lines;
 	buildVertices();
 }
 //-----------------------------------------------------------------------------
@@ -51,18 +51,18 @@ void Rectangle2::SetUV(AABB uv)
 //-----------------------------------------------------------------------------
 void Rectangle2::buildVertices()
 {
-	Vertices[LB].SetPos(m_X, m_Y, m_z);
-	Vertices[LT].SetPos(m_X, m_Y + m_Height, m_z);
-	Vertices[RT].SetPos(m_X + m_Width, m_Y + m_Height, m_z);
-	Vertices[RB].SetPos(m_X + m_Width, m_Y, m_z);
+	vertices[LB].SetPos(m_X, m_Y, m_z);
+	vertices[LT].SetPos(m_X, m_Y + m_Height, m_z);
+	vertices[RT].SetPos(m_X + m_Width, m_Y + m_Height, m_z);
+	vertices[RB].SetPos(m_X + m_Width, m_Y, m_z);
 
-	for (size_t i = 0; i < Vertices.size(); i++)
-		Vertices[i].SetColor(m_Color);
+	for (size_t i = 0; i < vertices.size(); i++)
+		vertices[i].SetColor(m_Color);
 
-	Vertices[LB].SetUV(m_UV.minX, m_UV.minY);
-	Vertices[LT].SetUV(m_UV.minX, m_UV.maxY);
-	Vertices[RT].SetUV(m_UV.maxX, m_UV.maxY);
-	Vertices[RB].SetUV(m_UV.maxX, m_UV.minY);
+	vertices[LB].SetUV(m_UV.minX, m_UV.minY);
+	vertices[LT].SetUV(m_UV.minX, m_UV.maxY);
+	vertices[RT].SetUV(m_UV.maxX, m_UV.maxY);
+	vertices[RB].SetUV(m_UV.maxX, m_UV.minY);
 }
 //-----------------------------------------------------------------------------
 #endif

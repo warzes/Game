@@ -179,9 +179,6 @@
     <Filter Include="game\1BitRoguelike\microFramework">
       <UniqueIdentifier>{de365bcd-50dc-424e-8455-ec6ca80051a5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="test\temp\Render">
-      <UniqueIdentifier>{0bb3ec77-4a19-48c0-89cd-9a61a4ccb3bf}</UniqueIdentifier>
-    </Filter>
     <Filter Include="test\temp\Graphics">
       <UniqueIdentifier>{d38c068c-a6be-42fe-802f-ce43c46cd9ee}</UniqueIdentifier>
     </Filter>
@@ -299,9 +296,6 @@
     </ClInclude>
     <ClInclude Include="tSprite.h">
       <Filter>test\temp\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="tRenderable.h">
-      <Filter>test\temp\Render</Filter>
     </ClInclude>
     <ClInclude Include="Vertex.h">
       <Filter>engine\Graphics</Filter>

@@ -22,14 +22,14 @@ EngineConfig Game::InitConfig()
 class Brick : public Entity 
 {
 public:
-    Brick(float x, float y, float width, float height, unsigned texId)
+    Brick(float x, float y, float width, float height, std::shared_ptr<Texture2D> tex)
         : Entity(x, y, width, height)
-        , mSprite(width, height, texId)
+        , mSprite(width, height, tex)
     {
         m_Type = BRICK;
         mSprite.SetPos(m_Pos, 1.0f);
     }
-    tRenderable* GetRenderable() { return &mSprite; }
+    Renderable* GetRenderable() { return &mSprite; }
 
 private:
     Sprite mSprite;
@@ -38,14 +38,14 @@ private:
 class Floor : public Entity
 {
 public:
-    Floor(float x, float y, float width, float height, unsigned texId)
+    Floor(float x, float y, float width, float height, std::shared_ptr<Texture2D> tex)
         : Entity(x, y, width, height)
-        , mSprite(width, height, texId)
+        , mSprite(width, height, tex)
     {
         m_Type = FLOOR;
         mSprite.SetPos(m_Pos, -1.0);
     }
-    tRenderable* GetRenderable() { return &mSprite; }
+    Renderable* GetRenderable() { return &mSprite; }
 
 private:
     Sprite mSprite;
@@ -82,7 +82,7 @@ void Game::buildMap()
         switch (map[i])
         {
         case '#':
-            brick = new Brick(x * TSZ, y * TSZ, TSZ, TSZ, TextureManager::Get().GetTexture("brick")->ID);
+            brick = new Brick(x * TSZ, y * TSZ, TSZ, TSZ, TextureManager::Get().GetTexture("brick"));
             mRenderer.Add(brick->GetRenderable());
             mEntities.push_back(brick);
             x++;
@@ -110,7 +110,7 @@ void Game::buildMap()
                 x++;
                 break;
             case ' ':
-                floor = new Floor(x * TSZ, y * TSZ, TSZ, TSZ, TextureManager::Get().GetTexture("floor")->ID);
+                floor = new Floor(x * TSZ, y * TSZ, TSZ, TSZ, TextureManager::Get().GetTexture("floor"));
                 mRenderer.Add(floor->GetRenderable());
                 x++;
                 break;
@@ -180,7 +180,7 @@ void Game::Init()
         Ball* ball = new Ball(
             fgen(rng) + (1 + gen(rng) % (mMapX - 2)) * TSZ + radius,
             fgen(rng) + (1 + gen(rng) % (mMapY - 2)) * TSZ + radius,
-            radius, TextureManager::Get().GetTexture("circle")->ID);
+            radius, TextureManager::Get().GetTexture("circle"));
 
         ball->SetColor(Color(gen(rng), gen(rng), gen(rng), 200));
         ball->SetVelocity(glm::vec2(0.05f * fgen(rng), 0.05f * fgen(rng)));
@@ -189,7 +189,7 @@ void Game::Init()
     }
 
     // Player
-    mPlayer = new Player(300, 300, 32, 32, TextureManager::Get().GetTexture("hero")->ID);
+    mPlayer = new Player(300, 300, 32, 32, TextureManager::Get().GetTexture("hero"));
     mPlayer->SetSpriteNumFrames(3, 4);
     mRenderer.Add(mPlayer->GetRenderable());
     mEntities.push_back(mPlayer);

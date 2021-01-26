@@ -2,15 +2,15 @@
 #if EXAMPLE_TEST
 #include "tSprite.h"
 
-Sprite::Sprite(float x, float y, float width, float height, const Color& color, unsigned tex)
+Sprite::Sprite(float x, float y, float width, float height, const Color& color, std::shared_ptr<Texture2D> tex)
 	: FilledRectangle(x, y, width, height, color)
 {
-	TextureId = tex;
+	texture = tex;
 }
 
-Sprite::Sprite(float width, float height, unsigned tex)
+Sprite::Sprite(float width, float height, std::shared_ptr<Texture2D> tex)
 	: FilledRectangle(0, 0, width, height, Color(255, 255, 255, 255))
 {
-	TextureId = tex;
+	texture = tex;
 }
 #endif

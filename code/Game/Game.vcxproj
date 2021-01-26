@@ -259,7 +259,6 @@
     <ClInclude Include="PowerUp.h" />
     <ClInclude Include="tQuadTree.h" />
     <ClInclude Include="tRectangle.h" />
-    <ClInclude Include="tRenderable.h" />
     <ClInclude Include="tRenderer.h" />
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="ShaderProgram.h" />

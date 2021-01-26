@@ -2,14 +2,14 @@
 #if EXAMPLE_TEST
 #include "tMultiSprite.h"
 
-MultiSprite::MultiSprite(float x, float y, float width, float height, const Color& color, unsigned tex)
+MultiSprite::MultiSprite(float x, float y, float width, float height, const Color& color, std::shared_ptr<Texture2D> tex)
 	: Sprite(x, y, width, height, color, tex)
 	, mNumX(1)
 	, mNumY(1)
 {
 }
 
-MultiSprite::MultiSprite(float width, float height, unsigned tex)
+MultiSprite::MultiSprite(float width, float height, std::shared_ptr<Texture2D> tex)
 	: Sprite(width, height, tex)
 	, mNumX(1)
 	, mNumY(1)

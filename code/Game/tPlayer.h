@@ -8,13 +8,13 @@
 class Player : public Entity 
 {
 public:
-    Player(float x, float y, float width, float height, unsigned texId);
+    Player(float x, float y, float width, float height, std::shared_ptr<Texture2D> tex);
 
     void SetSpriteNumFrames(unsigned x, unsigned y) { mSprite.SetNumFrames(x, y); }
     void SetPos(const glm::vec2& pos);
 
     void Update(float dt) override;
-    tRenderable* GetRenderable() { return &mSprite; }
+    Renderable* GetRenderable() { return &mSprite; }
 
 private:
     enum {

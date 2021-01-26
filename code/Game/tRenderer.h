@@ -10,22 +10,22 @@ struct RenderBatch {
         numVertices; // offset in vertices buffer, number of vertices
     unsigned indexOffs, numIndexes; // offset in index buffer, number of indexes
     DrawType drawType; // draw type
-    GLuint textureId; // textureId if applicable
+    std::shared_ptr<Texture2D> texture; // textureId if applicable
 
-    RenderBatch() { textureId = 0; }
+    RenderBatch() { texture = nullptr; }
 
-    RenderBatch(unsigned verticesOffs, unsigned indexOffs, DrawType drawType, GLuint textureId)
+    RenderBatch(unsigned verticesOffs, unsigned indexOffs, DrawType drawType, std::shared_ptr<Texture2D> inTexture)
         : verticesOffs(verticesOffs)
         , numVertices(0)
         , indexOffs(indexOffs)
         , numIndexes(0)
         , drawType(drawType)
-        , textureId(textureId)
+        , texture(inTexture)
     {
     }
     bool operator==(const RenderBatch& other)
     {
-        return this->drawType == other.drawType && this->textureId == other.textureId;
+        return this->drawType == other.drawType && this->texture == other.texture;
     }
 };
 
@@ -34,8 +34,8 @@ public:
     Renderer();
     ~Renderer();
     void Init();
-    void Add(tRenderable* renderable);
-    bool Delete(tRenderable* renderable);
+    void Add(Renderable* renderable);
+    bool Delete(Renderable* renderable);
     void Clear();
     void Draw();
     void BuildBatches();
@@ -45,11 +45,11 @@ private:
     GLuint mVertexArray, mVertexBuffer, mIndexBuffer;
     std::vector<Vertex3PCT> mVertices;
     std::vector<int> mIndexes;
-    std::vector<tRenderable*> mQueue;
+    std::vector<Renderable*> mQueue;
     std::vector<RenderBatch> mBatches;
     bool mDirty;
 
-    RenderBatch* GetBatch(DrawType draqType, GLuint textureId, unsigned verticesOffs, unsigned indexesOffs);
+    RenderBatch* GetBatch(DrawType draqType, std::shared_ptr<Texture2D> tex, unsigned verticesOffs, unsigned indexesOffs);
     void PrintBatches();
 };
 

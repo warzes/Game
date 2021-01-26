@@ -4,9 +4,9 @@
 //-----------------------------------------------------------------------------
 FilledRectangle::FilledRectangle(float x, float y, float width, float height, const Color& color)
 {
-	Vertices.resize(4);
-	Indexes = { LB, LT, RT, RT, RB, LB };
-	DrawType = D_TRIANGLES;
+	vertices.resize(4);
+	indexes = { LB, LT, RT, RT, RB, LB };
+	drawType = DrawType::Triangles;
 	m_X = x;
 	m_Y = y;
 	m_Width = width;

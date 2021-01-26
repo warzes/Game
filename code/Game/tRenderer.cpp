@@ -57,16 +57,17 @@ Renderer::~Renderer()
     glDeleteBuffers(1, &mIndexBuffer);
 }
 
-void Renderer::Add(tRenderable* renderable)
+void Renderer::Add(Renderable* renderable)
 {
     mQueue.push_back(renderable);
     mDirty = true;
 }
 
-bool Renderer::Delete(tRenderable* renderable)
+bool Renderer::Delete(Renderable* renderable)
 {
     auto it = std::remove(mQueue.begin(), mQueue.end(), renderable);
-    if (it != mQueue.end()) {
+    if (it != mQueue.end())
+    {
         mQueue.erase(it);
         mDirty = true;
         return true;
@@ -78,15 +79,15 @@ bool Renderer::Delete(tRenderable* renderable)
  * Gets a batch having drawType and textureId.
  * If it cannot find one, will create one with given vertices indexes offsets
  */
-RenderBatch* Renderer::GetBatch(DrawType drawType, GLuint textureId, unsigned verticesOffs, unsigned indexesOffs)
+RenderBatch* Renderer::GetBatch(DrawType drawType, std::shared_ptr<Texture2D> tex, unsigned verticesOffs, unsigned indexesOffs)
 {
-    RenderBatch batch(verticesOffs, indexesOffs, drawType, textureId);
+    RenderBatch batch(verticesOffs, indexesOffs, drawType, tex);
     auto it = std::find(mBatches.begin(), mBatches.end(), batch);
 
     if (it == mBatches.end())
     {
         // std::cout << "new batch" << std::endl;
-        RenderBatch batch(verticesOffs, indexesOffs, drawType, textureId);
+        RenderBatch batch(verticesOffs, indexesOffs, drawType, tex);
         mBatches.push_back(batch);
         return &mBatches.back();
     }
@@ -116,29 +117,29 @@ void Renderer::BuildBatches()
     mIndexes.clear();
     mBatches.clear();
 
-    DrawType lastDrawType = D_NONE;
-    GLuint lastTextureId = 0;
+    DrawType lastDrawType = DrawType::None;
+    std::shared_ptr<Texture2D> lastTexture = nullptr;
     unsigned verticesOffs = 0, indexesOffs = 0;
     RenderBatch* batch = nullptr;
 
     for (unsigned i = 0; i < mQueue.size(); i++) 
     {
-        if (lastDrawType != mQueue[i]->DrawType || lastTextureId != mQueue[i]->TextureId) 
+        if (lastDrawType != mQueue[i]->drawType || lastTexture != mQueue[i]->texture)
         {
-            lastDrawType = mQueue[i]->DrawType;
-            lastTextureId = mQueue[i]->TextureId;
-            batch = GetBatch(lastDrawType, lastTextureId, verticesOffs, indexesOffs);
+            lastDrawType = mQueue[i]->drawType;
+            lastTexture = mQueue[i]->texture;
+            batch = GetBatch(lastDrawType, lastTexture, verticesOffs, indexesOffs);
         }
         unsigned indexGOffs = mVertices.size();
 
-        mVertices.insert(mVertices.end(), mQueue[i]->Vertices.begin(), mQueue[i]->Vertices.end());
-        verticesOffs += mQueue[i]->Vertices.size();
-        batch->numVertices += mQueue[i]->Vertices.size();
+        mVertices.insert(mVertices.end(), mQueue[i]->vertices.begin(), mQueue[i]->vertices.end());
+        verticesOffs += mQueue[i]->vertices.size();
+        batch->numVertices += mQueue[i]->vertices.size();
 
-        for (unsigned j = 0; j < mQueue[i]->Indexes.size(); j++)
-            mIndexes.emplace_back(indexGOffs + mQueue[i]->Indexes[j]);
-        indexesOffs += mQueue[i]->Indexes.size();
-        batch->numIndexes += mQueue[i]->Indexes.size();
+        for (unsigned j = 0; j < mQueue[i]->indexes.size(); j++)
+            mIndexes.emplace_back(indexGOffs + mQueue[i]->indexes[j]);
+        indexesOffs += mQueue[i]->indexes.size();
+        batch->numIndexes += mQueue[i]->indexes.size();
     }
     mDirty = false;
 }
@@ -150,8 +151,8 @@ void Renderer::RebuildVertices()
 {
     mVertices.clear();
     for (unsigned i = 0; i < mQueue.size(); i++)
-        for (unsigned j = 0; j < mQueue[i]->Vertices.size(); j++)
-            mVertices.emplace_back(mQueue[i]->Vertices[j]);
+        for (unsigned j = 0; j < mQueue[i]->vertices.size(); j++)
+            mVertices.emplace_back(mQueue[i]->vertices[j]);
 }
 
 /**
@@ -176,20 +177,21 @@ void Renderer::Draw()
     for (unsigned i = 0; i < mBatches.size(); i++) 
     {
         GLuint drawType;
-        switch (mBatches[i].drawType) {
-        case D_POINTS:
+        switch (mBatches[i].drawType) 
+        {
+        case DrawType::Points:
             drawType = GL_POINTS;
             break;
-        case D_LINES:
+        case DrawType::Lines:
             drawType = GL_LINES;
             break;
-        case D_TRIANGLES:
+        case DrawType::Triangles:
             drawType = GL_TRIANGLES;
             break;
         default:
             return;
         }
-        glBindTexture(GL_TEXTURE_2D, mBatches[i].textureId);
+        mBatches[i].texture->Bind(0);
         glDrawElements(drawType, mBatches[i].numIndexes, GL_UNSIGNED_INT, (void*)(mBatches[i].indexOffs * sizeof(int)));
     }
 }
@@ -197,8 +199,8 @@ void Renderer::Draw()
 void Renderer::PrintBatches()
 {
     for (unsigned i = 0; i < mBatches.size(); i++) {
-        std::cout << "dtype: " << (mBatches[i].drawType == D_LINES ? "lines" : "triangles")
-            << ", texture id: " << mBatches[i].textureId
+        std::cout << "dtype: " << (mBatches[i].drawType == DrawType::Lines ? "lines" : "triangles")
+            << ", texture id: " << mBatches[i].texture->ID
             << ", verticesOffs: " << mBatches[i].verticesOffs
             << ", numVertices: " << mBatches[i].numVertices
             << ", indexOffs: " << mBatches[i].indexOffs

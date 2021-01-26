@@ -16,10 +16,10 @@ enum EntityType {
 class Ball : public Entity 
 {
 public:
-    Ball(float x, float y, float radius, unsigned texId)
+    Ball(float x, float y, float radius, std::shared_ptr<Texture2D> tex)
         : Entity(x, y, 2 * radius, 2 * radius)
         , mRadius(radius)
-        , mSprite(2 * radius, 2 * radius, texId)
+        , mSprite(2 * radius, 2 * radius, tex)
     {
         m_Type = BALL;
         mSprite.SetPos(x, y);
@@ -28,7 +28,7 @@ public:
     float GetRadius() { return mRadius; }
     void Update(float dt) override;
     bool CheckCollisions(glm::vec2& newPos);
-    tRenderable* GetRenderable() { return &mSprite; }
+    Renderable* GetRenderable() { return &mSprite; }
     void SetColor(const Color& color)
     {
         mSprite.SetColor(color);

@@ -194,7 +194,7 @@
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mouse.cpp" />
-    <ClCompile Include="tMultiSprite.cpp" />
+    <ClCompile Include="DrawMultiSprite.cpp" />
     <ClCompile Include="OGLFunc.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="Particle.cpp" />
@@ -204,7 +204,7 @@
     <ClCompile Include="tRenderer.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
-    <ClCompile Include="tSprite.cpp" />
+    <ClCompile Include="DrawSprite.cpp" />
     <ClCompile Include="SpriteRenderer.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -247,7 +247,7 @@
     <ClInclude Include="Macros.h" />
     <ClInclude Include="MicroGraphics.h" />
     <ClInclude Include="Mouse.h" />
-    <ClInclude Include="tMultiSprite.h" />
+    <ClInclude Include="DrawMultiSprite.h" />
     <ClInclude Include="OpenGLStateCache.h" />
     <ClInclude Include="OGLFunc.h" />
     <ClInclude Include="Renderable.h" />
@@ -260,7 +260,7 @@
     <ClInclude Include="tRenderer.h" />
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="ShaderProgram.h" />
-    <ClInclude Include="tSprite.h" />
+    <ClInclude Include="DrawSprite.h" />
     <ClInclude Include="SpriteRenderer.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TestGame.h" />

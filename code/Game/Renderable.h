@@ -18,6 +18,6 @@ public:
 	std::vector<Vertex3PCT> vertices;
 	std::vector<int> indexes;
 	DrawType drawType = DrawType::None;
-	std::shared_ptr<Texture2D> texture;
-	std::shared_ptr<ShaderProgram> shaders;
+	std::shared_ptr<Texture2D> texture = nullptr;
+	std::shared_ptr<ShaderProgram> shaders = nullptr;
 };

@@ -3,7 +3,7 @@
 #if EXAMPLE_TEST
 
 #include "tEntity.h"
-#include "tSprite.h"
+#include "DrawSprite.h"
 
 enum EntityType {
     NO_ENTITY,
@@ -40,7 +40,7 @@ private:
     void BallCollision(glm::vec2& newPos, Ball* other);
 
     float mRadius;
-    Sprite mSprite;
+    DrawSprite mSprite;
 };
 
 #endif

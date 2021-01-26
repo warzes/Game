@@ -32,7 +32,7 @@ public:
     Renderable* GetRenderable() { return &mSprite; }
 
 private:
-    Sprite mSprite;
+    DrawSprite mSprite;
 };
 
 class Floor : public Entity
@@ -48,7 +48,7 @@ public:
     Renderable* GetRenderable() { return &mSprite; }
 
 private:
-    Sprite mSprite;
+    DrawSprite mSprite;
 };
 
 void Game::buildMap()

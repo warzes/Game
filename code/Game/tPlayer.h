@@ -3,7 +3,7 @@
 #if EXAMPLE_TEST
 
 #include "tEntity.h"
-#include "tMultiSprite.h"
+#include "DrawMultiSprite.h"
 
 class Player : public Entity 
 {
@@ -34,7 +34,7 @@ private:
 
     float mAnimSpeed;
     float mSpeed;
-    MultiSprite mSprite;
+    DrawMultiSprite mSprite;
 
     bool CheckCollisions(glm::vec2& newPos);
     void BrickCollision(glm::vec2& newPos, Entity* brick);

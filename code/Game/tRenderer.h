@@ -3,7 +3,7 @@
 #if EXAMPLE_TEST
 
 #include "tRectangle.h"
-#include "tVertex.h"
+#include "Vertex.h"
 
 struct RenderBatch {
     unsigned verticesOffs,

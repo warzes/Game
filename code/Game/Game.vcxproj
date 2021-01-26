@@ -173,13 +173,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GraphicsSystem.cpp" />
     <ClCompile Include="MicroRoguelike.cpp" />
     <ClCompile Include="AABB.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="BallObject.cpp" />
     <ClCompile Include="Camera2D.cpp" />
     <ClCompile Include="Mesh.cpp" />
-    <ClCompile Include="tCamera.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="CoreMath.cpp" />
     <ClCompile Include="MicroGraphics.cpp" />
@@ -223,13 +223,13 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GraphicsSystem.h" />
     <ClInclude Include="MicroRoguelike.h" />
     <ClInclude Include="AABB.h" />
     <ClInclude Include="Ball.h" />
     <ClInclude Include="BallObject.h" />
     <ClInclude Include="Camera2D.h" />
     <ClInclude Include="Mesh.h" />
-    <ClInclude Include="tCamera.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="CoreMath.h" />
@@ -272,7 +272,6 @@
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />
-    <ClInclude Include="tVertex.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="WGLFunc.h" />
     <ClInclude Include="Window.h" />

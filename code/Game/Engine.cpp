@@ -4,6 +4,7 @@
 #include "Mouse.h"
 #include "TextureManager.h"
 #include "ShaderManager.h"
+#include "GraphicsSystem.h"
 //-----------------------------------------------------------------------------
 Engine& GetEngine()
 {
@@ -25,6 +26,10 @@ bool Engine::Init(const EngineConfig& config)
 	if (!m_renderSystem.Init(m_window.GetHWND(), config.graphics))
 		return false;
 #endif
+
+	if (!GraphicsSystem::Get().Init())
+		return false;
+
 	m_isRun = true;
 	return true;
 }
@@ -51,13 +56,17 @@ void Engine::EndFrame()
 	if (m_isEnd) return;
 
 	if (m_window.hasWindowFocus)
+	{
+		GraphicsSystem::Get().Draw();
 		m_renderSystem.EndFrame();
+	}
 	else
 		::WaitMessage();
 }
 //-----------------------------------------------------------------------------
 void Engine::close()
 {
+	GraphicsSystem::Get().Close();
 	TextureManager::Get().Clear();
 	ShaderManager::Get().Clear();
 	m_renderSystem.Close();

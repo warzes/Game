@@ -1,7 +1,7 @@
 #pragma once
 
 #if EXAMPLE_TEST
-#include "tVertex.h"
+#include "Vertex.h"
 
 enum DrawType
 {

@@ -16,7 +16,6 @@ const int NUM_BALLS = 100;
 EngineConfig Game::InitConfig()
 {
     EngineConfig config;
-    //config.graphics.ClearColor = {0,0,0,0};
     return config;
 }
 
@@ -152,7 +151,7 @@ void Game::Init()
 	auto width = GetEngine().GetConfig().window.width;
 	auto height = GetEngine().GetConfig().window.height;
 
-    mCamera = tCamera(width, height, 1.0f, 1.001f);
+    mCamera = Camera2D(width, height, 1.0f, 1.001f);
 
 	QuadTree::Test();
 
@@ -210,8 +209,12 @@ void Game::CameraUpdate(float dt)
         mPlayer->GetPos().x + mPlayer->GetWidth() / 2,
         mPlayer->GetPos().y + mPlayer->GetHeight() / 2);
 
+    auto width = GetEngine().GetConfig().window.width;
+    auto height = GetEngine().GetConfig().window.height;
+    mCamera.SetScrDim(width, height);
+
     // Send camera matrix to opengl
-    mCamera.SetMatrix(shader->ID, "MVP");
+    shader->SetMatrix4("MVP", mCamera.GetMatrix());
 }
 
 void Game::Update(float dt)

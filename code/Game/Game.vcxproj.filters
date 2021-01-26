@@ -93,9 +93,6 @@
     <ClCompile Include="tSprite.cpp">
       <Filter>test\temp\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="tCamera.cpp">
-      <Filter>test\temp\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="Camera2D.cpp">
       <Filter>engine\Graphics</Filter>
     </ClCompile>
@@ -125,6 +122,9 @@
     </ClCompile>
     <ClCompile Include="tFilledRectangle.cpp">
       <Filter>test\temp\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsSystem.cpp">
+      <Filter>engine\Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -160,9 +160,6 @@
     </Filter>
     <Filter Include="test">
       <UniqueIdentifier>{becd53a5-5082-464f-a984-56e7c5c8e147}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="test\Core">
-      <UniqueIdentifier>{c47c75e3-39d9-4a26-ae62-50c0eb2d5f23}</UniqueIdentifier>
     </Filter>
     <Filter Include="test\Breakout">
       <UniqueIdentifier>{b2c53b8f-b7a1-4db1-8039-8f97be572a9e}</UniqueIdentifier>
@@ -303,9 +300,6 @@
     <ClInclude Include="tSprite.h">
       <Filter>test\temp\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="tVertex.h">
-      <Filter>test\temp\Render</Filter>
-    </ClInclude>
     <ClInclude Include="tRenderable.h">
       <Filter>test\temp\Render</Filter>
     </ClInclude>
@@ -314,9 +308,6 @@
     </ClInclude>
     <ClInclude Include="Renderable.h">
       <Filter>engine\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="tCamera.h">
-      <Filter>test\temp\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Camera2D.h">
       <Filter>engine\Graphics</Filter>
@@ -350,6 +341,9 @@
     </ClInclude>
     <ClInclude Include="tEntity.h">
       <Filter>test\temp\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsSystem.h">
+      <Filter>engine\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

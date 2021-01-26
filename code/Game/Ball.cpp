@@ -6,7 +6,7 @@
 void Ball::SetPos(const glm::vec2& pos)
 {
     m_Pos = pos;
-    mSprite.SetPos(pos);
+    mSprite.SetPos(pos.x, pos.y);
 }
 
 void Ball::Update(float dt)

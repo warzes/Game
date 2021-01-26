@@ -173,6 +173,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DrawRectangle.cpp" />
     <ClCompile Include="GraphicsSystem.cpp" />
     <ClCompile Include="MicroRoguelike.cpp" />
     <ClCompile Include="AABB.cpp" />
@@ -201,7 +202,6 @@
     <ClCompile Include="tPlayer.cpp" />
     <ClCompile Include="PostProcessor.cpp" />
     <ClCompile Include="tQuadTree.cpp" />
-    <ClCompile Include="tRectangle.cpp" />
     <ClCompile Include="tRenderer.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
@@ -223,6 +223,7 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DrawRectangle.h" />
     <ClInclude Include="GraphicsSystem.h" />
     <ClInclude Include="MicroRoguelike.h" />
     <ClInclude Include="AABB.h" />
@@ -258,7 +259,6 @@
     <ClInclude Include="PostProcessor.h" />
     <ClInclude Include="PowerUp.h" />
     <ClInclude Include="tQuadTree.h" />
-    <ClInclude Include="tRectangle.h" />
     <ClInclude Include="tRenderer.h" />
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="ShaderProgram.h" />

@@ -12,13 +12,13 @@ Player::Player(float x, float y, float width, float height, std::shared_ptr<Text
     , mSprite(width, height, tex)
 {
     m_Type = PLAYER;
-    mSprite.SetPos(m_Pos);
+    mSprite.SetPos(m_Pos.x, m_Pos.y);
 }
 
 void Player::SetPos(const glm::vec2& pos)
 {
     m_Pos = pos;
-    mSprite.SetPos(pos);
+    mSprite.SetPos(pos.x, pos.y);
 }
 
 void Player::Update(float dt)

@@ -27,7 +27,7 @@ public:
         , mSprite(width, height, tex)
     {
         m_Type = BRICK;
-        mSprite.SetPos(m_Pos, 1.0f);
+        mSprite.SetPos(m_Pos.x, m_Pos.y, 1.0f);
     }
     Renderable* GetRenderable() { return &mSprite; }
 
@@ -43,7 +43,7 @@ public:
         , mSprite(width, height, tex)
     {
         m_Type = FLOOR;
-        mSprite.SetPos(m_Pos, -1.0);
+        mSprite.SetPos(m_Pos.x, m_Pos.y, -1.0);
     }
     Renderable* GetRenderable() { return &mSprite; }
 

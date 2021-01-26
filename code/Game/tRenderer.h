@@ -2,7 +2,7 @@
 
 #if EXAMPLE_TEST
 
-#include "tRectangle.h"
+#include"Renderable.h"
 #include "Vertex.h"
 
 struct RenderBatch {

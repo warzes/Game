@@ -35,7 +35,7 @@ glm::vec2 AABB::GetDistance(const AABB& other) const
 }
 //-----------------------------------------------------------------------------
 // Returns a vector of the intersected area of the two AABB Experimental.
-glm::vec2 AABB::GetIntersectionDepth(const AABB& other)
+glm::vec2 AABB::GetIntersectionDepth(const AABB& other) const
 {
 	glm::vec2 depth(GetWidth(), GetHeight()); // XXX to avoid 0 depth
 

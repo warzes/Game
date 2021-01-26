@@ -13,7 +13,7 @@ void MicroGraphics::Init()
 
 	TextureManager::Get().LoadTexture("floor", "../data/textures/floor1.png", true);
 
-	recta = DrawRectangle(0, 0, 128, 128, { 255,0,255,255 });
+	recta = DrawRectangle(0, 0, 128, 128, { 255,0,255,255 }, TypeDrawRectangle::Filled);
 
 	//enum
 	//{
@@ -42,7 +42,13 @@ void MicroGraphics::Init()
 	//Vertices[RT].SetUV(m_UV.maxX, m_UV.maxY);
 	//Vertices[RB].SetUV(m_UV.maxX, m_UV.minY);
 
-	spriteMesh.SetDrawType(GL_LINES);
+	if (recta.drawType == DrawType::Points)
+		spriteMesh.SetDrawType(GL_POINTS);
+	if (recta.drawType == DrawType::Lines)
+		spriteMesh.SetDrawType(GL_LINES);
+	if (recta.drawType == DrawType::Triangles)
+		spriteMesh.SetDrawType(GL_TRIANGLES);
+
 	spriteMesh.SetVertices(recta.vertices);
 	spriteMesh.SetIndexes(recta.indexes);
 }

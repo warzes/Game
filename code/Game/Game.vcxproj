@@ -186,7 +186,6 @@
     <ClCompile Include="MicroGraphics.cpp" />
     <ClCompile Include="OpenGLStateCache.cpp" />
     <ClCompile Include="Engine.cpp" />
-    <ClCompile Include="tFilledRectangle.cpp" />
     <ClCompile Include="GameBreakout.cpp" />
     <ClCompile Include="GameLevel.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -238,7 +237,6 @@
     <ClInclude Include="EngineConfig.h" />
     <ClInclude Include="tEntity.h" />
     <ClInclude Include="Example.h" />
-    <ClInclude Include="tFilledRectangle.h" />
     <ClInclude Include="GameLevel.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="tGrid.h" />

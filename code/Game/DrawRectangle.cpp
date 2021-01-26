@@ -2,16 +2,16 @@
 #include "DrawRectangle.h"
 
 //-----------------------------------------------------------------------------
-DrawRectangle::DrawRectangle(float x, float y, float width, float height, const Color& color)
+DrawRectangle::DrawRectangle(float x, float y, float width, float height, const Color& color, TypeDrawRectangle type)
 	: m_x(x)
 	, m_y(y)
 	, m_width(width)
 	, m_height(height)
 	, m_color(color)
+	, m_type(type)
 {
 	vertices.resize(4);
-	indexes = { LB, LT, LT, RT, RT, RB, RB, LB };
-	drawType = DrawType::Lines;
+	buildTypesAndIndexes();
 	buildVertices();
 }
 //-----------------------------------------------------------------------------
@@ -48,6 +48,13 @@ void DrawRectangle::SetUV(AABB uv)
 	buildVertices();
 }
 //-----------------------------------------------------------------------------
+void DrawRectangle::SetTypeForm(TypeDrawRectangle type)
+{
+	m_type = type;
+	buildTypesAndIndexes();
+	buildVertices();
+}
+//-----------------------------------------------------------------------------
 void DrawRectangle::buildVertices()
 {
 	vertices[LB].SetPos(m_x, m_y, m_z);
@@ -62,5 +69,25 @@ void DrawRectangle::buildVertices()
 	vertices[LT].SetUV(m_uv.minX, m_uv.maxY);
 	vertices[RT].SetUV(m_uv.maxX, m_uv.maxY);
 	vertices[RB].SetUV(m_uv.maxX, m_uv.minY);
+}
+//-----------------------------------------------------------------------------
+void DrawRectangle::buildTypesAndIndexes()
+{
+	indexes.clear();
+	if (m_type == TypeDrawRectangle::Points)
+	{
+		indexes = { LB, LT, RT, RB };
+		drawType = DrawType::Points;
+	}
+	else if (m_type == TypeDrawRectangle::Lines)
+	{
+		indexes = { LB, LT, LT, RT, RT, RB, RB, LB };
+		drawType = DrawType::Lines;
+	}
+	else if (m_type == TypeDrawRectangle::Filled)
+	{
+		indexes = { LB, LT, RT, RT, RB, LB };
+		drawType = DrawType::Triangles;
+	}
 }
 //-----------------------------------------------------------------------------

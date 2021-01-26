@@ -117,9 +117,6 @@
     <ClCompile Include="tGrid.cpp">
       <Filter>test\temp\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="tFilledRectangle.cpp">
-      <Filter>test\temp\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="GraphicsSystem.cpp">
       <Filter>engine\Graphics</Filter>
     </ClCompile>
@@ -328,9 +325,6 @@
       <Filter>test\temp\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="tGrid.h">
-      <Filter>test\temp\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="tFilledRectangle.h">
       <Filter>test\temp\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="tEntity.h">

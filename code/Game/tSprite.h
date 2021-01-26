@@ -2,9 +2,9 @@
 
 #if EXAMPLE_TEST
 
-#include "tFilledRectangle.h"
+#include "DrawRectangle.h"
 
-class Sprite : public FilledRectangle
+class Sprite : public DrawRectangle
 {
 public:
     Sprite(float x, float y, float width, float height, const Color& color, std::shared_ptr<Texture2D> tex);

@@ -167,9 +167,6 @@
     <Filter Include="engine\Engine">
       <UniqueIdentifier>{6afc63b2-c772-4d07-af79-da9ad02a846b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="game\1BitRoguelike\microFramework">
-      <UniqueIdentifier>{de365bcd-50dc-424e-8455-ec6ca80051a5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="engine\Graphics">
       <UniqueIdentifier>{e9f10251-8a3e-454c-b837-cf4aaea2459d}</UniqueIdentifier>
     </Filter>

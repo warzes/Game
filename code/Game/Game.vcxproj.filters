@@ -93,9 +93,6 @@
     <ClCompile Include="Mesh.cpp">
       <Filter>engine\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="MicroRoguelike.cpp">
-      <Filter>game\1BitRoguelike</Filter>
-    </ClCompile>
     <ClCompile Include="tPlayer.cpp">
       <Filter>test\temp</Filter>
     </ClCompile>
@@ -116,6 +113,9 @@
     </ClCompile>
     <ClCompile Include="RenderBatcher.cpp">
       <Filter>engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="MicroRPG.cpp">
+      <Filter>MicroRPG</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -161,9 +161,6 @@
     <Filter Include="game">
       <UniqueIdentifier>{ec7e6253-9eac-4cad-aba9-08a8042ec7c9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="game\1BitRoguelike">
-      <UniqueIdentifier>{bb39e346-e09e-4b57-af99-454a8415546b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="engine\Engine">
       <UniqueIdentifier>{6afc63b2-c772-4d07-af79-da9ad02a846b}</UniqueIdentifier>
     </Filter>
@@ -175,6 +172,12 @@
     </Filter>
     <Filter Include="engine\Scene">
       <UniqueIdentifier>{4e5b8a27-a966-4c79-847d-3a97842e2751}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MicroRPG">
+      <UniqueIdentifier>{bb39e346-e09e-4b57-af99-454a8415546b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MicroRPG\doc">
+      <UniqueIdentifier>{555d0e30-77a0-4d8e-874b-40c92f248a4a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -294,9 +297,6 @@
     <ClInclude Include="Mesh.h">
       <Filter>engine\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="MicroRoguelike.h">
-      <Filter>game\1BitRoguelike</Filter>
-    </ClInclude>
     <ClInclude Include="tPlayer.h">
       <Filter>test\temp</Filter>
     </ClInclude>
@@ -320,6 +320,9 @@
     </ClInclude>
     <ClInclude Include="RenderBatcher.h">
       <Filter>engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="MicroRPG.h">
+      <Filter>MicroRPG</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

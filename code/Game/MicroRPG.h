@@ -1,6 +1,6 @@
 #pragma once
 
-#if GAME_MICRO_ROGUE
+#if GAME_MICRO_RPG
 
 #include "EngineConfig.h"
 #include "ShaderProgram.h"

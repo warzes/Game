@@ -175,7 +175,7 @@
   <ItemGroup>
     <ClCompile Include="DrawRectangle.cpp" />
     <ClCompile Include="GraphicsSystem.cpp" />
-    <ClCompile Include="MicroRoguelike.cpp" />
+    <ClCompile Include="MicroRPG.cpp" />
     <ClCompile Include="AABB.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="BallObject.cpp" />
@@ -222,7 +222,7 @@
   <ItemGroup>
     <ClInclude Include="DrawRectangle.h" />
     <ClInclude Include="GraphicsSystem.h" />
-    <ClInclude Include="MicroRoguelike.h" />
+    <ClInclude Include="MicroRPG.h" />
     <ClInclude Include="AABB.h" />
     <ClInclude Include="Ball.h" />
     <ClInclude Include="BallObject.h" />

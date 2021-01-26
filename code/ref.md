@@ -1,3 +1,14 @@
+стиль платформера
+https://www.youtube.com/watch?v=MCsrzdgeEys
+https://www.youtube.com/watch?v=cwpRTnsJ4zE
+
+
+стиль рогалика/рпг
+https://www.youtube.com/watch?v=JNpLggefF2I
+https://www.youtube.com/watch?v=Fo0steHNKz4  - а идея - ферма слаймов в 2д?
+https://www.youtube.com/watch?v=TCZ8Tx085JU - совсем просто
+
+
 такой стиль для тестпроекта
 https://www.youtube.com/watch?v=B7UYWpCZlAg
 

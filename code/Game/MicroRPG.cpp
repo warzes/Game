@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#if GAME_MICRO_ROGUE
-#include "MicroRoguelike.h"
+#if GAME_MICRO_RPG
+#include "MicroRPG.h"
 #include "Engine.h"
 #include "ShaderManager.h"
 #include "TextureManager.h"

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #if EXAMPLE_TEST
-#include "Rectangle.h"
+#include "tRectangle.h"
 //-----------------------------------------------------------------------------
 Rectangle2::Rectangle2(float x, float y, float width, float height, const Color& color)
 	: m_X(x)

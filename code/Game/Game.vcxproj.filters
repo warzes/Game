@@ -69,28 +69,7 @@
     <ClCompile Include="AABB.cpp">
       <Filter>engine\Math</Filter>
     </ClCompile>
-    <ClCompile Include="Rectangle.cpp">
-      <Filter>test\temp\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="FilledRectangle.cpp">
-      <Filter>test\temp\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Grid.cpp">
-      <Filter>test\temp\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="QuadTree.cpp">
-      <Filter>test\temp\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="MultiSprite.cpp">
-      <Filter>test\temp\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Renderer.cpp">
-      <Filter>test\temp</Filter>
-    </ClCompile>
     <ClCompile Include="Ball.cpp">
-      <Filter>test\temp</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
       <Filter>test\temp</Filter>
     </ClCompile>
     <ClCompile Include="Vector3.cpp">
@@ -125,6 +104,27 @@
     </ClCompile>
     <ClCompile Include="MicroRoguelike.cpp">
       <Filter>game\1BitRoguelike</Filter>
+    </ClCompile>
+    <ClCompile Include="tRenderer.cpp">
+      <Filter>test\temp</Filter>
+    </ClCompile>
+    <ClCompile Include="tPlayer.cpp">
+      <Filter>test\temp</Filter>
+    </ClCompile>
+    <ClCompile Include="tRectangle.cpp">
+      <Filter>test\temp\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="tQuadTree.cpp">
+      <Filter>test\temp\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="tMultiSprite.cpp">
+      <Filter>test\temp\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="tGrid.cpp">
+      <Filter>test\temp\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="tFilledRectangle.cpp">
+      <Filter>test\temp\Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -276,31 +276,7 @@
     <ClInclude Include="AABB.h">
       <Filter>engine\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Rectangle.h">
-      <Filter>test\temp\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="FilledRectangle.h">
-      <Filter>test\temp\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>test\temp\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Grid.h">
-      <Filter>test\temp\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="QuadTree.h">
-      <Filter>test\temp\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="MultiSprite.h">
-      <Filter>test\temp\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Renderer.h">
-      <Filter>test\temp</Filter>
-    </ClInclude>
     <ClInclude Include="Ball.h">
-      <Filter>test\temp</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
       <Filter>test\temp</Filter>
     </ClInclude>
     <ClInclude Include="Vector3.h">
@@ -350,6 +326,30 @@
     </ClInclude>
     <ClInclude Include="MicroRoguelike.h">
       <Filter>game\1BitRoguelike</Filter>
+    </ClInclude>
+    <ClInclude Include="tRenderer.h">
+      <Filter>test\temp</Filter>
+    </ClInclude>
+    <ClInclude Include="tPlayer.h">
+      <Filter>test\temp</Filter>
+    </ClInclude>
+    <ClInclude Include="tRectangle.h">
+      <Filter>test\temp\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="tQuadTree.h">
+      <Filter>test\temp\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="tMultiSprite.h">
+      <Filter>test\temp\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="tGrid.h">
+      <Filter>test\temp\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="tFilledRectangle.h">
+      <Filter>test\temp\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="tEntity.h">
+      <Filter>test\temp\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

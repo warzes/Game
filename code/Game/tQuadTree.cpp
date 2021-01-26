@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #if EXAMPLE_TEST
-#include "QuadTree.h"
+#include "tQuadTree.h"
 
 // QTNode methods
 

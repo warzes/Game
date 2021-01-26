@@ -1,6 +1,6 @@
 #pragma once
 #if EXAMPLE_TEST
-#include "Rectangle.h"
+#include "tRectangle.h"
 
 class FilledRectangle : public Rectangle2
 {

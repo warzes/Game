@@ -2,7 +2,7 @@
 
 #if EXAMPLE_TEST
 
-#include "FilledRectangle.h"
+#include "tFilledRectangle.h"
 
 class Sprite : public FilledRectangle
 {

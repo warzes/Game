@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #if EXAMPLE_TEST
-#include "FilledRectangle.h"
+#include "tFilledRectangle.h"
 //-----------------------------------------------------------------------------
 FilledRectangle::FilledRectangle(float x, float y, float width, float height, const Color& color)
 {

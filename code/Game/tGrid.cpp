@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #if EXAMPLE_TEST
-#include "Grid.h"
+#include "tGrid.h"
 //-----------------------------------------------------------------------------
 Grid::Grid(float x, float y, float width, float height, int step, const Color& color)
 	: mX(x)

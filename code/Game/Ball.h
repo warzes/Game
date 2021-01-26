@@ -2,7 +2,7 @@
 
 #if EXAMPLE_TEST
 
-#include "Entity.h"
+#include "tEntity.h"
 #include "tSprite.h"
 
 enum EntityType {

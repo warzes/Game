@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #if EXAMPLE_TEST
-#include "Player.h"
+#include "tPlayer.h"
 #include "Ball.h"
 #include "Keyboard.h"
 #include "TestGame.h"

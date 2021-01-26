@@ -4,8 +4,8 @@
 
 #include "EngineConfig.h"
 #include "ShaderProgram.h"
-#include "Renderer.h"
-#include "Player.h"
+#include "tRenderer.h"
+#include "tPlayer.h"
 #include "tCamera.h"
 
 class Game

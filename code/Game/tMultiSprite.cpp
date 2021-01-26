@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #if EXAMPLE_TEST
-#include "MultiSprite.h"
+#include "tMultiSprite.h"
 
 MultiSprite::MultiSprite(float x, float y, float width, float height, const Color& color, unsigned tex)
 	: Sprite(x, y, width, height, color, tex)

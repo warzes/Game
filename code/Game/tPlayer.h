@@ -2,8 +2,8 @@
 
 #if EXAMPLE_TEST
 
-#include "Entity.h"
-#include "MultiSprite.h"
+#include "tEntity.h"
+#include "tMultiSprite.h"
 
 class Player : public Entity 
 {

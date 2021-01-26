@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #if EXAMPLE_TEST
-#include "Renderer.h"
+#include "tRenderer.h"
 #include "OGLFunc.h"
 
 Renderer::Renderer()

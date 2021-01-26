@@ -2,7 +2,7 @@
 #if EXAMPLE_TEST
 #include "TestGame.h"
 #include "Engine.h"
-#include "QuadTree.h"
+#include "tQuadTree.h"
 #include "Ball.h"
 #include "ShaderManager.h"
 #include "TextureManager.h"

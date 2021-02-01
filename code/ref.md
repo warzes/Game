@@ -1,4 +1,7 @@
+
+
 стиль платформера
+https://www.youtube.com/watch?v=TZl59AUXIGg  - такой же стиль
 https://www.youtube.com/watch?v=MCsrzdgeEys
 https://www.youtube.com/watch?v=cwpRTnsJ4zE
 

@@ -250,6 +250,7 @@
     <ClInclude Include="Renderable.h" />
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="Particle.h" />
+    <ClInclude Include="TileEd.h" />
     <ClInclude Include="tPlayer.h" />
     <ClInclude Include="PostProcessor.h" />
     <ClInclude Include="PowerUp.h" />

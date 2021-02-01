@@ -46,6 +46,11 @@ void TextureManager::loadTextureFromFile(std::shared_ptr<Texture2D> outTexture, 
 		desiredChannels = STBI_rgb;
 	int width, height, nrChannels;
 	unsigned char* data = stbi_load(file, &width, &height, &nrChannels, desiredChannels);
+	if (data == nullptr)
+		throw std::exception("Failed to load texture");
+	if (stbi_failure_reason())
+		std::cout << stbi_failure_reason();
+
 	// now generate texture
 	outTexture->Generate(width, height, data, alpha);
 	// and finally free image data

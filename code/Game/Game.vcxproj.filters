@@ -179,6 +179,9 @@
     <Filter Include="MicroRPG\doc">
       <UniqueIdentifier>{555d0e30-77a0-4d8e-874b-40c92f248a4a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Tools">
+      <UniqueIdentifier>{c6aebe86-4c61-4bf6-8a56-527f6d0b3d38}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -323,6 +326,9 @@
     </ClInclude>
     <ClInclude Include="MicroRPG.h">
       <Filter>MicroRPG</Filter>
+    </ClInclude>
+    <ClInclude Include="TileEd.h">
+      <Filter>Tools</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

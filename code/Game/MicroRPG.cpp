@@ -5,11 +5,14 @@
 #include "ShaderManager.h"
 #include "TextureManager.h"
 #include "OGLFunc.h"
+#include "Keyboard.h"
 //-----------------------------------------------------------------------------
 EngineConfig Game::InitConfig()
 {
     EngineConfig config;
     config.graphics.ClearColor = {0,0,0,0};
+    config.window.width = 640;
+    config.window.height = 480;
     return config;
 }
 //-----------------------------------------------------------------------------
@@ -33,23 +36,39 @@ void Game::Init()
 
     batcher.Init();
 
-    recta = DrawSprite(0, 0, 128, 128, { 255,0, 255, 255 }, TextureManager::Get().GetTexture("floor"));
+    for (int x = -16; x < 16; x++)
+    {
+        for (int y = -8; y < 8; y++)
+        {
+            auto recta = new DrawSprite(x*20, y*28, 20, 28, { 255,255, 255, 255 }, TextureManager::Get().GetTexture("mar"));
+            batcher.Add(recta);
+        }
+    }
 
-    mSprite = DrawMultiSprite(128, 128, TextureManager::Get().GetTexture("hero"));
-    mSprite.SetPos(0, 0);
-    mSprite.SetNumFrames(3, 4);
-    mSprite.SetFrame(1, 2);
-
-    batcher.Add(&recta);
-    batcher.Add(&mSprite);
+    
 }
 //-----------------------------------------------------------------------------
 void Game::Update(float dt)
 {
     auto width = GetEngine().GetConfig().window.width;
     auto height = GetEngine().GetConfig().window.height;
-    m_mainCamera.SetScrDim(width, height);
-    m_mainCamera.SetPos(0, 0);
+
+    auto idealWidth = 480.0f* width/ height;
+    auto idealHeight = 480.0f;
+    m_mainCamera.SetScrDim(idealWidth, idealHeight);
+
+    std::cout << height << std::endl;
+
+    static float x = 0;
+
+    if (Keyboard::Get().KeyDown(Keyboard::KEY_A))
+        x -= 50.0f * dt;
+    if (Keyboard::Get().KeyDown(Keyboard::KEY_D))
+        x += 50.0f * dt;
+
+    //int tx = x; // округляем
+
+    m_mainCamera.SetPos(x, 0);
     m_mainCamera.SetScale(1.0f);
 }
 //-----------------------------------------------------------------------------
@@ -74,6 +93,7 @@ void Game::loadResource()
     m_shaders = ShaderManager::Get().LoadShader("simple", "../data/shaders/simple.vs", "../data/shaders/simple.fs", nullptr);
     TextureManager::Get().LoadTexture("floor", "../data/textures/floor1.png", true);
     TextureManager::Get().LoadTexture("hero", "../data/textures/hero.png", true);
+    TextureManager::Get().LoadTexture("mar", "../data/textures/mar.png", true);
 }
 //-----------------------------------------------------------------------------
 #endif

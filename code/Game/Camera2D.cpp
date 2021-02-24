@@ -47,15 +47,16 @@ AABB Camera2D::GetAABB()
 //-----------------------------------------------------------------------------
 void Camera2D::computeMatrix()
 {
-	glm::mat4 Projection = glm::ortho(0.0f, m_scrDim.x, 0.0f, m_scrDim.y, -1.0f, 1.0f);
-	glm::mat4 View = glm::mat4(1);
-	glm::mat4 Scale = glm::scale(glm::mat4(1), glm::vec3(m_scale));
+	float idealWidth = 480.0f * width / height;
+	float idealHeight = 480.0f;
+
+	glm::mat4 Projection = glm::ortho(0.0f, idealWidth, 0.0f, idealHeight, -1.0f, 1.0f);
+
 	glm::mat4 Translate = glm::translate(
 		glm::mat4(1),
-		glm::vec3(-m_pos.x * m_scale + m_scrDim.x / 2, -m_pos.y * m_scale + m_scrDim.y / 2, 0));
-	glm::mat4 Model = Translate * Scale;
+		glm::vec3(-m_pos.x * m_scale + idealWidth / 2, -m_pos.y * m_scale + idealHeight / 2, 0));
 
-	m_matrix = Projection * View * Model;
+	m_matrix = Projection * Translate;
 	m_dirty = false;
 }
 //-----------------------------------------------------------------------------

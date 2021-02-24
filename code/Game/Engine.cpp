@@ -19,6 +19,8 @@ Engine::~Engine()
 //-----------------------------------------------------------------------------
 bool Engine::Init(const EngineConfig& config)
 {
+	m_config=config;
+
 	if (!m_window.Init(config.window))
 		return false;
 

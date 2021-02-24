@@ -16,7 +16,7 @@ void OpenGLStateCache::UseProgram(GLuint program)
 void OpenGLStateCache::Viewport(GLint x, GLint y, GLsizei width, GLsizei height)
 {
 #if SE_OGL_CASHE_BINDER
-	if (m_viewportSize[0] != x || m_viewportSize[1] != y || m_viewportSize[2] != width || m_viewportSize[3] != height)
+	//if (m_viewportSize[0] != x || m_viewportSize[1] != y || m_viewportSize[2] != width || m_viewportSize[3] != height)
 #endif
 	{
 		m_viewportSize[0] = x;
